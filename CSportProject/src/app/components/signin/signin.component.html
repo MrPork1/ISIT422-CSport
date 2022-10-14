@@ -3,12 +3,12 @@
     <div class="authBlock">
       <h3>Sign In</h3>
       <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required>
+        <input type="text" class="formControl" placeholder="Email" #userName required>
       </div>
       <div class="formGroup">
         <input type="password" class="formControl" placeholder="Password" #userPassword required>
       </div>
-      <!-- Calling SignIn Api from AuthService -->
+
       <div class="formGroup">
         <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.login(userName.value, userPassword.value)">
       </div>
@@ -17,3 +17,5 @@
     <a routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one here</strong></a>
   </div>
 </div>
+
+<img src="../../../assets/SalmonellaNIAID.jpg" (click)="triggerAlert()" style="position:absolute;right:0px;bottom:0px;width:100px;height:100px">

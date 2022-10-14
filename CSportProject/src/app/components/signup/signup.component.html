@@ -1,0 +1,45 @@
+<h3>Sign Up</h3>
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Email" #userName required>
+      </div>
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Password" #userPassword required>
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Sign up" (click)="authService.emailSignUp(userName.value, userPassword.value)">
+      </div>
+    </div>
+
+    <a routerLink="/signin" routerLinkActive="active" class="login-account-txt">Got an account? <strong>Login here</strong></a>
+  </div>
+</div>
+<!-- <form>
+  <div>
+    <label>First name: </label>
+    <input type="text" placeholder="First name" autofocus>
+  </div>
+  <div>
+    <label>Last name: </label>
+    <input type="text" placeholder="Last name">
+  </div>
+  <div>
+    <label>Birthday: </label>
+    <input type="date" placeholder="Last name">
+  </div>
+  <div>
+    <label>Email: </label>
+    <input type="email" placeholder="Email" #email required>
+  </div>
+  <div>
+    <label>Password: </label>
+    <input type="password" placeholder="Password" #password required>
+  </div>
+  <div>
+     <input type="submit" value="Sign Up" (click)="authService.emailSignUp(email.value, password.value)"> -->
+  <!-- </div> -->
+<!-- </form> -->
+<!-- <a routerLink="/signin" routerLinkActive="active" class="create-account-txt">Have an account? <strong>Login here</strong></a> -->

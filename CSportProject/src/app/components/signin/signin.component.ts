@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -23,5 +23,9 @@ export class SigninComponent implements OnInit {
         formData.value.password
       );
     }
+  }
+
+  triggerAlert() {
+    alert("careful of the salmonella!!!1!");
   }
 }
