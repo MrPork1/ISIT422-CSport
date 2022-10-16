@@ -1,1 +1,14 @@
 <p>profile works!</p>
+
+<div id="proCon">
+    <div *ngFor="let item of profile">
+        <h2 id = 'title'>{{item.firstName}} {{item.lastName}}</h2>
+        {{item.birthday}}, {{item.email}}, {{role}}, {{adminNotes}}
+        <div>
+            Classes: {{item.classIDList}}
+        </div>
+        <div>
+            Class history: {{item.classHistory}}
+        </div>
+     </div>
+</div>
