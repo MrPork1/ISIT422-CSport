@@ -12,6 +12,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import { ClassViewComponent } from './class-view/class-view.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { environment } from 'src/environments/environment';
     AppComponent,
     ProfileComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ClassViewComponent
   ],
   imports: [
     BrowserModule,
