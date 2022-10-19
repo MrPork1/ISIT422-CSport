@@ -10,6 +10,7 @@ export class AdminsClassinfoComponent implements OnInit {
   @Input()
   class !: Class;
 
+  
 
   constructor() { }
 

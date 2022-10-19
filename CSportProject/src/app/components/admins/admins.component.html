@@ -1,7 +1,39 @@
-<h3>able to add class to class so cust can check
+<h3>able to add class to class so cust can check (ok)
     able to delete classes
     I need to be able to edit class
 </h3>
+
+<form class="add-form" (ngSubmit)="onCreatClass()">
+
+    <div class="form-control">
+        <label for="class-id">Class ID </label>
+        <input type="number" name="class-id" [(ngModel)]="id" id="class-id" placeholder="Type Class ID (Only Number): " />        
+    </div>
+
+
+    <div class="form-control">
+        <label for="class-name">Class Name </label>
+        <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Type Class Name: " />        
+    </div>
+
+    <div class="form-control">
+        <label for="class-desc">Class Description</label>
+        <input type="text" name="desc" [(ngModel)]="desc" id="desc" placeholder="Type Class Description: " />
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-start">Class Start </label>
+        <input type="time" name="start" [(ngModel)]="start" id="start"/>
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-end">Class End </label>
+        <input type="time" name="end" [(ngModel)]="end" id="end"/>
+    </div>
+
+    <input type="submit" value="Add Class" class="btn btn-block">
+
+</form>
 
 
 
