@@ -14,7 +14,8 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { ClassViewComponent } from './components/class-view/class-view.component';
-
+import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
+import { AdminsComponent } from './components/admins/admins.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { ClassViewComponent } from './components/class-view/class-view.component
     ProfileComponent,
     SigninComponent,
     SignupComponent,
-    ClassViewComponent
+    ClassViewComponent,
+    AdminsComponent,
+    AdminsClassinfoComponent,
   ],
   imports: [
     BrowserModule,
