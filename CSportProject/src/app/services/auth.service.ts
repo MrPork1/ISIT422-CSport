@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 export class AuthService {
 
   userData: any;
+
   isLogin: boolean = false;
   roleAs: string = "Customer";
 

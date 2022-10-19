@@ -8,4 +8,4 @@ export interface profile {
     email: string;
     role: string;
     adminNotes: string;
-}
+} //Michael did this.

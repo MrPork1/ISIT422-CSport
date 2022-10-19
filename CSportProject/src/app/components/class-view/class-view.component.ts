@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Class } from '../Classes';
-import { CLASSES } from '../mock-Classes';
+import { Class } from '../../Classes';
+import { CLASSES } from '../../mock-Classes';
 
 @Component({
   selector: 'app-class-view',
