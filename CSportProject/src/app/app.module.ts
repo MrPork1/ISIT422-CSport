@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -13,6 +14,11 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { ClassViewComponent } from './components/class-view/class-view.component';
+import { AdminsComponent } from './components/admins/admins.component';
+import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
+
+
+
 
 
 @NgModule({
@@ -21,7 +27,9 @@ import { ClassViewComponent } from './components/class-view/class-view.component
     ProfileComponent,
     SigninComponent,
     SignupComponent,
-    ClassViewComponent
+    ClassViewComponent,
+    AdminsComponent,
+    AdminsClassinfoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,7 @@ import { ClassViewComponent } from './components/class-view/class-view.component
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
