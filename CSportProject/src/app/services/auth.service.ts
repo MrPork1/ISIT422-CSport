@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 export class AuthService {
 
   userData: any;
+  fakeUserData: any;
 
   isLogin: boolean = false;
   roleAs: string = "Customer";
@@ -18,6 +19,18 @@ export class AuthService {
     private aAuth: AngularFireAuth,
     private router: Router,
     private userService: UserService) { }
+
+    signInUsingFakeInformation(user: User) {
+      this.userData = user;
+      if (this.userData.Role == "1") {
+        console.log('this is admin!');
+        
+      }
+      else if (this.userData.Role == "0") {
+        console.log('this is a customer!');
+      }
+      this.router.navigate(['/profile']);
+    }
 
     login(email: string, password: string) { //Login with email and password.
       this.aAuth.signInWithEmailAndPassword(email, password)
@@ -29,13 +42,13 @@ export class AuthService {
       })
     }
 
-    emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
+    emailSignUp(email: string, password: string) { //Sign up with email and password.
       this.aAuth.createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success', value);
         this.userData = value.user;
         //Add mongoDB user here.
-        this.addUserToMongoDB(value.user!.uid, user);
+        //this.addUserToMongoDB(value.user!.uid, user);
 
         this.router.navigate(['/profile']);
       })

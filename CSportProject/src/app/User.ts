@@ -1,5 +1,5 @@
 export interface User { //This matches the schema.
-    //UID: string;
+    UID: string;
     Email: string;
     Fname: string;
     Lname: string;

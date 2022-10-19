@@ -44,6 +44,6 @@ export class SignupComponent implements OnInit {
     }
 
     //Adds user to Firebase Authentication and then to MongoDB
-    this.authService.emailSignUp(this.email, this.password, newUser);
+    this.authService.emailSignUp(this.email, this.password/*, newUser*/);
   }
 }
