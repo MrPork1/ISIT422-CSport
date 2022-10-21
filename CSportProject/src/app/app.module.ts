@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { ClassViewComponent } from './components/class-view/class-view.component';
 import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
 import { AdminsComponent } from './components/admins/admins.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AdminsComponent } from './components/admins/admins.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
