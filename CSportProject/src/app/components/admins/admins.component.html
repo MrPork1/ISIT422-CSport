@@ -33,14 +33,15 @@
         <input type="time" name="end" [(ngModel)]="end" id="end"/>
     </div>
 
-    <input type="submit" value="Add Class" class="btn btn-block">
+    <div class="wrap">
+        <input type="submit" value="Add Class" class="btn btn-block"> 
+    </div>
 
 </form>
-
-
 
 
 <app-admins-classinfo
     *ngFor="let class of classes"
     [class] = "class"
+    (onDeleteClass)="deleteClass(class)"
 ></app-admins-classinfo>

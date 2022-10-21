@@ -1,5 +1,6 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import { Class } from 'src/app/Classes';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-admins-classinfo',
   templateUrl: './admins-classinfo.component.html',
@@ -10,11 +11,21 @@ export class AdminsClassinfoComponent implements OnInit {
   @Input()
   class !: Class;
 
-  
+
+  @Output() 
+  onDeleteClass : EventEmitter<Class> = new EventEmitter();
+
+
+
+  faTimes = faTimes; // 2. From angular-fontawesome
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onDelete(class2 : Class){
+    this.onDeleteClass.emit(class2);
+  }
 }

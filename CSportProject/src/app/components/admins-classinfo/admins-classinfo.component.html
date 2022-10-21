@@ -1,9 +1,10 @@
 
 
-
-
 <div class="class">
-    <h3>{{class.className}}</h3>
+    <h3>{{class.className}}<fa-icon
+        (click)="onDelete(class)"
+        [ngStyle]="{'color':'red'}" [icon]="faTimes"
+        ></fa-icon></h3>
     <p>{{class.classDesc}}</p>
     <p>{{class.classStart}}</p>
     <p>{{class.classEnd}}</p>
