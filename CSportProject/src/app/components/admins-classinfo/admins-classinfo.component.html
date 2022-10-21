@@ -1,6 +1,7 @@
 
-
-<div class="class">
+<div class="class"
+    (click)="onUpdate(class)"
+    >
     <h3>{{class.className}}<fa-icon
         (click)="onDelete(class)"
         [ngStyle]="{'color':'red'}" [icon]="faTimes"
