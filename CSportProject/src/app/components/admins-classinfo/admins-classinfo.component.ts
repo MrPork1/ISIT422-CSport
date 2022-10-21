@@ -14,7 +14,8 @@ export class AdminsClassinfoComponent implements OnInit {
 
   @Output() 
   onDeleteClass : EventEmitter<Class> = new EventEmitter();
-
+  @Output()
+  onUpateClass : EventEmitter<Class> = new EventEmitter();
 
 
   faTimes = faTimes; // 2. From angular-fontawesome
@@ -28,4 +29,9 @@ export class AdminsClassinfoComponent implements OnInit {
   onDelete(class2 : Class){
     this.onDeleteClass.emit(class2);
   }
+
+  onUpdate(class2 : Class){
+    this.onUpateClass.emit(class2);
+  }
+
 }
