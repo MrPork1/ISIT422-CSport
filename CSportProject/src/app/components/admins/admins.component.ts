@@ -13,7 +13,7 @@ export class AdminsComponent implements OnInit {
   classes : Class[] = CLASSES;
 
 
-  id !: number;
+  id !: string;
   name !: string;
   desc !: string;
   start !: string;
@@ -21,7 +21,7 @@ export class AdminsComponent implements OnInit {
 
 
   check : boolean = false;
-  id_fix !: number;
+  id_fix !: string;
   name_fix !: string;
   desc_fix !: string;
   start_fix !: string;
@@ -42,16 +42,18 @@ export class AdminsComponent implements OnInit {
     else{
 
       const addClass = {
-        id : this.id,
-        className : this.name,
-        classDesc : this.desc,
-        classStart : this.start,
-        classEnd : this.end,
+        CID : this.id,
+        Name : this.name,
+        Descript : this.desc,
+        STime : this.start,
+        ETime : this.end,
+        Date: "test",
+        ClassSeats: "not yet"
       }
   
       this.classes.push(addClass);
   
-      this.id = 0;
+      this.id = "";
       this.name = "";
       this.desc = "";
       this.start = "";
@@ -61,14 +63,14 @@ export class AdminsComponent implements OnInit {
   }
 
   deleteClass(class2 : Class){
-    this.classes = this.classes.filter(obj => obj.id !== class2.id);
+    this.classes = this.classes.filter(obj => obj.CID !== class2.CID);
   }
 
   updateClass(class2: Class){
     this.check = !this.check;
-    this.id_fix = class2.id;
-    this.name_fix = class2.className;
-    this.desc_fix = class2.classDesc;
+    this.id_fix = class2.CID;
+    this.name_fix = class2.Name;
+    this.desc_fix = class2.Descript;
   }
 
   onUpdateClass(){
@@ -80,7 +82,7 @@ export class AdminsComponent implements OnInit {
 
 
     
-    this.classes.find(x => x.id === this.id_fix)?.className
+    this.classes.find(x => x.CID === this.id_fix)?.Name
     // this.classes[this.id_fix].className = this.name_fix;
     // this.classes[this.id_fix].classDesc = this.desc_fix;
     // this.classes[this.id_fix].classStart = this.start_fix;

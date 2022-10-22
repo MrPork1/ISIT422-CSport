@@ -2,12 +2,12 @@
 <div class="class"
     (click)="onUpdate(class)"
     >
-    <h3>{{class.className}}<fa-icon
+    <h3>{{class.Name}}<fa-icon
         (click)="onDelete(class)"
         [ngStyle]="{'color':'red'}" [icon]="faTimes"
         ></fa-icon></h3>
-    <p>{{class.classDesc}}</p>
-    <p>{{class.classStart}}</p>
-    <p>{{class.classEnd}}</p>
+    <p>{{class.Descript}}</p>
+    <p>{{class.STime}}</p>
+    <p>{{class.ETime}}</p>
 </div>
 
