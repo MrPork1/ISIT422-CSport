@@ -14,18 +14,13 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor(     
     public authService: AuthService,
-    private userService: UserService,) {
-      
-
-     }
+    private userService: UserService) {}
 
   ngOnInit(): void {
   }
-  
 
   getUsers() {
-    this.userService.getUsers().subscribe(users => this.users = users);
-  }
-
-
+      this.userService.getUsers()
+      .subscribe(users => this.users = users);
+    }
 }

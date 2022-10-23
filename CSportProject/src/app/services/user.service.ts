@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient){ }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersURL + "/Users")
+    return this.http.get<User[]>(this.usersURL + "/usercollections")
     .pipe(
       tap(_ => console.log('fetched users')),
       catchError(this.handleError<[]>('getUsers', []))

@@ -1,0 +1,36 @@
+<h3>Edit Profile</h3>
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <div class="formGroup" hidden>
+        <label>Email:*</label>
+        <input type="email" class="formControl" placeholder="Email" [(ngModel)]="email" required>
+      </div>
+      <div class="formGroup" hidden>
+        <label>Password:*</label>
+        <input type="password" class="formControl" placeholder="Password" [(ngModel)]="password" required>
+      </div>
+      <div class="formGroup">
+        <label>First name:*</label>
+        <input type="text" class="formControl" placeholder="First name" [(ngModel)]="fname" required>
+      </div>
+      <div class="formGroup">
+        <label>Last name:</label>
+        <input type="text" class="formControl" placeholder="Last name" [(ngModel)]="lname">
+      </div>
+      <div class="formGroup">
+        <label>Birthday:</label>
+        <input type="date" class="formControl" #userBday [(ngModel)]="bday">
+      </div>
+      <div class="formGroup" hidden>
+        <label>Admin:</label>
+        <!-- <input type="checkbox" class="formControl" #userIsAdmin [(ngModel)]="isAdmin"> -->
+        <input type="text" class="formControl" #userIsAdmin placeholder="type 1 for admin" [(ngModel)]="role">
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Apply Changes" (click)="applyChanges()">
+      </div>
+    </div>
+  </div>
+</div>
