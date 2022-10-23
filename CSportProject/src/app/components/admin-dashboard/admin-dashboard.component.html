@@ -1,7 +1,24 @@
 <div class="row" *ngIf="authService.userData as user">
-    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
-</div>
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+          <p>User ID: <strong>{{user.UID}}</strong></p>
+          <p>Email: <strong>{{user.Email}}</strong></p>
+          <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+          <p>Role: <strong>{{user.Role}}</strong></p>
+          <p>Name: <strong>{{user.Fname}}  {{user.Lname}}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
-<input type="button" class="btn btn-primary" value="Edit Profile">
-<input type="button" routerLink="/admin" class="btn btn-primary" value="Manage Classes">
+
+<a routerLink="/admin"><button id="Btn" > Manage Class</button></a>
+
+<a routerLink="/signin"><button id="Btn" > Go Back to Login</button></a>
+
+<a routerLink="/admin"><button id="Btn" > Get User Informaion</button></a>
+
+
+
