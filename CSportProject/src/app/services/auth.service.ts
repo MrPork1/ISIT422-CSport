@@ -24,12 +24,13 @@ export class AuthService {
       this.userData = user;
       if (this.userData.Role == "1") {
         console.log('this is admin!');
-        
+        this.router.navigate(['/admin-dashboard']);
       }
       else if (this.userData.Role == "0") {
         console.log('this is a customer!');
+        this.router.navigate(['/profile']);
+
       }
-      this.router.navigate(['/profile']);
     }
 
     login(email: string, password: string) { //Login with email and password.
