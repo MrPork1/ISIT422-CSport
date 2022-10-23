@@ -76,13 +76,26 @@ export class AdminsComponent implements OnInit {
   onUpdateClass(){
     console.log("H@");
     
-    console.log();
     //Try Splice?
     //Or Index?
 
+    
+    const fixedClass = {
+      CID : this.id_fix,
+      Name : this.name_fix,
+      Descript : this.desc_fix,
+      STime : this.start_fix,
+      ETime : this.end_fix,
+      Date: "test",
+      ClassSeats: "not yet"
+    }
+
+
+    this.classes = this.classes.filter(obj => obj.CID !== this.id_fix); //delete
+    this.classes.push(fixedClass);
 
     
-    this.classes.find(x => x.CID === this.id_fix)?.Name
+    //this.classes.find(x => x.CID === this.id_fix)
     // this.classes[this.id_fix].className = this.name_fix;
     // this.classes[this.id_fix].classDesc = this.desc_fix;
     // this.classes[this.id_fix].classStart = this.start_fix;
