@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -16,6 +15,8 @@ import { environment } from 'src/environments/environment';
 import { ClassViewComponent } from './components/class-view/class-view.component';
 import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
 import { AdminsComponent } from './components/admins/admins.component';
+import { HistoryClassComponent } from './components/history-class/history-class.component';
+import { AvailableClassComponent } from './components/available-class/available-class.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { AdminsComponent } from './components/admins/admins.component';
     ClassViewComponent,
     AdminsComponent,
     AdminsClassinfoComponent,
+    HistoryClassComponent,
+    AvailableClassComponent,
   ],
   imports: [
     BrowserModule,
