@@ -1,1 +1,7 @@
-<p>admin-dashboard works!</p>
+<div class="row" *ngIf="authService.userData as user">
+    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+</div>
+
+<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
+<input type="button" class="btn btn-primary" value="Edit Profile">
+<input type="button" routerLink="/admin" class="btn btn-primary" value="Manage Classes">

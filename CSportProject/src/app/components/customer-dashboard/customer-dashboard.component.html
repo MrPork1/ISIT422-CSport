@@ -1,1 +1,25 @@
-<p>customer-dashboard works!</p>
+<div class="row" *ngIf="authService.userData as user">
+    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+</div>
+
+<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
+<input type="button" class="btn btn-primary" value="Edit Profile">
+<input type="button" class="btn btn-primary" value="View Available Classes">
+
+<hr>
+<h2>Currently Enrolled Classes</h2>
+
+<table class="table" id="enrolledClasses" *ngIf="user.ClassIDList.length > 0">
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let class of tempClasses">
+        <th>{{class.Name}}</th>
+        <th>{{class.STime}}</th>
+        <th>{{class.ETime}}</th>
+        <th>{{class.Descript}}</th>
+    </tr>
+  </table>

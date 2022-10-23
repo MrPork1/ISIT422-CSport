@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -17,6 +19,8 @@ import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-c
 import { AdminsComponent } from './components/admins/admins.component';
 import { HistoryClassComponent } from './components/history-class/history-class.component';
 import { AvailableClassComponent } from './components/available-class/available-class.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +33,8 @@ import { AvailableClassComponent } from './components/available-class/available-
     AdminsClassinfoComponent,
     HistoryClassComponent,
     AvailableClassComponent,
+    AdminDashboardComponent,
+    CustomerDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,7 @@ import { AvailableClassComponent } from './components/available-class/available-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
