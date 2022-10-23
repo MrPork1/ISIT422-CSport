@@ -9,6 +9,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
+
+  tempCurrentClasses =
+    ["2", "3"];
+
+    tempHistoryClasses =
+    ["4", "1"];
+
   constructor(
     public authService: AuthService
   ) { }
@@ -29,10 +36,14 @@ export class SigninComponent implements OnInit {
   signInAsCustomer() {
     const newUser = {
       UID: "213091239812093",
-      Email: "fakecustomer@yahoo.com",
       Fname: "ironman",
       Lname: "jarvas",
-      Role: "0"
+      ClassIDList: this.tempCurrentClasses,
+      ClassHistory: this.tempHistoryClasses,
+      Birthday: "10/30/1998",
+      Email: "fakecustomer@yahoo.com",
+      Role: "0",
+      AdminNotes: ""
     } as User
 
     this.authService.signInUsingFakeInformation(newUser);
@@ -41,10 +52,12 @@ export class SigninComponent implements OnInit {
   signInAsAdmin() {
     const newUser = {
       UID: "4534543262436",
-      Email: "fakeadmin@gmail.com",
       Fname: "seany",
       Lname: "ynaes",
-      Role: "1"
+      Birthday: "10/30/1998",
+      Email: "fakeadmin@gmail.com",
+      Role: "1",
+      AdminNotes: ""
     } as User
 
     this.authService.signInUsingFakeInformation(newUser);

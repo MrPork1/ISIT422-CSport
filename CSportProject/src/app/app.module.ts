@@ -13,11 +13,13 @@ import { ClassViewComponent } from './components/class-view/class-view.component
 import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ClassViewComponent,
     AdminsComponent,
     AdminsClassinfoComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CustomerDashboardComponent
   ],
   imports: [
     BrowserModule,

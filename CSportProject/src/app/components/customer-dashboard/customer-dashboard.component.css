@@ -1,0 +1,20 @@
+#enrolledClasses {
+    border-collapse: collapse;
+  }
+
+#enrolledClasses td, #enrolledClasses th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+  #enrolledClasses th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightskyblue;
+    color: white;
+}
+
+#enrolledClasses tr:nth-child(even){background-color: #f2f2f2;}
+
+#enrolledClasses tr:hover {background-color: #ddd;}

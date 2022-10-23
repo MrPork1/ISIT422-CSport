@@ -24,12 +24,12 @@ export class AuthService {
       this.userData = user;
       if (this.userData.Role == "1") {
         console.log('this is admin!');
-        
+        this.router.navigate(['/a-dashboard']);
       }
       else if (this.userData.Role == "0") {
         console.log('this is a customer!');
+        this.router.navigate(['/c-dashboard']);
       }
-      this.router.navigate(['/profile']);
     }
 
     login(email: string, password: string) { //Login with email and password.
@@ -69,6 +69,12 @@ export class AuthService {
         this.roleAs = '';
         this.router.navigate(['/']);
       });
+    }
+
+    returnUserObject(): any {
+      if (this.userData !== undefined) {
+        return this.userData;
+      }
     }
 
     get isLoggedIn(): boolean { //Gets a boolean on whether a user is logged in or not.
