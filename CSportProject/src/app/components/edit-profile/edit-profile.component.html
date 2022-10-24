@@ -2,16 +2,16 @@
 <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock">
-      <div class="formGroup" hidden>
-        <label>Email:*</label>
-        <input type="email" class="formControl" placeholder="Email" [(ngModel)]="email" required>
+      <div class="formGroup">
+        <label>Email:</label>
+        <input type="email" class="formControl" placeholder="Email" [(ngModel)]="email" required readonly>
       </div>
       <div class="formGroup" hidden>
-        <label>Password:*</label>
-        <input type="password" class="formControl" placeholder="Password" [(ngModel)]="password" required>
+        <label>Password:</label>
+        <input type="password" class="formControl" placeholder="Password" [(ngModel)]="password" required readonly>
       </div>
       <div class="formGroup">
-        <label>First name:*</label>
+        <label>First name:</label>
         <input type="text" class="formControl" placeholder="First name" [(ngModel)]="fname" required>
       </div>
       <div class="formGroup">
@@ -20,12 +20,7 @@
       </div>
       <div class="formGroup">
         <label>Birthday:</label>
-        <input type="date" class="formControl" #userBday [(ngModel)]="bday">
-      </div>
-      <div class="formGroup" hidden>
-        <label>Admin:</label>
-        <!-- <input type="checkbox" class="formControl" #userIsAdmin [(ngModel)]="isAdmin"> -->
-        <input type="text" class="formControl" #userIsAdmin placeholder="type 1 for admin" [(ngModel)]="role">
+        <input type="date" class="formControl" [(ngModel)]="bday">
       </div>
       <!-- Calling SignIn Api from AuthService -->
       <div class="formGroup">
