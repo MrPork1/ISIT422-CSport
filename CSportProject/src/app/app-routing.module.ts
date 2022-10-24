@@ -8,12 +8,14 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full'},
   { path: 'signin', component: SigninComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'classes', component: ClassViewComponent},
+  { path: 'editprofile', component: EditProfileComponent},
   { path: 'admin', component: AdminsComponent},
   { path: 'a-dashboard', component: AdminDashboardComponent},
   { path: 'c-dashboard', component: CustomerDashboardComponent}

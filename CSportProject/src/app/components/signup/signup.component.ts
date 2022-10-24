@@ -18,6 +18,12 @@ export class SignupComponent implements OnInit {
 
   password !: string;
 
+  tempCurrentClasses =
+  ["2", "3"];
+
+  tempHistoryClasses =
+  ["4", "1"];
+
   constructor(
     private authService: AuthService,
     private userService: UserService
@@ -28,22 +34,19 @@ export class SignupComponent implements OnInit {
 
   signUpNewUser() {
 
-    //*This interface is here so we can see what to add.*
-  //   export interface User { //This matches the schema.
-  //     Email: string;
-  //     Fname: string;
-  //     Lname: string;
-  //     Role: string;
-  // }
-
     const newUser = {
-      Email: this.email,
-      Fname: this.fname,
-      Lname: this.lname,
-      Role: this.role
-    }
+    UID: "",
+    Fname: this.fname,
+    Lname: this.lname,
+    ClassIDList: this.tempCurrentClasses,
+    ClassHistory: this.tempHistoryClasses,
+    Birthday: this.bday,
+    Email: this.email,
+    Role: this.role,
+    AdminNotes: "thats crazy" //Mongo won't allow an empty string :(
+  } as User
 
     //Adds user to Firebase Authentication and then to MongoDB
-    this.authService.emailSignUp(this.email, this.password/*, newUser*/);
+    this.authService.emailSignUp(this.email, this.password, newUser);
   }
 }

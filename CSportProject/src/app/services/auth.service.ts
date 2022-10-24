@@ -38,19 +38,19 @@ export class AuthService {
         console.log('Login success!');
         this.userData = value.user;
         console.log(value);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/c-dashboard']);
       })
     }
 
-    emailSignUp(email: string, password: string) { //Sign up with email and password.
+    emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
       this.aAuth.createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success', value);
         this.userData = value.user;
         //Add mongoDB user here.
-        //this.addUserToMongoDB(value.user!.uid, user);
+        this.addUserToMongoDB(value.user!.uid, user);
 
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/c-dashboard']);
       })
       .catch(error => {
         console.log('Something went wrong: ', error);
@@ -59,6 +59,7 @@ export class AuthService {
 
     private addUserToMongoDB(uid: string, user: User) {
       //TODO: Replace User ID with uid
+      user.UID = uid; //This works!
       this.userService.addUser(user).subscribe();
     }
 

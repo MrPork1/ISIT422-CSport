@@ -1,7 +1,21 @@
 <div class="row" *ngIf="authService.userData as user">
-    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 </div>
 
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
 <input type="button" class="btn btn-primary" value="Edit Profile">
 <input type="button" routerLink="/admin" class="btn btn-primary" value="Manage Classes">
+<input type="button" class="btn btn-primary" value="Manager Users">
+
+<h2>temp button</h2>
+<input type="button" class="btn btn-primary" value="Get Users" (click)="getUsers()">
+<ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+        <p>Name: {{user.Fname}} 
+          {{user.Lname}} 
+          Role: {{user.Role}} 
+          Email: {{user.Email}}</p>
+          <button type="button" class="btn btn-success">Edit {{user.Fname}}</button>
+          <button type="button" class="btn btn-danger">Delete {{user.Fname}}</button>
+    </li>
+  </ul>
