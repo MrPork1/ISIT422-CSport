@@ -3,6 +3,7 @@ import { Class } from 'src/app/Classes';
 import { CLASSES } from 'src/app/mock-Classes';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
+import { ClassViewComponent } from '../class-view/class-view.component';
 
 @Component({
   selector: 'app-customer-dashboard',

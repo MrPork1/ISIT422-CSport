@@ -1,8 +1,20 @@
 <p>history-class works!</p>
 
-<div id="classCon">
-    <div *ngFor="let class of classes">
-        <h2 id = 'title'>{{class.className}}</h2>
-        <span>|| {{class.classDesc}} || {{class.classStart}} - {{class.classEnd}}</span>
-    </div>
-</div>
+<table class="table" id="hisClasses" *ngIf="user.ClassIDList.length > 0">
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Seats</th>
+    </tr>
+    <tr *ngFor="let class of tempClasses">
+        <td>{{class.Name}}</td>
+        <td>{{class.STime}}</td>
+        <td>{{class.ETime}}</td>
+        <td>{{class.Descript}}</td>
+        <td>{{class.Date}}</td>
+        <td>{{class.ClassSeats}}</td>
+    </tr>
+  </table>

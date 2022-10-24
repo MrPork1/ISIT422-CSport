@@ -18,8 +18,8 @@ import { ClassViewComponent } from './components/class-view/class-view.component
 import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { HistoryClassComponent } from './components/history-class/history-class.component';
-import { AvailableClassComponent } from './components/available-class/available-class.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Output } from '@angular/core';
 
 
 @NgModule({
@@ -32,7 +32,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AdminsComponent,
     AdminsClassinfoComponent,
     HistoryClassComponent,
-    AvailableClassComponent,
     AdminDashboardComponent,
     CustomerDashboardComponent
   ],
