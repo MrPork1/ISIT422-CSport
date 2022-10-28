@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { User } from '../User';
+import { Class } from '../Classes';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,6 +24,10 @@ export class UserService {
       tap(_ => console.log('fetched users')),
       catchError(this.handleError<[]>('getUsers', []))
     )
+  }
+
+  getClasses(): Observable<Class[]> { //temp method. will be moved to class service soon
+    return this.http.get<Class[]>(this.usersURL + "/classcollections")
   }
 
   addUser(user: User): Observable<User> {

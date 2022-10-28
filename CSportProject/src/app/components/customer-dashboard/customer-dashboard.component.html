@@ -3,31 +3,42 @@
 </div>
 
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
-<input type="button" routerLink="/editprofile" class="btn btn-primary" value="Edit Profile">
-<input type="button" class="btn btn-primary" value="View Available Classes">
+<input type="button" class="btn btn-primary" (click)="setView(0)" value="Edit Profile">
+<input type="button" class="btn btn-primary" (click)="setView(1)" value="Show Enrolled Classes">
+<input type="button" class="btn btn-primary" (click)="setView(2)" value="View Available Classes">
+<input type="button" class="btn btn-primary" (click)="setView(3)" value="View Past Classes">
 
 <hr>
-<h2>Currently Enrolled Classes</h2>
 
-<table class="table" id="enrolledClasses" *ngIf="user.ClassIDList.length > 0">
+<h2 *ngIf="views[1]">Currently Enrolled Classes</h2>
+
+<table class="table" id="enrolledClasses" *ngIf="views[1]">
     <tr>
       <th>Name</th>
       <th>Start time</th>
       <th>End time</th>
       <th>Description</th>
+      <th>Date</th>
+      <th>Seats</th>
     </tr>
     <tr *ngFor="let class of tempClasses">
-        <th>{{class.Name}}</th>
-        <th>{{class.STime}}</th>
-        <th>{{class.ETime}}</th>
-        <th>{{class.Descript}}</th>
+        <td>{{class.Name}}</td>
+        <td>{{class.STime}}</td>
+        <td>{{class.ETime}}</td>
+        <td>{{class.Descript}}</td>
+        <td>{{class.Date}}</td>
+        <td>{{class.ClassSeats}}</td>
     </tr>
   </table>
 
-  <div>
-    <app-class-view></app-class-view>
-  </div>
+<div *ngIf="views[0]">
+  <app-edit-profile></app-edit-profile>
+</div>
 
-  <div>
-    <app-history-class></app-history-class>
-  </div>
+<div *ngIf="views[2]">
+  <app-class-view></app-class-view>
+</div>
+
+<div *ngIf="views[3]">
+  <app-history-class></app-history-class>
+</div>
