@@ -26,6 +26,7 @@ export class CustomerDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
+    this.getClasses();
   }
 
   setView(num: number): void {
@@ -34,5 +35,9 @@ export class CustomerDashboardComponent implements OnInit {
     }
 
     this.views[num] = true;
+  }
+
+  getClasses() {
+    this.tempClasses = this.classes.filter(element => this.user.ClassIDList.includes(element.CID));
   }
 }
