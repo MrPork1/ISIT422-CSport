@@ -23,7 +23,8 @@
         <input type="date" class="formControl" [(ngModel)]="bday">
       </div>
       <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
+      <div *ngIf="user.UID.length < 28" style="color:red;">Can't change values of a mock profile, sorry - sean</div>
+      <div class="formGroup" *ngIf="user.UID.length >= 28">
         <input type="button" class="btn btnPrimary" value="Apply Changes" (click)="applyChanges()">
       </div>
     </div>

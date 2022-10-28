@@ -18,13 +18,14 @@ export class CustomerDashboardComponent implements OnInit {
 
   tempClasses: Class[] = [];
 
+  user!: User;
+
   constructor(
     public authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    this.getClasses();
   }
 
   setView(num: number): void {
@@ -33,12 +34,5 @@ export class CustomerDashboardComponent implements OnInit {
     }
 
     this.views[num] = true;
-  }
-
-  user!: User;
-
-  getClasses() {
-    this.tempClasses = this.classes.filter(element => this.user.ClassIDList.includes(element.CID));
-    console.log(this.tempClasses);
   }
 }

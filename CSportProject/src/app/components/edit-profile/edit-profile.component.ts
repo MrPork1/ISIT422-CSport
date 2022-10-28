@@ -43,7 +43,6 @@ export class EditProfileComponent implements OnInit {
     newUser.Lname = this.lname;
     newUser.Birthday = this.bday;
 
-    //editUser hasn't been written yet. ill write it in sprint3 - sean
-    //this.userService.editUser(user);
+    this.userService.editUser(this.user).subscribe();
   }
 }

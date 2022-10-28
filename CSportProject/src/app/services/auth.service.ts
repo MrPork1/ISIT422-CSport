@@ -9,8 +9,11 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  userData: any;
-  fakeUserData: any;
+  userData!: User;
+  newUserData: User[] = [];
+  newnewUserData!: User;
+
+  emptyUserData!: User;
 
   isLogin: boolean = false;
   roleAs: string = "Customer";
@@ -36,9 +39,12 @@ export class AuthService {
       this.aAuth.signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Login success!');
-        this.userData = value.user;
-        console.log(value);
-        this.router.navigate(['/c-dashboard']);
+        this.userService.getUser(value.user?.uid).subscribe(user => {
+          this.newUserData = user;
+          this.userData = user[0];
+          console.log(this.userData);
+          this.router.navigate(['/c-dashboard']);
+        });
       })
     }
 
@@ -46,11 +52,11 @@ export class AuthService {
       this.aAuth.createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success', value);
-        this.userData = value.user;
+        //this.userData = value.user;
         //Add mongoDB user here.
         this.addUserToMongoDB(value.user!.uid, user);
-
-        this.router.navigate(['/c-dashboard']);
+        console.log('sign up success!');
+        this.router.navigate(['/signin']);
       })
       .catch(error => {
         console.log('Something went wrong: ', error);
@@ -65,17 +71,16 @@ export class AuthService {
 
     logout() { //Log the current user and rest fields.
       this.aAuth.signOut().then(() => {
-        this.userData = undefined;
+        this.userData = this.emptyUserData;
+        this.userData
         this.isLogin = false;
         this.roleAs = '';
         this.router.navigate(['/']);
       });
     }
 
-    returnUserObject(): any {
-      if (this.userData !== undefined) {
+    returnUserObject(): User {
         return this.userData;
-      }
     }
 
     get isLoggedIn(): boolean { //Gets a boolean on whether a user is logged in or not.

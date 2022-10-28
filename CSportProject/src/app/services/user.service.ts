@@ -18,21 +18,30 @@ export class UserService {
 
   constructor(private http: HttpClient){ }
 
-  getUsers(): Observable<User[]> {
+  getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersURL + "/usercollections")
-    .pipe(
-      tap(_ => console.log('fetched users')),
-      catchError(this.handleError<[]>('getUsers', []))
-    )
   }
 
-  getClasses(): Observable<Class[]> { //temp method. will be moved to class service soon
-    return this.http.get<Class[]>(this.usersURL + "/classcollections")
+  getUser(ID?: string): Observable<User[]> {
+    console.log(ID);
+    return this.http.get<User[]>(this.usersURL + "/GetOneUser/" + ID, httpOptions);
   }
 
   addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.usersURL + "/userscollection", user, httpOptions);
+  }
+
+  editUser(user: User): Observable<User> { //This doesn't work right now - sean
     console.log(user);
-    return this.http.post<User>(this.usersURL + "/NewUser", user, httpOptions);
+    return this.http.put<User>(this.usersURL + "/EditUser", user, httpOptions);
+  }
+
+  deleteUser(ID: string): Observable<User> {
+    return this.http.delete<User>(this.usersURL + "/DeleteUser/" + ID, httpOptions);
+  }
+
+  getClasses(): Observable<Class[]> { //temp. will get moved friday or saturday - sean
+    return this.http.get<Class[]>(this.usersURL + "/classcollections")
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
