@@ -20,6 +20,8 @@ import { AdminsComponent } from './components/admins/admins.component';
 import { HistoryClassComponent } from './components/history-class/history-class.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-usersinfo.component';
+import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit/admins-usersinfo-unit.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     HistoryClassComponent,
     AdminDashboardComponent,
     CustomerDashboardComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AdminsUsersinfoComponent,
+    AdminsUsersinfoUnitComponent
   ],
   imports: [
     BrowserModule,

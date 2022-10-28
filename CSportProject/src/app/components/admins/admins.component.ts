@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { CLASSES } from 'src/app/mock-Classes';
 
-
 @Component({
   selector: 'app-admins',
   templateUrl: './admins.component.html',
@@ -74,9 +73,7 @@ export class AdminsComponent implements OnInit {
   }
 
   onUpdateClass(){
-    console.log("H@");
-    
-    //Try Splice?
+        //Try Splice?
     //Or Index?
 
     
@@ -90,19 +87,12 @@ export class AdminsComponent implements OnInit {
       ClassSeats: "not yet"
     }
 
-
     this.classes = this.classes.filter(obj => obj.CID !== this.id_fix); //delete
     this.classes.push(fixedClass);
-
-    
-    //this.classes.find(x => x.CID === this.id_fix)
-    // this.classes[this.id_fix].className = this.name_fix;
-    // this.classes[this.id_fix].classDesc = this.desc_fix;
-    // this.classes[this.id_fix].classStart = this.start_fix;
-    // this.classes[this.id_fix].classEnd = this.end_fix;
-
     this.check = !this.check;
   }
+
+
 
 
 
