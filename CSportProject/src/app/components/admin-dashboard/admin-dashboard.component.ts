@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { AuthService } from 'src/app/services/auth.service'; 
+import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/User';
 @Component({
@@ -19,7 +20,8 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor(     
     public authService: AuthService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private classesService: ClassesService) {}
 
   ngOnInit(): void {
   }
@@ -33,11 +35,10 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getUsers() {
-      this.userService.getAllUsers()
-      .subscribe(users => this.users = users);
-    }
+      this.userService.getAllUsers().subscribe(users => this.users = users);
+  }
 
   getClasses() {
-    this.userService.getClasses().subscribe(classes => this.classes = classes);
+    this.classesService.getAllClasses().subscribe(classes => this.classes = classes);
   }
 }

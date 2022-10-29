@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { User } from '../User';
-import { Class } from '../Classes';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,40 +12,37 @@ const httpOptions = {
 })
 export class UserService {
 
-  private usersURL = 'http://localhost:3000';
+  //When calling these methods, make sure you subscribe to them in your code
+  //Example: this.userService.getAllUsers().subscribe();
+
+  //To fill an array from the subscribe, call it like this:
+  //Example:  this.userService.getAllUsers().subscribe(users => this.users = users);
+  //where this.users is a local array
+  //For an example, see admin-dashboard.component.ts line 38
+
+  private serverURL = 'http://localhost:3000';
 
   constructor(private http: HttpClient){ }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersURL + "/usercollections")
+    return this.http.get<User[]>(this.serverURL + "/usercollections")
   }
 
   getUser(ID?: string): Observable<User[]> {
     console.log(ID);
-    return this.http.get<User[]>(this.usersURL + "/GetOneUser/" + ID, httpOptions);
+    return this.http.get<User[]>(this.serverURL + "/GetOneUser/" + ID, httpOptions);
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.usersURL + "/userscollection", user, httpOptions);
+    return this.http.post<User>(this.serverURL + "/userscollection", user, httpOptions);
   }
 
   editUser(user: User): Observable<User> { //This doesn't work right now - sean
     console.log(user);
-    return this.http.put<User>(this.usersURL + "/EditUser", user, httpOptions);
+    return this.http.put<User>(this.serverURL + "/EditUser", user, httpOptions);
   }
 
   deleteUser(ID: string): Observable<User> {
-    return this.http.delete<User>(this.usersURL + "/DeleteUser/" + ID, httpOptions);
-  }
-
-  getClasses(): Observable<Class[]> { //temp. will get moved friday or saturday - sean
-    return this.http.get<Class[]>(this.usersURL + "/classcollections")
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    };
+    return this.http.delete<User>(this.serverURL + "/DeleteUser/" + ID, httpOptions);
   }
 }

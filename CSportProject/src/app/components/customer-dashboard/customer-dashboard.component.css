@@ -1,6 +1,19 @@
-.top {
-  right: 0;
-  left: 0;
-  top: 0;
-  background-image:linear-gradient(to right, green, black);
+.circle {
+  height: 75px;
+  width: 75px;
+  background-color: #555;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+  text-align: center;
+  color: white;
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
 }
