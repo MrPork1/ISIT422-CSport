@@ -36,17 +36,6 @@ export const USERS : User[] = [
         AdminNotes: "Heasdasdaaason"
     },
     {
-        UID: "14523223dfsd22333asd",
-        Fname: "Micheal",
-        Lname: "Lablanc",
-        ClassIDList: ["1", "3", "6"],
-        ClassHistory: ["4", "1", "6"],
-        Birthday: "13/90/1396",
-        Email: "fgccdcd@gmail.ooo",
-        Role: "Customer",
-        AdminNotes: "Heasdasdaaason"
-    },
-    {
         UID: "99999bbbbbb",
         Fname: "monella",
         Lname: "Sal",
