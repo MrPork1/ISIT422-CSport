@@ -26,6 +26,11 @@
   <div *ngIf="views[1]">
     <app-admins></app-admins>
   </div>
+  
+  <div *ngIf="views[2]">
+    <app-admins-usersinfo></app-admins-usersinfo>
+  </div>
+
 
   <ul class="list-group" *ngIf="views[4]">
     <li *ngFor="let class of classes" class="list-group-item">
