@@ -1,15 +1,22 @@
 
-<div class="class"
-    (click)="onUpdate(class)"
-    >
-    <h3>{{class.Name}}<fa-icon
-        (click)="onDelete(class)"
-        [ngStyle]="{'color':'red'}" [icon]="faTimes"
-        ></fa-icon></h3>
-    <p>{{class.Descript}}</p>
-    <p>{{class.STime}}</p>
-    <p>{{class.ETime}}</p>
-</div>
+    <Table class="type11">
+        <tbody
+        (click)="onUpdate(class)"
+        >
+        <tr>
 
+            <td>{{class.Name}} <fa-icon
+                (click)="onDelete(class)"
+                [ngStyle]="{'color':'red'}" [icon]="faTimes"
+                ></fa-icon>
+            </td>
+            <td>{{class.STime}}</td>
+            <td>{{class.ETime}}</td>
+            <td>{{class.Descript}}</td>
+            <td>{{class.Date}}</td>
+            <td>{{class.ClassSeats}}</td>
+        </tr>
+        </tbody>
+    </Table>
 
-
+    
