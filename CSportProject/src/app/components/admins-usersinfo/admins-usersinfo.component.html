@@ -1,11 +1,11 @@
 
-
-<app-admins-usersinfo-unit
-*ngFor="let user of users"
-[user] = "user"
-(onEdit)="editUserclass(user)"
->
-</app-admins-usersinfo-unit>
+<h3>Click User!</h3>
+    <app-admins-usersinfo-unit
+    *ngFor="let user of users"
+    [user] = "user"
+    (onEdit)="editUserclass(user)"
+    >
+    </app-admins-usersinfo-unit>
 
 
 <div *ngIf="check_Edit">

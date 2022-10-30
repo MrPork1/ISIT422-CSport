@@ -1,7 +1,25 @@
-
-<div class="userlist">
+<!-- 
     <h3 (click)="onEditClass(user)">{{user.Fname}} {{user.Lname}}</h3>
         <p>{{user.ClassIDList}}</p>
         <p>{{user.Email}}</p>
-        <p>{{user.Role}}</p>
-</div>
+        <p>{{user.Role}}</p> -->
+
+
+
+
+<table class="type11">
+    <tbody
+    (click)="onEditClass(user)"
+    >
+    <tr>
+        <td>{{user.Fname}}</td>
+        <td>{{user.Lname}}</td>
+        <td>{{user.ClassIDList}}</td>
+        <td>{{user.ClassHistory}}</td>
+        <td>{{user.Birthday}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.Role}}</td>
+        <td>{{user.AdminNotes}}</td>
+    </tr>
+    </tbody>
+</table>

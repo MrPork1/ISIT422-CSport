@@ -17,7 +17,8 @@ export class AdminsComponent implements OnInit {
   desc !: string;
   start !: string;
   end !: string;
-
+  sets !: string;
+  Tdate !: string;
 
   check : boolean = false;
   id_fix !: string;
@@ -27,6 +28,7 @@ export class AdminsComponent implements OnInit {
   end_fix !: string;
 
 
+  check_add !: boolean;
 
   constructor() { }
 
@@ -34,7 +36,7 @@ export class AdminsComponent implements OnInit {
   }
 
   onCreatClass(){
-    if(!this.id || !this.name || !this.desc || !this.start || !this.end){
+    if(!this.name || !this.desc || !this.start || !this.end){
       alert("Please check again.");
     }
 
@@ -46,8 +48,8 @@ export class AdminsComponent implements OnInit {
         Descript : this.desc,
         STime : this.start,
         ETime : this.end,
-        Date: "test",
-        ClassSeats: "not yet"
+        Date: this.Tdate,
+        ClassSeats: this.sets
       }
   
       this.classes.push(addClass);
@@ -57,7 +59,8 @@ export class AdminsComponent implements OnInit {
       this.desc = "";
       this.start = "";
       this.end = "";
-
+      this.sets = "";
+      this.check_add = !this.check_add;
     }
   }
 
@@ -93,7 +96,10 @@ export class AdminsComponent implements OnInit {
   }
 
 
-
+  checkAddClass(){
+    this.check_add = !this.check_add;
+    console.log(this.check_add);
+  }
 
 
 
