@@ -13,11 +13,8 @@ export class AdminsUsersinfoComponent implements OnInit {
   user !: User;
   users : User[] = USERS;
 
-  color : string = "black";
 
-
-  check_EditClass: boolean = false;
-  check_Admin: boolean = false;
+  check_Edit !: boolean;
 
   classes_add !: number;
   classes_delete !: string;
@@ -48,38 +45,12 @@ export class AdminsUsersinfoComponent implements OnInit {
   }
 
  
-  // onEditClass(user : User){
-  //   user.ClassIDList = this.fixed_array_list;
-  //   console.log(this.users);
-  //   this.fixed_array_list = [];
-  // }
-
-  // onEditClass(item_classes_fix : number, user : User){
-  //     let item:string = item_classes_fix.toString();
-  //     if(user.ClassIDList.some(e => e === item)){ //check duplicate 
-  //       alert("Already exist :(");
-  //     } else{
-  //       user.ClassIDList.push(item);
-  //       console.log(user.ClassIDList);
-  //     }
-  // };
 
 
-
-
- showEditFrom(){
-
-    this.check_EditClass = !this.check_EditClass;
-    if(this.color == "red"){
-      this.color = "black";
-    }else {
-      this.color = "red";
-    }
-  }
 
   editUserclass(user_1 : User){    //user_1.ClassIDList = ["1", "0"];
 
-    this.check_EditClass = !this.check_EditClass;
+    this.check_Edit = !this.check_Edit;
 
     this.n_id = user_1.UID;
     this.n_firstName = user_1.Fname;
@@ -93,10 +64,6 @@ export class AdminsUsersinfoComponent implements OnInit {
 
   }
 
-  editUserRole(user_1 : User){
-    this.check_Admin = !this.check_Admin
-
-  }
 
   //from button
   add_to_list(classes_add_1 : number){
@@ -104,6 +71,7 @@ export class AdminsUsersinfoComponent implements OnInit {
       alert("Sorry, Please Check again.");
     } else{
       this.fixed_array_list.push(classes_add_1.toString());
+      this.check_Edit = true;
       //this.editUserclass(this.user);
       console.log(this.fixed_array_list);
     }
@@ -112,23 +80,9 @@ export class AdminsUsersinfoComponent implements OnInit {
 
 
   delete_From_list(classes_delete : string){
-
-
     this.fixed_array_list.forEach((value,index)=>{
       if(value==classes_delete) this.fixed_array_list.splice(index,1)});
       console.log(this.fixed_array_list)
-
-    // const startindex = this.fixed_array_list.indexOf(classes_delete);
-    // delete this.fixed_array_list["sdf"];
-
-    // console.log(this.fixed_array_list);
-    // console.log(classes_delete + "value");
-    // console.log(startindex + "result");
-
-    // if (startindex !== -1) {
-    //   this.fixed_array_list.splice(startindex, 1);
-    //   console.log(this.fixed_array_list);
-    // }
   }
 
 
@@ -148,16 +102,17 @@ export class AdminsUsersinfoComponent implements OnInit {
 
     this.users = this.users.filter(obj => obj.UID !== this.n_id);
     this.users.push(newUser);
-    this.check_EditClass = !this.check_EditClass;
+    this.check_Edit = false;
 
 
   }
 
-
-      //    this.classes = this.classes.filter(obj => obj.CID !== class2.CID);
-
-
+    //event handler for the select element's change event
+    selectChangeHandler (event: any) {
+      //update the ui
+      this.n_role = event.target.value;
+      console.log(this.n_role);
+    }
 
 
 }
-1

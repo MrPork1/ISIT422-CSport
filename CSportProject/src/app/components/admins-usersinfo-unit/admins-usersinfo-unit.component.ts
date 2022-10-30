@@ -26,29 +26,21 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
 
   @Output()
-  onEditClassList : EventEmitter<User> = new EventEmitter();
+  onEdit : EventEmitter<User> = new EventEmitter();
 
-  @Output()
-  onEditUserRole : EventEmitter<User> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  showUserinfor(){
-    this.check_infor = !this.check_infor;
-  }
+
 
   onEditClass(user_1 : User){
     // this.check_EditClass = !this.check_EditClass;
-    this.onEditClassList.emit(user_1)
+    this.onEdit.emit(user_1)
   }
 
-  onEditRole(user_1 : User){
-    // this.check_EditRole = !this.check_EditRole;
-    this.onEditUserRole.emit(user_1)
-  }
 
   // add_to_list(user_1 : User, classes_add_1 : Number){
   //   if(user_1.ClassIDList.includes(classes_add_1.toString())){

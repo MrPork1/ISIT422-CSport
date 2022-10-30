@@ -1,30 +1,7 @@
 
 <div class="userlist">
-    <h3 (click)="showUserinfor()">{{user.Fname}} {{user.Lname}}</h3>
-    <div *ngIf="check_infor">
-        <p (click)="onEditClass(user)">{{user.ClassIDList}}</p>
-        <p >{{user.Email}}</p>
-        <p (click)="onEditRole(user)">{{user.Role}}</p>
-    </div>
+    <h3 (click)="onEditClass(user)">{{user.Fname}} {{user.Lname}}</h3>
+        <p>{{user.ClassIDList}}</p>
+        <p>{{user.Email}}</p>
+        <p>{{user.Role}}</p>
 </div>
-
-
-<!-- 
-<div *ngIf="check_EditClass">
-    <label for="classes_add">Add Class Number: </label>
-    <input type="number" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
-    <button (click)="add_to_list(user ,classes_add)"></button>
-
-    <label for="classes_delete">Delete Class Number: </label>
-    <input type="number" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
-    <button (click)="delete_From_list(user, classes_delete)"></button>
-
-</div> -->
-
-
-
-<!-- <label for="user_role">User Role: </label>
-<select onchange="showValue(this)">
-    <option value="0">User</option>
-    <option value="1">Admin</option>
-</select>       -->
