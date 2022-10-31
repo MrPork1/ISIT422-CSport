@@ -42,7 +42,7 @@ export class AdminsUsersinfoComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((users) => this.users = users);
+    this.userService.getAllUsers().subscribe((users) => this.users = users);
   }
 
  

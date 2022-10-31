@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { CLASSES } from 'src/app/mock-Classes';
-import { UserService } from 'src/app/services/user.service';
+import { ClassesService } from 'src/app/services/classes.service';
 @Component({
   selector: 'app-admins',
   templateUrl: './admins.component.html',
@@ -30,10 +30,10 @@ export class AdminsComponent implements OnInit {
 
   check_add !: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private classService: ClassesService) { }
 
   ngOnInit(): void {
-    this.userService.getClasses().subscribe((classes) => this.classes = classes)
+    this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
   }
 
   onCreatClass(){
