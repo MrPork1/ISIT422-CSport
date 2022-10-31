@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User';
 import { USERS } from 'src/app/mock-Profiles';
 import { getCurrencySymbol } from '@angular/common';
-
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-admins-usersinfo',
   templateUrl: './admins-usersinfo.component.html',
@@ -11,8 +11,8 @@ import { getCurrencySymbol } from '@angular/common';
 export class AdminsUsersinfoComponent implements OnInit {
 
   user !: User;
-  users : User[] = USERS;
-
+  // users : User[] = USERS;
+  users : User[] = [];
 
   check_Edit !: boolean;
 
@@ -39,9 +39,10 @@ export class AdminsUsersinfoComponent implements OnInit {
   // //mySet: Set<string> = new Set<string>();
 
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe((users) => this.users = users);
   }
 
  

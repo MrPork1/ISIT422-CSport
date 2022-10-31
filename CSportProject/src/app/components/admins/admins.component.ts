@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { CLASSES } from 'src/app/mock-Classes';
-
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-admins',
   templateUrl: './admins.component.html',
@@ -9,7 +9,7 @@ import { CLASSES } from 'src/app/mock-Classes';
 })
 export class AdminsComponent implements OnInit {
 
-  classes : Class[] = CLASSES;
+  classes : Class[] = [];
 
 
   id !: string;
@@ -30,9 +30,10 @@ export class AdminsComponent implements OnInit {
 
   check_add !: boolean;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getClasses().subscribe((classes) => this.classes = classes)
   }
 
   onCreatClass(){
