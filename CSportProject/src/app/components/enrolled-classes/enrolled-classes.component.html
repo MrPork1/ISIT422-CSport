@@ -1,6 +1,4 @@
-<p>history-class works!</p>
-
-<table class="table" id="hisClasses" *ngIf="user.ClassIDList.length > 0">
+<table class="table" id="enrolledClasses">
   <tr>
     <th>Name</th>
     <th>Start time</th>
@@ -16,5 +14,6 @@
     <td>{{class.Descript}}</td>
     <td>{{class.Date}}</td>
     <td>{{class.ClassSeats}}</td>
+    <button (click)="dropClass(class.CID)">Drop</button>
   </tr>
 </table>

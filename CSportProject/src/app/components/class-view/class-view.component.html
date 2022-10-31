@@ -4,23 +4,23 @@
  copy sean table and adjust, add button with id to enroll that goes to console
  cut expired classes, show zero seat classes for now, but have code to cut it in case-->
 
- 
-<table class="table" id="avaClasses" *ngIf="user.ClassIDList.length > 0">
-    <tr>
-      <th>Name</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Seats</th>
-    </tr>
-    <tr *ngFor="let class of tempClasses">
-        <td>{{class.Name}}</td>
-        <td>{{class.STime}}</td>
-        <td>{{class.ETime}}</td>
-        <td>{{class.Descript}}</td>
-        <td>{{class.Date}}</td>
-        <td>{{class.ClassSeats}}</td>
-        <button id={{class.CID}} (click)="Enroll(class.CID)">Enroll</button>
-    </tr>
-  </table>
+
+<table id="ava" class="table" id="avaClasses" *ngIf="user.ClassIDList.length > 0">
+  <tr>
+    <th>Name</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Seats</th>
+  </tr>
+  <tr *ngFor="let class of tempClasses">
+    <td>{{class.Name}}</td>
+    <td>{{class.STime}}</td>
+    <td>{{class.ETime}}</td>
+    <td>{{class.Descript}}</td>
+    <td>{{class.Date}}</td>
+    <td>{{class.ClassSeats}}</td>
+    <button id={{class.CID}} (click)="enrollClass(class.CID)">Enroll</button>
+  </tr>
+</table>

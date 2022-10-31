@@ -1,7 +1,9 @@
 <div class="row">
-    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
-    <div class="circle"><h1>{{fName1}}{{lName1}}</h1></div>
+  <div class="circle">
+    <h1>{{fName1}}{{lName1}}</h1>
+  </div>
 </div>
 
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
@@ -14,26 +16,9 @@
 
 <hr class="rounded">
 
-<h2 *ngIf="views[1]">Currently Enrolled Classes</h2>
-
-<table class="table" id="enrolledClasses" *ngIf="views[1]">
-    <tr>
-      <th>Name</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Seats</th>
-    </tr>
-    <tr *ngFor="let class of tempClasses">
-        <td>{{class.Name}}</td>
-        <td>{{class.STime}}</td>
-        <td>{{class.ETime}}</td>
-        <td>{{class.Descript}}</td>
-        <td>{{class.Date}}</td>
-        <td>{{class.ClassSeats}}</td>
-    </tr>
-  </table>
+<div *ngIf="views[1]">
+  <app-enrolled-classes></app-enrolled-classes>
+</div>
 
 <div *ngIf="views[0]">
   <app-edit-profile></app-edit-profile>

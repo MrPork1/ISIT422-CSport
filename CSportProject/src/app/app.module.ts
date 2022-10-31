@@ -22,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-usersinfo.component';
 import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit/admins-usersinfo-unit.component';
+import { EnrolledClassesComponent } from './components/enrolled-classes/enrolled-classes.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit
     CustomerDashboardComponent,
     EditProfileComponent,
     AdminsUsersinfoComponent,
-    AdminsUsersinfoUnitComponent
+    AdminsUsersinfoUnitComponent,
+    EnrolledClassesComponent
   ],
   imports: [
     BrowserModule,

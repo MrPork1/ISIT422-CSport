@@ -16,7 +16,7 @@ export class HistoryClassComponent implements OnInit {
   classes = CLASSES;
 
   tempClasses: Class[] = [];
-  
+
   constructor(
     public authService: AuthService
   ) { }

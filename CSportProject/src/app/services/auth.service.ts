@@ -23,20 +23,20 @@ export class AuthService {
     private router: Router,
     private userService: UserService) { }
 
-    signInUsingFakeInformation(user: User) {
-      this.userData = user;
-      if (this.userData.Role == "1") {
-        console.log('this is admin!');
-        this.router.navigate(['/a-dashboard']);
-      }
-      else if (this.userData.Role == "0") {
-        console.log('this is a customer!');
-        this.router.navigate(['/c-dashboard']);
-      }
+  signInUsingFakeInformation(user: User) {
+    this.userData = user;
+    if (this.userData.Role == "1") {
+      console.log('this is admin!');
+      this.router.navigate(['/a-dashboard']);
     }
+    else if (this.userData.Role == "0") {
+      console.log('this is a customer!');
+      this.router.navigate(['/c-dashboard']);
+    }
+  }
 
-    login(email: string, password: string) { //Login with email and password.
-      this.aAuth.signInWithEmailAndPassword(email, password)
+  login(email: string, password: string) { //Login with email and password.
+    this.aAuth.signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Login success!');
         this.userService.getUser(value.user?.uid).subscribe(user => {
@@ -46,10 +46,10 @@ export class AuthService {
           this.router.navigate(['/c-dashboard']);
         });
       })
-    }
+  }
 
-    emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
-      this.aAuth.createUserWithEmailAndPassword(email, password)
+  emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
+    this.aAuth.createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success', value);
         //this.userData = value.user;
@@ -61,33 +61,33 @@ export class AuthService {
       .catch(error => {
         console.log('Something went wrong: ', error);
       });
-    }
+  }
 
-    private addUserToMongoDB(uid: string, user: User) {
-      //TODO: Replace User ID with uid
-      user.UID = uid; //This works!
-      this.userService.addUser(user).subscribe();
-    }
+  private addUserToMongoDB(uid: string, user: User) {
+    //TODO: Replace User ID with uid
+    user.UID = uid; //This works!
+    this.userService.addUser(user).subscribe();
+  }
 
-    logout() { //Log the current user and rest fields.
-      this.aAuth.signOut().then(() => {
-        this.userData = this.emptyUserData;
-        this.userData
-        this.isLogin = false;
-        this.roleAs = '';
-        this.router.navigate(['/']);
-      });
-    }
+  logout() { //Log the current user and rest fields.
+    this.aAuth.signOut().then(() => {
+      this.userData = this.emptyUserData;
+      this.userData
+      this.isLogin = false;
+      this.roleAs = '';
+      this.router.navigate(['/']);
+    });
+  }
 
-    returnUserObject(): User {
-        return this.userData;
-    }
+  returnUserObject(): User {
+    return this.userData;
+  }
 
-    get isLoggedIn(): boolean { //Gets a boolean on whether a user is logged in or not.
-      if (this.userData !== undefined) {
-        return true;
-      }
-      console.log('No user is signed in... returning to signin screen');
-      return false;
+  get isLoggedIn(): boolean { //Gets a boolean on whether a user is logged in or not.
+    if (this.userData !== undefined) {
+      return true;
     }
+    console.log('No user is signed in... returning to signin screen');
+    return false;
+  }
 }

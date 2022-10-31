@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { Class } from '../Classes';
 
 const httpOptions = {
@@ -22,7 +22,7 @@ export class ClassesService {
 
   private serverURL = 'http://localhost:3000';
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) { }
 
   getAllClasses(): Observable<Class[]> {
     return this.http.get<Class[]>(this.serverURL + "/classcollections")
@@ -45,4 +45,5 @@ export class ClassesService {
   deleteClass(CID: string): Observable<Class> {
     return this.http.delete<Class>(this.serverURL + "/DeleteClass/" + CID, httpOptions);
   }
+
 }

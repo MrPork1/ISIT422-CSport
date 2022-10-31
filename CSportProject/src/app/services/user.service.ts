@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../User';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 
 @Injectable({
@@ -22,7 +22,7 @@ export class UserService {
 
   private serverURL = 'http://localhost:3000';
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.serverURL + "/usercollections")
@@ -37,7 +37,8 @@ export class UserService {
     return this.http.post<User>(this.serverURL + "/userscollection", user, httpOptions);
   }
 
-  editUser(user: User): Observable<User> { //This doesn't work right now - sean
+  editUser(user: User): Observable<User> { //This doesn't work right now - sean 
+                                           //make it work - michael
     console.log(user);
     return this.http.put<User>(this.serverURL + "/EditUser", user, httpOptions);
   }
@@ -45,4 +46,5 @@ export class UserService {
   deleteUser(ID: string): Observable<User> {
     return this.http.delete<User>(this.serverURL + "/DeleteUser/" + ID, httpOptions);
   }
+
 }
