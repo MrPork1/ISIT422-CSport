@@ -1,11 +1,7 @@
-<h2>Avaliable Classes</h2>
+<h2 *ngIf="tempClasses.length > 0">Available Classes</h2>
+<h2 *ngIf="tempClasses.length == 0">No Available Classes</h2>
 
-<!-- avalaible classes
- copy sean table and adjust, add button with id to enroll that goes to console
- cut expired classes, show zero seat classes for now, but have code to cut it in case-->
-
-
-<table id="ava" class="table" id="avaClasses" *ngIf="user.ClassIDList.length > 0">
+<table id="ava" class="table" id="avaClasses" *ngIf="tempClasses.length > 0">
   <tr>
     <th>Name</th>
     <th>Start time</th>
