@@ -41,4 +41,8 @@ export class AdminDashboardComponent implements OnInit {
   getClasses() {
     this.classesService.getAllClasses().subscribe(classes => this.classes = classes);
   }
+
+  deleteUser(UID: string) {
+    this.userService.deleteUser2(UID).subscribe();
+  }
 }
