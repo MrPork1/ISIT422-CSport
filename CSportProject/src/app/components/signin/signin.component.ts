@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
+  picPixels:number = 100;
 
   tempCurrentClasses =
     ["2", "3"];
@@ -65,5 +66,10 @@ export class SigninComponent implements OnInit {
 
   triggerAlert() {
     alert("careful of the salmonella!!!1!");
+    this.picPixels += 50;
+  }
+
+  getPos(): number {
+    return this.picPixels;
   }
 }
