@@ -11,7 +11,6 @@ export class AdminsComponent implements OnInit {
 
   classes : Class[] = [];
 
-
   id !: string;
   name !: string;
   desc !: string;
@@ -26,7 +25,6 @@ export class AdminsComponent implements OnInit {
   desc_fix !: string;
   start_fix !: string;
   end_fix !: string;
-
 
   check_add !: boolean;
 
@@ -43,7 +41,7 @@ export class AdminsComponent implements OnInit {
     }
 
     const new_class = {
-      CID : this.id,
+      CID : "12333",
       Name : this.name,
       Descript : this.desc,
       STime : this.start,
@@ -63,13 +61,9 @@ export class AdminsComponent implements OnInit {
     this.check_add = !this.check_add;
 
   }
-
-
   
   deleteClass_DB(class2 : Class){
-    console.log(class2.CID);
-    console.log(class2._id);
-    this.classService.deleteClass(class2.CID).subscribe(() => (this.classes = this.classes.filter((t) => t.CID !== t.CID)));
+    this.classService.deleteClass(class2._id).subscribe(() => (this.classes = this.classes.filter((t) => t._id !== t._id)));
   }
 
 
@@ -77,6 +71,7 @@ export class AdminsComponent implements OnInit {
     
     const fixedClass = {
       CID : this.id_fix,
+      _id : "6366093f9c8d71119e1d0990",
       Name : this.name_fix,
       Descript : this.desc_fix,
       STime : this.start_fix,
@@ -84,6 +79,8 @@ export class AdminsComponent implements OnInit {
       Date: "test",
       ClassSeats: "not yet"
     }
+
+    console.log(fixedClass.CID);
     this.classService.editClass(fixedClass).subscribe();
   }
 
@@ -98,8 +95,6 @@ export class AdminsComponent implements OnInit {
     this.check_add = !this.check_add;
     console.log(this.check_add);
   }
-
-
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 

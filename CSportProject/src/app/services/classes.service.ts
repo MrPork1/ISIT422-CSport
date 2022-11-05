@@ -42,8 +42,7 @@ export class ClassesService {
     return this.http.put<Class>(this.serverURL + "/EditClass", oneClass, httpOptions);
   }
 
-  deleteClass(CID: string): Observable<Class> {
-    return this.http.delete<Class>(this.serverURL + "/DeleteClass/" + CID, httpOptions);
+  deleteClass(_id?: string): Observable<Class> {
+    return this.http.delete<Class>(this.serverURL + "/DeleteClass/" + _id, httpOptions);
   }
-
 }
