@@ -4,7 +4,7 @@
 
 <div *ngIf="check_add">
 
-    <form class="add-form" (ngSubmit)="onCreatClass()">
+    <form class="add-form" (ngSubmit)="onCreatClass_DB()">
         <h2>Add Class</h2>
         <!-- <div class="form-control">
             <input type="number" name="class-id" [(ngModel)]="id" id="class-id" placeholder="Type Class ID (Only Number): " />        
@@ -48,7 +48,7 @@
 
 </div>
 
-<form class="modifiy" (ngSubmit)="onUpdateClass()" *ngIf="check">
+<form class="modifiy" (ngSubmit)="onUpdateClass_DB()" *ngIf="check">
     <h1>Fix Class</h1>
     <div class="form-control">
         <label for="class-name">Class Name </label>
@@ -84,7 +84,7 @@
     <app-admins-classinfo
       *ngFor="let class of classes"
       [class] = "class"
-      (onDeleteClass)="deleteClass(class)"
+      (onDeleteClass)="deleteClass_DB(class)"
       (onUpateClass)="updateClass(class)"
     ></app-admins-classinfo>
 

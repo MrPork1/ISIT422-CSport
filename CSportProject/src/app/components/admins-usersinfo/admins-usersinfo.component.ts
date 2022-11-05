@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AdminsUsersinfoComponent implements OnInit {
 
   user !: User;
+  
   // users : User[] = USERS;
   users : User[] = [];
 
@@ -33,12 +34,6 @@ export class AdminsUsersinfoComponent implements OnInit {
   n_adminNotes !: string;
 
 
-
-
-   
-  // //mySet: Set<string> = new Set<string>();
-
-
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -46,9 +41,6 @@ export class AdminsUsersinfoComponent implements OnInit {
   }
 
  
-
-
-
   editUserclass(user_1 : User){    //user_1.ClassIDList = ["1", "0"];
 
     this.check_Edit = !this.check_Edit;
@@ -62,7 +54,6 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.n_email = user_1.Email;
     this.n_role = user_1.Role;
     this.n_adminNotes = user_1.AdminNotes;
-
   }
 
 
@@ -86,8 +77,7 @@ export class AdminsUsersinfoComponent implements OnInit {
       console.log(this.fixed_array_list)
   }
 
-
-  confirm(){
+  confirm_DB(){
     const newUser = {
       UID: this.n_id,
       Fname: this.n_firstName,
@@ -100,19 +90,44 @@ export class AdminsUsersinfoComponent implements OnInit {
       AdminNotes: this.n_adminNotes,
     } as User
 
-
-    this.users = this.users.filter(obj => obj.UID !== this.n_id);
-    this.users.push(newUser);
+    this.userService.editUser(newUser).subscribe();
     this.check_Edit = false;
-
-
   }
+
 
     //event handler for the select element's change event
     selectChangeHandler (event: any) {
       //update the ui
       this.n_role = event.target.value;
       console.log(this.n_role);
+    }
+
+
+
+
+
+
+
+
+
+    confirm(){
+      const newUser = {
+        UID: this.n_id,
+        Fname: this.n_firstName,
+        Lname: this.n_lastName,
+        ClassIDList: this.fixed_array_list,
+        ClassHistory: this.n_classHistory,
+        Birthday: this.n_birthday,
+        Email: this.n_email,
+        Role: this.n_role,
+        AdminNotes: this.n_adminNotes,
+      } as User
+  
+      this.users = this.users.filter(obj => obj.UID !== this.n_id);
+      this.users.push(newUser);
+      this.check_Edit = false;
+  
+  
     }
 
 
