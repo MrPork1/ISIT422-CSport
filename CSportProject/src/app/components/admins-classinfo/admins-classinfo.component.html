@@ -1,7 +1,6 @@
-
-    <Table class="type11">
+<Table class="type11">
         <tbody
-        (click)="onUpdate(class)">
+        (click)="onDisplay_Update_function(class)">
         <tr>
             <td>{{class.Name}} <fa-icon
                 (click)="onDelete(class)"
@@ -18,6 +17,75 @@
         </tbody>
     </Table>
 
+
+<form class="modifiy" (ngSubmit)="onUpdate(class)" *ngIf="check_edit">
+    <h3>Modifiy: {{class.Name}}</h3>
+    <div class="form-control">
+        <label for="class-name">Class Name </label>
+        <input type="text" name="name_fix" [(ngModel)]="name_fix" id="name_fix" placeholder="Type Class Name: " />        
+    </div>
+
+    <div class="form-control">
+        <label for="class-desc">Class Description</label>
+        <input type="text" name="desc_fix" [(ngModel)]="desc_fix" id="desc_fix" placeholder="Type Class Description: " />
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-start">Class Start </label>
+        <input type="time" name="start_fix" [(ngModel)]="start_fix" id="start_fix"/>
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-end">Class End </label>
+        <input type="time" name="end_fix" [(ngModel)]="end_fix" id="end_fix"/>
+    </div>
+
+    <div class="wrap">
+        <input type="submit" value="Update" class="btn btn-block"> 
+    </div>
+</form>
+
+
+
+<!-- <div *ngIf="check_add">
+
+    <form class="add-form" (ngSubmit)="onCreatClass()">
+        <h2>Add Class</h2>
+        <div class="form-control">
+            <input type="number" name="class-id" [(ngModel)]="id" id="class-id" placeholder="Type Class ID (Only Number): " />        
+        </div>
     
+    
+        <div class="form-control">
+            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Type Class Name: " />        
+        </div>
+    
+        <div class="form-control">
+            <input type="text" name="desc" [(ngModel)]="desc" id="desc" placeholder="Type Class Description: " />
+        </div>
+    
+        <div class="form-control form-control-check">
+            <label class="class-start">Class Start </label>
+            <input type="time" name="start" [(ngModel)]="start" id="start"/>
+        </div>
+    
+        <div class="form-control form-control-check">
+            <label class="class-end">Class End </label>
+            <input type="time" name="end" [(ngModel)]="end" id="end"/>
+        </div>
+
+        <div class="form-control">
+            <input type="text" name="sets" [(ngModel)]="sets" id="sets" placeholder="Type Class sets: " />
+        </div>
+
+        <div class="form-control">
+            <input type="date" name="Tdate" [(ngModel)]="Tdate" id="Tdate" placeholder="Type Date: " />
+        </div>
 
     
+        <div class="wrap">
+            <input type="submit" value="Add Class" class="btn btn-block"> 
+        </div>
+    </form>
+
+</div> -->

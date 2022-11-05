@@ -23,6 +23,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-usersinfo.component';
 import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit/admins-usersinfo-unit.component';
 import { EnrolledClassesComponent } from './components/enrolled-classes/enrolled-classes.component';
+import { AdminAddClassComponent } from './components/admin-add-class/admin-add-class.component';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { EnrolledClassesComponent } from './components/enrolled-classes/enrolled
     EditProfileComponent,
     AdminsUsersinfoComponent,
     AdminsUsersinfoUnitComponent,
-    EnrolledClassesComponent
+    EnrolledClassesComponent,
+    AdminAddClassComponent,
+    
   ],
   imports: [
     BrowserModule,

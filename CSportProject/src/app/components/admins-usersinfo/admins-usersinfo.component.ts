@@ -26,13 +26,4 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.userService.editUser(user_1).subscribe();
   }
 
-
-
-
-
-
-
-
-
-
 }

@@ -11,22 +11,7 @@ export class AdminsComponent implements OnInit {
 
   classes : Class[] = [];
 
-  id !: string;
-  name !: string;
-  desc !: string;
-  start !: string;
-  end !: string;
-  sets !: string;
-  Tdate !: string;
-
-  check : boolean = false;
-  id_fix !: string;
-  name_fix !: string;
-  desc_fix !: string;
-  start_fix !: string;
-  end_fix !: string;
-
-  check_add !: boolean;
+  check_add !: boolean; // check move or not 
 
   constructor(private classService: ClassesService) { }
 
@@ -35,129 +20,19 @@ export class AdminsComponent implements OnInit {
   }
 
 
-  onCreatClass_DB(){
-    if(!this.name || !this.desc || !this.start || !this.end){
-      alert("Please check again.");
-    }
 
-    const new_class = {
-      CID : "12333",
-      Name : this.name,
-      Descript : this.desc,
-      STime : this.start,
-      ETime : this.end,
-      Date: this.Tdate,
-      ClassSeats: this.sets
-    }
-
-    this.classService.addClass(new_class).subscribe((new_class) => (this.classes.push(new_class)));
-
-    this.id = "";
-    this.name = "";
-    this.desc = "";
-    this.start = "";
-    this.end = "";
-    this.sets = "";
-    this.check_add = !this.check_add;
-
-  }
-  
   deleteClass_DB(class2 : Class){
     this.classService.deleteClass(class2._id).subscribe(() => (this.classes = this.classes.filter((t) => t._id !== t._id)));
   }
 
 
-  onUpdateClass_DB(){
-    
-    const fixedClass = {
-      CID : this.id_fix,
-      _id : "6366093f9c8d71119e1d0990",
-      Name : this.name_fix,
-      Descript : this.desc_fix,
-      STime : this.start_fix,
-      ETime : this.end_fix,
-      Date: "test",
-      ClassSeats: "not yet"
-    }
-
-    console.log(fixedClass.CID);
-    this.classService.editClass(fixedClass).subscribe();
+  onUpdateClass_DB(class2: Class){
+    this.classService.editClass(class2).subscribe();
   }
 
-  updateClass(class2: Class){
-    this.check = !this.check;
-    this.id_fix = class2.CID;
-    this.name_fix = class2.Name;
-    this.desc_fix = class2.Descript;
-  }
 
-  checkAddClass(){
+  checkAddClass(){ // check move or not 
     this.check_add = !this.check_add;
     console.log(this.check_add);
   }
-
-// ---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-  //local side code
-  onCreatClass(){
-    if(!this.name || !this.desc || !this.start || !this.end){
-      alert("Please check again.");
-    }
-
-    else{
-
-      const addClass = {
-        CID : this.id,
-        Name : this.name,
-        Descript : this.desc,
-        STime : this.start,
-        ETime : this.end,
-        Date: this.Tdate,
-        ClassSeats: this.sets
-      }
-  
-      this.classes.push(addClass);
-  
-      this.id = "";
-      this.name = "";
-      this.desc = "";
-      this.start = "";
-      this.end = "";
-      this.sets = "";
-      this.check_add = !this.check_add;
-    }
-  }
-
-  deleteClass(class2 : Class){
-    this.classes = this.classes.filter(obj => obj.CID !== class2.CID);
-  }
-
-
-  onUpdateClass(){
-    //Try Splice?
-//Or Index?
-
-
-const fixedClass = {
-  CID : this.id_fix,
-  Name : this.name_fix,
-  Descript : this.desc_fix,
-  STime : this.start_fix,
-  ETime : this.end_fix,
-  Date: "test",
-  ClassSeats: "not yet"
-}
-
-this.classes = this.classes.filter(obj => obj.CID !== this.id_fix); //delete
-this.classes.push(fixedClass);
-this.check = !this.check;
-}
-
-
-
 }
