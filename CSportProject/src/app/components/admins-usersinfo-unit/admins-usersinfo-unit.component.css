@@ -20,3 +20,9 @@ table.type11 {
     border-bottom: 1px solid #ccc;
     background: #eee;
   }
+
+.userClassListDiv{
+  float: left;
+  margin-right : 10px; 
+  
+}
