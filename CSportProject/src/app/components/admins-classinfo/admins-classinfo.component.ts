@@ -44,6 +44,7 @@ export class AdminsClassinfoComponent implements OnInit {
     class2.Descript = this.desc_fix;
     class2.STime = this.start_fix;
     class2.ETime = this.end_fix;
+    this.check_edit = false;
     this.onUpateClass.emit(class2);
   }
 

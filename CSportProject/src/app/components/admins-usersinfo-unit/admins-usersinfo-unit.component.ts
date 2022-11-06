@@ -83,13 +83,13 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
 
   confirm_edit(user_1 : User){
+
+    this.check_Edit = false;
     this.onEdit.emit(user_1);
   }
 
   onDelete_user(user_1 : User){
     this.onDeleteUser.emit(user_1);
   }
-
-
 
 }
