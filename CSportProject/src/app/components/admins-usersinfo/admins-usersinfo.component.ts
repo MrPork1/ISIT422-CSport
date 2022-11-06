@@ -38,8 +38,9 @@ export class AdminsUsersinfoComponent implements OnInit {
     if(user_1.Fname == "Robert"){
       this.ironmancomeing =true;
       alert("iron-man never dies")
+    } else{
+      alert("Never Delete Robert");
     }
-    
   }
 
   disappear(){

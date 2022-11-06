@@ -11,8 +11,6 @@ export class AdminsComponent implements OnInit {
 
   classes : Class[] = [];
 
-  check_add !: boolean; // check move or not 
-  check_showClass !: boolean;
   constructor(private classService: ClassesService) { }
 
   ngOnInit(): void {
