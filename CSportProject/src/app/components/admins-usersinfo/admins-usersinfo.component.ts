@@ -26,4 +26,8 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.userService.editUser(user_1).subscribe();
   }
 
+  deleteUserAccount(user_1 : User){
+    //this.userService.deleteUser2(user_1).subscribe();
+    alert("iron-man never dies")
+  }
 }

@@ -33,6 +33,9 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   @Output()
   onEdit : EventEmitter<User> = new EventEmitter();
 
+  @Output()
+  onDeleteUser : EventEmitter<User> = new EventEmitter();
+
 
   constructor() { }
 
@@ -81,6 +84,10 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
   confirm_edit(user_1 : User){
     this.onEdit.emit(user_1);
+  }
+
+  onDelete_user(user_1 : User){
+    this.onDeleteUser.emit(user_1);
   }
 
 

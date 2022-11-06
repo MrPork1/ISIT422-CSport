@@ -2,7 +2,8 @@
     <tbody
     (click)="getEditUserclass()">
     <tr>
-        <td>{{user.Fname}}</td>
+        <td>{{user.Fname}}
+        </td>
         <td>{{user.Lname}}</td>
         <td><div class="userClassListDiv" *ngFor="let userclass of user.ClassIDList">{{userclass}}</div></td>
         <td>{{user.ClassHistory}}</td>
@@ -12,6 +13,7 @@
         <td>{{user.AdminNotes}}</td>
     </tr>
     </tbody>
+    <button (click)="onDelete_user(user)">Delete</button>
 </table>
 
 

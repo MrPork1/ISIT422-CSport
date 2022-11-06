@@ -25,10 +25,7 @@ export class AdminsClassinfoComponent implements OnInit {
   // check_add !: boolean;
 
 
-
   faTimes = faTimes; // 2. From angular-fontawesome
-
-
   constructor() { }
 
   ngOnInit(): void {
@@ -58,55 +55,8 @@ export class AdminsClassinfoComponent implements OnInit {
     this.end_fix = class2.ETime;
 
     this.check_edit = !this.check_edit;
-    console.log("Hi")
   }
   
-  //local side code
-  // onCreatClass(){
-  //   if(!this.name || !this.desc || !this.start || !this.end){  //need to check again
-  //     alert("Please check again.");
-  //   }
-
-  //   else{
-
-  //     this.class
-
-  //     const addClass = {
-  //       CID : this.id,
-  //       Name : this.name,
-  //       Descript : this.desc,
-  //       STime : this.start,
-  //       ETime : this.end,
-  //       Date: this.Tdate,
-  //       ClassSeats: this.sets
-  //     }
-  
-  //     this.id = "";
-  //     this.name = "";
-  //     this.desc = "";
-  //     this.start = "";
-  //     this.end = "";
-  //     this.sets = "";
-  //     this.check_add = !this.check_add;
-  //   }
-  // }
-
-//   onUpdateClass(){
-
-//     const fixedClass = {
-//       CID : this.id_fix,
-//       Name : this.name_fix,
-//       Descript : this.desc_fix,
-//       STime : this.start_fix,
-//       ETime : this.end_fix,
-//       Date: "test",
-//       ClassSeats: "not yet"
-//     }
-
-//     this.classes = this.classes.filter(obj => obj.CID !== this.id_fix); //delete
-//     this.classes.push(fixedClass);
-//     this.check = !this.check;
-// }
 
 
 }

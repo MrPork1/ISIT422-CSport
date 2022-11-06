@@ -3,5 +3,6 @@
     *ngFor="let user of users"
     [user] = "user"
     (onEdit)="editUserclass(user)"
+    (onDeleteUser)="deleteUserAccount(user)"
     >
 </app-admins-usersinfo-unit>
