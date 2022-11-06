@@ -8,6 +8,9 @@ import { User } from 'src/app/User';
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
 
+
+
+
   check_Edit : boolean = false;
 
   classes_add !: number;
@@ -89,6 +92,7 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
   onDelete_user(user_1 : User){
+    
     this.onDeleteUser.emit(user_1);
   }
 
