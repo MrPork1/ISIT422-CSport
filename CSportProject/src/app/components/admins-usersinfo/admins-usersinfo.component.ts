@@ -35,8 +35,11 @@ export class AdminsUsersinfoComponent implements OnInit {
 
   deleteUserAccount(user_1 : User){
     //this.userService.deleteUser2(user_1).subscribe();
-    this.ironmancomeing =true;
-    alert("iron-man never dies")
+    if(user_1.Fname == "Robert"){
+      this.ironmancomeing =true;
+      alert("iron-man never dies")
+    }
+    
   }
 
   disappear(){
