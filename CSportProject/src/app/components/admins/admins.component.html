@@ -1,7 +1,6 @@
-<h1>It's time to turn on our Magical API</h1> 
-
-<!-- Can not put it to app-admins-classinfo because it also be repeited  -->
-<button (click)="checkAddClass()" class="custom-btn btn-5"><span>Add Class</span></button> 
+<app-admin-add-class
+    (onAddClass)="addClass_DB($event)"
+></app-admin-add-class>
 
 <app-admins-classinfo
     *ngFor="let class of classes"

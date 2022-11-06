@@ -18,7 +18,6 @@ export class AdminsClassinfoComponent implements OnInit {
   onAddClass : EventEmitter<Class> = new EventEmitter();
 
   check_edit : boolean = false;
-  id_fix !: string;
   name_fix !: string;
   desc_fix !: string;
   start_fix !: string;

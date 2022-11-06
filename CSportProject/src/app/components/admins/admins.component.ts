@@ -19,7 +19,9 @@ export class AdminsComponent implements OnInit {
     this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
   }
 
-
+  addClass_DB(class2 : Class){
+    this.classService.addClass(class2).subscribe((class2)=>(this.classes.push(class2)));
+  }
 
   deleteClass_DB(class2 : Class){
     this.classService.deleteClass(class2._id).subscribe(() => (this.classes = this.classes.filter((t) => t._id !== t._id)));
