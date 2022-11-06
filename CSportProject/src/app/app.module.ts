@@ -42,7 +42,7 @@ import { AdminAddClassComponent } from './components/admin-add-class/admin-add-c
     AdminsUsersinfoComponent,
     AdminsUsersinfoUnitComponent,
     EnrolledClassesComponent,
-    CalenderComponent
+    CalenderComponent,
     AdminAddClassComponent,
     
   ],
