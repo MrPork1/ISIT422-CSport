@@ -1,62 +1,8 @@
-
 <h3>Give me our beautiful API and Click User!</h3>
     <app-admins-usersinfo-unit
     *ngFor="let user of users"
     [user] = "user"
     (onEdit)="editUserclass(user)"
+    (onDeleteUser)="deleteUserAccount(user)"
     >
-    </app-admins-usersinfo-unit>
-
-
-<div *ngIf="check_Edit">
-    <h2>Edit {{n_firstName}}'s Profile</h2>
-    <form>
-    <label for="classes_add">Add Class Number:</label>
-    <input type="number" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
-    <button (click)="add_to_list(classes_add)">Add</button><br><br>
-    <label for="classes_delete">Delete Class Number: </label>
-    <input type="number" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
-    <button (click)="delete_From_list(classes_delete)">Delete</button><br><br>
-    <label for="user_role">User Role: </label>
-    <select (change)="selectChangeHandler($event)">
-        <option value="User">User</option>
-        <option value="Admin">Admin</option>
-    </select> <br><br>
-    <input type="submit" (click)="confirm()" class="btn btn-block"> 
-    </form>
-
-
-</div><br>
-
-
-
-
-
-
-
-
-<!-- 
-
-<form 
-*ngFor="let user of users">
-    <h3>{{user.Fname}} {{user.Lname}}</h3>
-    <p>{{user.ClassIDList}} <button [ngStyle]="{'color': color}" (click)="showEditFrom(user)">Edit</button></p>
-    
-
-
-    <form class="modifiy" (ngSubmit)="onEditClass(classes_fix, user)" *ngIf="ckeck_class">
-        <div class="form-control">
-            <label for="classes_fix">Class Number: </label>
-            <input type="number" name="classes_fix" [(ngModel)]="classes_fix" id="classes_fix" placeholder="Class number: " />
-        </div>
-    
-        <div class="wrap">
-            <input type="submit" value="Update" class="btn btn-block"> 
-        </div>
-    </form>
-
-
-    <p>{{user.Fname}}</p>
-    <p>{{user.Email}}</p>
-    <p>{{user.Role}}</p>
-</form> -->
+</app-admins-usersinfo-unit>

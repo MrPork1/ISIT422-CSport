@@ -1,20 +1,11 @@
-<!-- 
-    <h3 (click)="onEditClass(user)">{{user.Fname}} {{user.Lname}}</h3>
-        <p>{{user.ClassIDList}}</p>
-        <p>{{user.Email}}</p>
-        <p>{{user.Role}}</p> -->
-
-
-
-
 <table class="type11">
     <tbody
-    (click)="onEditClass(user)"
-    >
+    (click)="getEditUserclass()">
     <tr>
-        <td>{{user.Fname}}</td>
+        <td>{{user.Fname}}
+        </td>
         <td>{{user.Lname}}</td>
-        <td>{{user.ClassIDList}}</td>
+        <td><div class="userClassListDiv" *ngFor="let userclass of user.ClassIDList">{{userclass}}</div></td>
         <td>{{user.ClassHistory}}</td>
         <td>{{user.Birthday}}</td>
         <td>{{user.Email}}</td>
@@ -22,4 +13,30 @@
         <td>{{user.AdminNotes}}</td>
     </tr>
     </tbody>
+    <button (click)="onDelete_user(user)">Delete</button>
 </table>
+
+
+<div *ngIf="check_Edit">
+    <h2>Edit {{user.Fname}}'s Profile</h2>
+    <h5>{{fixed_array_list}}</h5>
+    <form>
+    <label for="classes_add">Add Class Number:</label>
+    <input type="number" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
+    <button (click)="add_to_list(classes_add, user)">Add</button><br><br>
+    <label for="classes_delete">Delete Class Number: </label>
+    <input type="number" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
+    <button (click)="delete_From_list(classes_delete, user)">Delete</button><br><br>
+    <label for="user_role">User Role: </label>
+    <select (change)="selectChangeHandler($event, user)">
+        <option value="1">User</option>
+        <option value="0">Admin</option>
+    </select> <br><br>
+    <input type="submit" (click)="confirm_edit(user)" class="btn btn-block"> 
+    </form>
+</div>
+
+
+
+
+

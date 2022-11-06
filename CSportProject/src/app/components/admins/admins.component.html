@@ -1,102 +1,14 @@
+<app-admin-add-class
+    (onAddClass)="addClass_DB($event)"
+></app-admin-add-class>
 
+<app-admins-classinfo
+    *ngFor="let class of classes"
+    [class] = "class"
+    (onDeleteClass)="deleteClass_DB(class)"
+    (onUpateClass)="onUpdateClass_DB(class)"
+></app-admins-classinfo>
 
-<button (click)="checkAddClass()" class="custom-btn btn-5"><span>Add Class</span></button>
-
-<div *ngIf="check_add">
-
-    <form class="add-form" (ngSubmit)="onCreatClass()">
-        <h2>Add Class</h2>
-        <!-- <div class="form-control">
-            <input type="number" name="class-id" [(ngModel)]="id" id="class-id" placeholder="Type Class ID (Only Number): " />        
-        </div> -->
-    
-    
-        <div class="form-control">
-            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Type Class Name: " />        
-        </div>
-    
-        <div class="form-control">
-            <input type="text" name="desc" [(ngModel)]="desc" id="desc" placeholder="Type Class Description: " />
-        </div>
-    
-        <div class="form-control form-control-check">
-            <label class="class-start">Class Start </label>
-            <input type="time" name="start" [(ngModel)]="start" id="start"/>
-        </div>
-    
-        <div class="form-control form-control-check">
-            <label class="class-end">Class End </label>
-            <input type="time" name="end" [(ngModel)]="end" id="end"/>
-        </div>
-
-        <div class="form-control">
-            <input type="text" name="sets" [(ngModel)]="sets" id="sets" placeholder="Type Class sets: " />
-        </div>
-
-        <div class="form-control">
-            <input type="date" name="Tdate" [(ngModel)]="Tdate" id="Tdate" placeholder="Type Date: " />
-        </div>
-
-    
-        <div class="wrap">
-            <input type="submit" value="Add Class" class="btn btn-block"> 
-        </div>
-
-
-    
-    </form>
-
-</div>
-
-<form class="modifiy" (ngSubmit)="onUpdateClass()" *ngIf="check">
-    <h1>Fix Class</h1>
-    <div class="form-control">
-        <label for="class-name">Class Name </label>
-        <input type="text" name="name_fix" [(ngModel)]="name_fix" id="name_fix" placeholder="Type Class Name: " />        
-    </div>
-
-    <div class="form-control">
-        <label for="class-desc">Class Description</label>
-        <input type="text" name="desc_fix" [(ngModel)]="desc_fix" id="desc_fix" placeholder="Type Class Description: " />
-    </div>
-
-    <div class="form-control form-control-check">
-        <label class="class-start">Class Start </label>
-        <input type="time" name="start_fix" [(ngModel)]="start_fix" id="start_fix"/>
-    </div>
-
-    <div class="form-control form-control-check">
-        <label class="class-end">Class End </label>
-        <input type="time" name="end_fix" [(ngModel)]="end_fix" id="end_fix"/>
-    </div>
-
-    <div class="wrap">
-        <input type="submit" value="Update" class="btn btn-block"> 
-    </div>
-</form>
-
-
-<h1>It's time to turn on our Magical API</h1>
-
-
- 
-
-    <app-admins-classinfo
-      *ngFor="let class of classes"
-      [class] = "class"
-      (onDeleteClass)="deleteClass(class)"
-      (onUpateClass)="updateClass(class)"
-    ></app-admins-classinfo>
-
-
-
-
-<!-- <app-admins-classinfo
-*ngFor="let class of classes"
-[class] = "class"
-(onDeleteClass)="deleteClass(class)"
-(onUpateClass)="updateClass(class)"
-></app-admins-classinfo> -->
 
 
 

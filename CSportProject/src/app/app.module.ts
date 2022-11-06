@@ -24,6 +24,7 @@ import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-u
 import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit/admins-usersinfo-unit.component';
 import { EnrolledClassesComponent } from './components/enrolled-classes/enrolled-classes.component';
 import { CalenderComponent } from './components/calender/calender.component';
+import { AdminAddClassComponent } from './components/admin-add-class/admin-add-class.component';
 
 
 @NgModule({
@@ -42,6 +43,8 @@ import { CalenderComponent } from './components/calender/calender.component';
     AdminsUsersinfoUnitComponent,
     EnrolledClassesComponent,
     CalenderComponent
+    AdminAddClassComponent,
+    
   ],
   imports: [
     BrowserModule,

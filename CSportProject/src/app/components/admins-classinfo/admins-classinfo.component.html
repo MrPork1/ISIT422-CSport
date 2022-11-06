@@ -1,10 +1,7 @@
-
-    <Table class="type11">
+   <Table class="type11">
         <tbody
-        (click)="onUpdate(class)"
-        >
+        (click)="onDisplay_Update_function(class)">
         <tr>
-
             <td>{{class.Name}} <fa-icon
                 (click)="onDelete(class)"
                 [ngStyle]="{'color':'red'}" [icon]="faTimes"
@@ -20,4 +17,30 @@
         </tbody>
     </Table>
 
-    
+
+<form class="modifiy" (ngSubmit)="onUpdate(class)" *ngIf="check_edit">
+    <h3>Modifiy: {{class.Name}}</h3>
+    <div class="form-control">
+        <label for="class-name">Class Name </label>
+        <input type="text" name="name_fix" [(ngModel)]="name_fix" id="name_fix" placeholder="Type Class Name: " />        
+    </div>
+
+    <div class="form-control">
+        <label for="class-desc">Class Description</label>
+        <input type="text" name="desc_fix" [(ngModel)]="desc_fix" id="desc_fix" placeholder="Type Class Description: " />
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-start">Class Start </label>
+        <input type="time" name="start_fix" [(ngModel)]="start_fix" id="start_fix"/>
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-end">Class End </label>
+        <input type="time" name="end_fix" [(ngModel)]="end_fix" id="end_fix"/>
+    </div>
+
+    <div class="wrap">
+        <input type="submit" value="Update" class="btn btn-block"> 
+    </div>
+</form>
