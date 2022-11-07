@@ -1,11 +1,6 @@
 <h2>Avaliable Classes</h2>
 
-<!-- avalaible classes
- copy sean table and adjust, add button with id to enroll that goes to console
- cut expired classes, show zero seat classes for now, but have code to cut it in case-->
-
-
-<table id="ava" class="table" id="avaClasses" *ngIf="user.ClassIDList.length > 0">
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Start time</th>
@@ -21,6 +16,6 @@
     <td>{{class.Descript}}</td>
     <td>{{class.Date}}</td>
     <td>{{class.ClassSeats}}</td>
-    <button id={{class.CID}} (click)="enrollClass(class.CID)">Enroll</button>
+    <button (click)="enrollClass(class.CID)">Enroll</button>
   </tr>
 </table>
