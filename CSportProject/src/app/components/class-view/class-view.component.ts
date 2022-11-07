@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
 import { UserService } from 'src/app/services/user.service';
 import { ClassesService } from 'src/app/services/classes.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-class-view',
@@ -13,72 +14,70 @@ import { ClassesService } from 'src/app/services/classes.service';
 export class ClassViewComponent implements OnInit {
 
   classes: Class[] = [];
-
-  tempClasses: Class[] = []; //final class list to be pushed to page
-  emptyTempClass!: Class;
+  tempClasses: Class[] = [];
   user!: User;
+
+  loading: boolean = true;
+  canEnrollForClass: boolean = true;
 
   constructor(
     public authService: AuthService,
-    public UserService: UserService,
+    public userService: UserService,
     public classesService: ClassesService
   ) { }
 
   ngOnInit(): void {
-    this.user = this.authService.returnUserObject();
-    this.getClasses();
+    this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.getUserHere(data));
   }
 
-  getClasses() {
-    this.classesService.getAllClasses().subscribe(classes => {
-      this.classes = classes;
-      console.log(this.tempClasses)
-      const today = new Date(); //make a date object
+  private getUserHere(user: User[]) {
+    this.user = user[0];
+    console.log(this.user);
+    this.refreshClassList();
+  }
 
-      //judge classes by date
-      this.classes.forEach(c => { // c is class in class list, not enrolled
-        if (!this.user.ClassIDList.includes(c.CID)) {
-          const thisClassDate = new Date(c.Date);
-          if (thisClassDate >= today) {
-            if (~~c.ClassSeats > 0) {
-              this.tempClasses.push(c);
-            }
+  private getClassesThenShowThem(classes: Class[]) {
+    this.classes = classes;
+    const today = new Date();
+
+    this.classes.forEach(c => {
+      if (!this.user.ClassIDList.includes(c.CID)) {
+        if (new Date(c.Date) >= today) {
+          if (~~c.ClassSeats > 0) {
+            //If it gets to here, it means the class is available for the user to enroll
+            this.tempClasses.push(c);  
           }
         }
-        console.log(this.tempClasses);
-      })
-    })
-  }
-
-  enrollClass(classId: string) {
-    console.log("before " + this.user)
-    var tempClass;
-    this.UserService.getUser(this.user.UID).subscribe(user => {
-      this.user = user[0]
-      console.log("in get user " + this.user)
-      console.log(classId)
-      this.user.ClassIDList.push(classId)
-      console.log(this.user)
+      }
     });
 
-    this.UserService.editUser(this.user).subscribe(x => {
+    this.loading = false;
+  }
 
-      console.log("in edit " + this.user)
-
-      tempClass = this.classes.find(x => x.CID = classId);
-      console.log(tempClass);
-      if (tempClass) {
-        tempClass.ClassSeats = (~~tempClass.ClassSeats - 1).toString();
-        this.classesService.editClass(tempClass).subscribe(x => {
-          tempClass = this.emptyTempClass;
-          console.log(this.tempClasses)
-          this.tempClasses = [];
-          this.getClasses();
-          console.log(this.user.ClassIDList)
-        }
-        )
-      };
+  enrollForClassHere(classID: string) {
+    //If it gets to here, its been confirmed that the class was not in the ClassIDList,
+    //thats why we can push it right away without checking if it was already in there.
+    if (this.canEnrollForClass) {
+      this.user.ClassIDList.push(classID);
+      console.log("before ", this.user);
+      this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
+      this.canEnrollForClass = false;
     }
-    );
+  }
+
+  private editClassSeatsHere(user: User, classID: string) {
+    console.log("after", user);
+    this.canEnrollForClass = true;
+
+    var tempClass = this.classes.find(x => x.CID = classID);
+    tempClass!.ClassSeats = (~~tempClass!.ClassSeats - 1).toString();
+
+    this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());
+  }
+
+  private refreshClassList() {
+    this.loading = true;
+    this.tempClasses = [];
+    this.classesService.getAllClasses().pipe(first()).subscribe(data => this.getClassesThenShowThem(data));
   }
 }
