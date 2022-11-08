@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Class } from '../../Classes';
-import { CLASSES } from '../../mock-Classes';
 import { User } from 'src/app/User';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HistoryClassComponent implements OnInit {
 
-  classes = CLASSES;
+  classes: Class[] = [];
 
   tempClasses: Class[] = [];
 
@@ -29,7 +28,7 @@ export class HistoryClassComponent implements OnInit {
   }
 
   getClasses() {
-    this.tempClasses = this.classes.filter(element => this.user.ClassHistory.includes(element.CID));
+    this.tempClasses = this.classes.filter(element => this.user.ClassHistory.includes(element._id!));
     console.log(this.tempClasses);
   }
 

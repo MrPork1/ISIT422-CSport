@@ -41,7 +41,7 @@ export class ClassViewComponent implements OnInit {
     const today = new Date();
 
     this.classes.forEach(c => {
-      if (!this.user.ClassIDList.includes(c.CID)) {
+      if (!this.user.ClassIDList.includes(c._id!)) {
         if (new Date(c.Date) >= today) {
           if (~~c.ClassSeats > 0) {
             //If it gets to here, it means the class is available for the user to enroll
@@ -69,7 +69,7 @@ export class ClassViewComponent implements OnInit {
     console.log("after", user);
     this.canEnrollForClass = true;
 
-    var tempClass = this.classes.find(x => x.CID = classID);
+    var tempClass = this.classes.find(x => x._id == classID);
     tempClass!.ClassSeats = (~~tempClass!.ClassSeats - 1).toString();
 
     this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());

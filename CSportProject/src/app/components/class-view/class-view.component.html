@@ -18,7 +18,7 @@
       <td>{{class.Descript}}</td>
       <td>{{class.Date}}</td>
       <td>{{class.ClassSeats}}</td>
-      <button *ngIf="canEnrollForClass" (click)="enrollForClassHere(class.CID)">Enroll</button>
+      <button *ngIf="canEnrollForClass" (click)="enrollForClassHere(class._id!)">Enroll</button>
     </tr>
   </table>
 </div>

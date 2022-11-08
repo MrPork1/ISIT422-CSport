@@ -18,7 +18,7 @@
       <td>{{class.Descript}}</td>
       <td>{{class.Date}}</td>
       <td>{{class.ClassSeats}}</td>
-      <button *ngIf="canDropClass" (click)="dropClassHere(class.CID)">Drop</button>
+      <button *ngIf="canDropClass" (click)="dropClassHere(class._id!)">Drop</button>
     </tr>
   </table>
 </div>

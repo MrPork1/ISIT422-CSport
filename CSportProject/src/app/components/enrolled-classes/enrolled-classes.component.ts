@@ -42,7 +42,7 @@ export class EnrolledClassesComponent implements OnInit {
     this.classes = classes;
     this.tempClasses = [];
     if (this.user.ClassIDList.length > 0) {
-      this.tempClasses = this.classes.filter(element => this.user.ClassIDList.includes(element.CID));
+      this.tempClasses = this.classes.filter(element => this.user.ClassIDList.includes(element._id!));
     }
     this.loading = false;
   }
@@ -56,7 +56,7 @@ export class EnrolledClassesComponent implements OnInit {
   }
 
   private editClassSeatsHere(user: User, classID: string) {
-    var tempClass = this.classes.find(x => x.CID = classID);
+    var tempClass = this.classes.find(x => x._id == classID);
     tempClass!.ClassSeats = (~~tempClass!.ClassSeats + 1).toString();
 
     this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());

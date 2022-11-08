@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { Class } from 'src/app/Classes';
-import { CLASSES } from 'src/app/mock-Classes';
 import { ClassesService } from 'src/app/services/classes.service';
 @Component({
   selector: 'app-admins',
