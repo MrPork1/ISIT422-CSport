@@ -72,11 +72,31 @@ export class AuthService {
   logout() { //Log the current user and rest fields.
     this.aAuth.signOut().then(() => {
       this.userData = this.emptyUserData;
-      this.userData
       this.isLogin = false;
       this.roleAs = '';
       this.router.navigate(['/']);
     });
+  }
+
+  deleteUser() {
+    if (this.isLoggedIn) {
+      this.aAuth.currentUser
+      .then(value => {
+        value?.delete()
+        .then(value2 => {
+          this.userService.deleteUser(value.uid).subscribe(deletedUser => {
+            console.log("User deleted from firebase and mongoDB! Returning to signin page.");
+            this.userData = this.emptyUserData;
+            this.isLogin = false;
+            this.roleAs = '';
+            this.router.navigate(['/signin']);
+          });
+        })
+      })
+      .catch(error => {
+        console.log('Cant delete account from firebase: ', error);
+      });
+    }
   }
 
   returnUserObject(): User {
@@ -87,7 +107,6 @@ export class AuthService {
     if (this.userData !== undefined) {
       return true;
     }
-    console.log('No user is signed in... returning to signin screen');
     return false;
   }
 }

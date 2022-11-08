@@ -1,0 +1,40 @@
+.calender {
+  border-style: inset;
+  border-color: #9d4ac5;
+  background-color: lightblue;
+  padding: 10px;
+  max-width: 700px;
+  text-align: center;
+  color: white;
+}
+/* purple: #9d4ac5 */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, 100fr);
+}
+
+.grid-item {
+  width: auto;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 25px;
+  text-align: left;
+}
+
+.months {
+  background-color: purple;
+  color: white;
+  text-align: center;
+  height: 60px;
+}
+
+.days {
+  background-color: plum;
+  color: black;
+}
+
+.days:hover {
+  background-color: #9d4ac5;
+  color: white;
+}

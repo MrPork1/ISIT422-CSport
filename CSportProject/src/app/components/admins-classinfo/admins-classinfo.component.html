@@ -1,22 +1,48 @@
-
-    <Table class="type11">
+   <Table class="type11">
         <tbody
-        (click)="onUpdate(class)"
-        >
+        (click)="onDisplay_Update_function(class)">
         <tr>
-
-            <td>{{class.Name}} <fa-icon
-                (click)="onDelete(class)"
-                [ngStyle]="{'color':'red'}" [icon]="faTimes"
-                ></fa-icon>
-            </td>
+            <td>{{class.Name}}</td>
             <td>{{class.STime}}</td>
             <td>{{class.ETime}}</td>
             <td>{{class.Descript}}</td>
             <td>{{class.Date}}</td>
             <td>{{class.ClassSeats}}</td>
+            <td>{{class._id}}</td>
         </tr>
         </tbody>
+        <button (click)="onDelete(class)">Delete Class</button>
     </Table>
 
-    
+
+<form class="modifiy" (ngSubmit)="onUpdate(class)" *ngIf="check_edit">
+    <h3>Modifiy: {{class.Name}}</h3>
+    <div class="form-control">
+        <label for="class-name">Class Name </label>
+        <input type="text" name="name_fix" [(ngModel)]="name_fix" id="name_fix" placeholder="Type Class Name: " />        
+    </div>
+
+    <div class="form-control">
+        <label for="class-desc">Class Description</label>
+        <input type="text" name="desc_fix" [(ngModel)]="desc_fix" id="desc_fix" placeholder="Type Class Description: " />
+    </div>
+
+    <div class="form-control">
+        <label for="class-sets_fix">Class Sets</label>
+        <input type="number" name="sets_fix" [(ngModel)]="sets_fix" id="sets_fix" placeholder="Type Class Sets: " />
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-start">Class Start </label>
+        <input type="time" name="start_fix" [(ngModel)]="start_fix" id="start_fix"/>
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="class-end">Class End </label>
+        <input type="time" name="end_fix" [(ngModel)]="end_fix" id="end_fix"/>
+    </div>
+
+    <div class="wrap">
+        <input type="submit" value="Update" class="btn btn-block"> 
+    </div>
+</form>

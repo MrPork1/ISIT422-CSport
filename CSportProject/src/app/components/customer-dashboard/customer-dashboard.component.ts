@@ -10,7 +10,7 @@ import { User } from 'src/app/User';
 })
 export class CustomerDashboardComponent implements OnInit {
 
-  views = [false, false, false, false];
+  views = [false, false, false, false, false];
 
   user!: User;
   fName1!: string;

@@ -1,0 +1,19 @@
+<div class="calender">
+    <div class="calender-header">
+        <button><</button>
+        <button>></button>
+        <h1>Month string <br> Year string</h1>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item months">Sun</div>
+        <div class="grid-item months">Mon</div>
+        <div class="grid-item months">Tue</div>
+        <div class="grid-item months">Wed</div>
+        <div class="grid-item months">Thu</div>
+        <div class="grid-item months">Fri</div>
+        <div class="grid-item months">Sat</div>
+        <div class="grid-item days" *ngFor="let day of days">
+            <div>{{day}}</div>
+        </div>
+    </div>
+  </div>

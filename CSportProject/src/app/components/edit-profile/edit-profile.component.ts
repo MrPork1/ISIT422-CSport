@@ -45,4 +45,8 @@ export class EditProfileComponent implements OnInit {
 
     this.userService.editUser(this.user).subscribe();
   }
+
+  deleteUser() {
+    this.authService.deleteUser();
+  }
 }

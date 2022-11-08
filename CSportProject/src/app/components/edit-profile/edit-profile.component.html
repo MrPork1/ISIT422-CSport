@@ -1,3 +1,11 @@
+<h3>Account Details</h3>
+<div class="displayTable">
+  <p>Name: {{fname}} {{lname}}</p>
+  <p>Email: {{email}}</p>
+  <p>Birthday: {{bday}}</p>
+
+</div>
+
 <h3>Edit Profile</h3>
 <div class="displayTable">
   <div class="displayTableCell">
@@ -23,9 +31,10 @@
         <input type="date" class="formControl" [(ngModel)]="bday">
       </div>
       <!-- Calling SignIn Api from AuthService -->
-      <div *ngIf="user.UID.length < 28" style="color:red;">Can't change values of a mock profile, sorry - sean</div>
+      <div *ngIf="user.UID.length < 28" style="color:red;">Can't change a mock profile, sorry - sean</div>
       <div class="formGroup" *ngIf="user.UID.length >= 28">
         <input type="button" class="btn btnPrimary" value="Apply Changes" (click)="applyChanges()">
+        <input type="button" class="btn btnPrimary" value="Delete Account" (click)="deleteUser()">
       </div>
     </div>
   </div>

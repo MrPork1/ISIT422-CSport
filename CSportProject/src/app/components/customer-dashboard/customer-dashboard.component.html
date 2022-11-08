@@ -11,15 +11,16 @@
 <input type="button" class="btn btn-primary" (click)="setView(1)" value="Show Enrolled Classes">
 <input type="button" class="btn btn-primary" (click)="setView(2)" value="View Available Classes">
 <input type="button" class="btn btn-primary" (click)="setView(3)" value="View Past Classes">
+<input type="button" class="btn btn-primary" (click)="setView(4)" value="Calender">
 
 <hr class="rounded">
 
-<div *ngIf="views[1]">
-  <app-enrolled-classes></app-enrolled-classes>
-</div>
-
 <div *ngIf="views[0]">
   <app-edit-profile></app-edit-profile>
+</div>
+
+<div *ngIf="views[1]">
+  <app-enrolled-classes></app-enrolled-classes>
 </div>
 
 <div *ngIf="views[2]">
@@ -28,4 +29,8 @@
 
 <div *ngIf="views[3]">
   <app-history-class></app-history-class>
+</div>
+
+<div *ngIf="views[4]">
+  <app-calender></app-calender>
 </div>
