@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Class } from '../../Classes';
-import { CLASSES } from '../../mock-Classes';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
 import { UserService } from 'src/app/services/user.service';
+import { ClassesService } from 'src/app/services/classes.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-class-view',
@@ -12,65 +13,71 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ClassViewComponent implements OnInit {
 
-  classes: Class[] = CLASSES;
+  classes: Class[] = [];
+  tempClasses: Class[] = [];
+  user!: User;
 
-  nonExpiredClasses: Class[] = []; //classes that are enrollable still
-
-  tempClasses: Class[] = []; //final class list to be pushed to page
+  loading: boolean = true;
+  canEnrollForClass: boolean = true;
 
   constructor(
     public authService: AuthService,
-    public UserService: UserService
+    public userService: UserService,
+    public classesService: ClassesService
   ) { }
 
   ngOnInit(): void {
-    this.user = this.authService.returnUserObject();
-    this.getClasses();
+    this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.getUserHere(data));
   }
 
-  user!: User;
+  private getUserHere(user: User[]) {
+    this.user = user[0];
+    console.log(this.user);
+    this.refreshClassList();
+  }
 
-  getClasses() {
-    console.log(this.tempClasses)
-    const N = new Date(); //make a date object
+  private getClassesThenShowThem(classes: Class[]) {
+    this.classes = classes;
+    const today = new Date();
 
-    //judge classes by date
-    this.classes.forEach(c => { // c is class in class list, not enrolled
-
-      //enrolled classes should not be available
+    this.classes.forEach(c => {
       if (!this.user.ClassIDList.includes(c.CID)) {
-        var Q = c.Date.split("/") //our current date system is MM/DD/YYYY, spliting on the / will make Q[0] = MM Q[1] = DD Q[2] = YYYY
-        //note:  is a quick number parser
-        if (~~Q[2] > N.getFullYear()) { //if class is of greater than current year
-          this.nonExpiredClasses.push(c);
-        } else if (~~Q[2] == N.getFullYear()) { //if is of current year
-          if ((~~Q[0] > N.getMonth() + 1)) { //if class is of greater than current month
-            this.nonExpiredClasses.push(c);
-          } else if (~~Q[0] == N.getMonth() + 1) { //if class is of this month
-            if (~~Q[1] >= N.getDate()) { //if class is of current or greater day
-              this.nonExpiredClasses.push(c);
-            }
+        if (new Date(c.Date) >= today) {
+          if (~~c.ClassSeats > 0) {
+            //If it gets to here, it means the class is available for the user to enroll
+            this.tempClasses.push(c);  
           }
         }
       }
-    })
+    });
 
-    //judge classes by seat
-    this.nonExpiredClasses.forEach(e => {
-      if (~~e.ClassSeats > 0) {
-        this.tempClasses.push(e);
-      }
-    })
-    console.log(this.tempClasses);
+    this.loading = false;
   }
 
-  enrollClass(classId: string) {
-    this.UserService.getUser(this.user.UID).subscribe(user => this.user = user[0]);
-    this.user.ClassIDList.push(classId);
-    this.UserService.editUser(this.user).subscribe(user => (
-      this.tempClasses = [],
-      this.getClasses()
-    )); // might not work? could be a CORS issue
-    console.log(this.user);
+  enrollForClassHere(classID: string) {
+    //If it gets to here, its been confirmed that the class was not in the ClassIDList,
+    //thats why we can push it right away without checking if it was already in there.
+    if (this.canEnrollForClass) {
+      this.user.ClassIDList.push(classID);
+      console.log("before ", this.user);
+      this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
+      this.canEnrollForClass = false;
+    }
+  }
+
+  private editClassSeatsHere(user: User, classID: string) {
+    console.log("after", user);
+    this.canEnrollForClass = true;
+
+    var tempClass = this.classes.find(x => x.CID = classID);
+    tempClass!.ClassSeats = (~~tempClass!.ClassSeats - 1).toString();
+
+    this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());
+  }
+
+  private refreshClassList() {
+    this.loading = true;
+    this.tempClasses = [];
+    this.classesService.getAllClasses().pipe(first()).subscribe(data => this.getClassesThenShowThem(data));
   }
 }

@@ -1,19 +1,24 @@
-<table class="table" id="enrolledClasses">
-  <tr>
-    <th>Name</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>Seats</th>
-  </tr>
-  <tr *ngFor="let class of tempClasses">
-    <td>{{class.Name}}</td>
-    <td>{{class.STime}}</td>
-    <td>{{class.ETime}}</td>
-    <td>{{class.Descript}}</td>
-    <td>{{class.Date}}</td>
-    <td>{{class.ClassSeats}}</td>
-    <button (click)="dropClass(class.CID)">Drop</button>
-  </tr>
-</table>
+<div *ngIf="!loading">
+  <h2 *ngIf="tempClasses.length > 0">Enrolled Classes</h2>
+  <h2 *ngIf="tempClasses.length <= 0">Not Currently Enrolled in any Classes</h2>
+  
+  <table class="table" *ngIf="tempClasses.length > 0">
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Seats</th>
+    </tr>
+    <tr *ngFor="let class of tempClasses">
+      <td>{{class.Name}}</td>
+      <td>{{class.STime}}</td>
+      <td>{{class.ETime}}</td>
+      <td>{{class.Descript}}</td>
+      <td>{{class.Date}}</td>
+      <td>{{class.ClassSeats}}</td>
+      <button *ngIf="canDropClass" (click)="dropClassHere(class.CID)">Drop</button>
+    </tr>
+  </table>
+</div>
