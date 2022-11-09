@@ -56,7 +56,7 @@ export class EnrolledClassesComponent implements OnInit {
   }
 
   private editClassSeatsHere(user: User, classID: string) {
-    var tempClass = this.classes.find(x => x._id == classID);
+    var tempClass = this.classes.find(x => x._id === classID);
     tempClass!.ClassSeats = (~~tempClass!.ClassSeats + 1).toString();
 
     this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());

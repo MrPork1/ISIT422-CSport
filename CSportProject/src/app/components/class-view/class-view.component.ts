@@ -45,7 +45,7 @@ export class ClassViewComponent implements OnInit {
         if (new Date(c.Date) >= today) {
           if (~~c.ClassSeats > 0) {
             //If it gets to here, it means the class is available for the user to enroll
-            this.tempClasses.push(c);  
+            this.tempClasses.push(c);
           }
         }
       }
@@ -69,7 +69,7 @@ export class ClassViewComponent implements OnInit {
     console.log("after", user);
     this.canEnrollForClass = true;
 
-    var tempClass = this.classes.find(x => x._id == classID);
+    var tempClass = this.classes.find(x => x._id === classID);
     tempClass!.ClassSeats = (~~tempClass!.ClassSeats - 1).toString();
 
     this.classesService.editClass(tempClass!).pipe(first()).subscribe(data => this.refreshClassList());
