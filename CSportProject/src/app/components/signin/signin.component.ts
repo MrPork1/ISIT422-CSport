@@ -1,75 +1,135 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User';
 import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
 
-  picPixels:number = 100;
+  
+//groups all the inputs together
+export class SigninComponent {
+  signinForm = new FormGroup ({
+    email : new FormControl(''),
+    password : new FormControl(''),
+  });
+   triggerAlert() {
+     alert("careful of the salmonella!!!1!");
+   }
+   tempCurrentClasses =
+     ["2", "3"];
 
-  tempCurrentClasses =
-    ["2", "3"];
+     tempHistoryClasses =
+     ["4", "1"];
 
-    tempHistoryClasses =
-    ["4", "1"];
+   constructor(
+     public authService: AuthService
+   ) { }
 
-  constructor(
-    public authService: AuthService
-  ) { }
+   ngOnInit(): void {
+   }
 
-  ngOnInit(): void {
+   onSubmit(formData: any) {
+     if (formData.valid) {
+       console.log(formData.value);
+       this.authService.login(
+         formData.value.email,
+         formData.value.password
+       );
+     }
+   }
+
+   signInAsCustomer() {
+     const newUser = {
+       UID: "213091239812093",
+       Fname: "ironman",
+       Lname: "jarvas",
+       ClassIDList: this.tempCurrentClasses,
+       ClassHistory: this.tempHistoryClasses,
+       Birthday: "10/30/1998",
+       Email: "fakecustomer@yahoo.com",
+       Role: "0",
+       AdminNotes: ""
+     } as User
+
+     this.authService.signInUsingFakeInformation(newUser);
+   }
+
+   signInAsAdmin() {
+     const newUser = {
+       UID: "4534543262436",
+       Fname: "seany",
+       Lname: "ynaes",
+       Birthday: "10/30/1998",
+       Email: "fakeadmin@gmail.com",
+       Role: "1",
+       AdminNotes: ""
+     } as User
+
+     this.authService.signInUsingFakeInformation(newUser);
+   }
   }
+// export class SigninComponent implements OnInit {
 
-  onSubmit(formData: any) {
-    if (formData.valid) {
-      console.log(formData.value);
-      this.authService.login(
-        formData.value.email,
-        formData.value.password
-      );
-    }
-  }
 
-  signInAsCustomer() {
-    const newUser = {
-      UID: "213091239812093",
-      Fname: "ironman",
-      Lname: "jarvas",
-      ClassIDList: this.tempCurrentClasses,
-      ClassHistory: this.tempHistoryClasses,
-      Birthday: "10/30/1998",
-      Email: "fakecustomer@yahoo.com",
-      Role: "0",
-      AdminNotes: ""
-    } as User
+//   tempCurrentClasses =
+//     ["2", "3"];
 
-    this.authService.signInUsingFakeInformation(newUser);
-  }
+//     tempHistoryClasses =
+//     ["4", "1"];
 
-  signInAsAdmin() {
-    const newUser = {
-      UID: "4534543262436",
-      Fname: "seany",
-      Lname: "ynaes",
-      Birthday: "10/30/1998",
-      Email: "fakeadmin@gmail.com",
-      Role: "1",
-      AdminNotes: ""
-    } as User
+//   constructor(
+//     public authService: AuthService
+//   ) { }
 
-    this.authService.signInUsingFakeInformation(newUser);
-  }
+//   ngOnInit(): void {
+//   }
 
-  triggerAlert() {
-    alert("careful of the salmonella!!!1!");
-    this.picPixels += 50;
-  }
+//   onSubmit(formData: any) {
+//     if (formData.valid) {
+//       console.log(formData.value);
+//       this.authService.login(
+//         formData.value.email,
+//         formData.value.password
+//       );
+//     }
+//   }
 
-  getPos(): number {
-    return this.picPixels;
-  }
-}
+//   signInAsCustomer() {
+//     const newUser = {
+//       UID: "213091239812093",
+//       Fname: "ironman",
+//       Lname: "jarvas",
+//       ClassIDList: this.tempCurrentClasses,
+//       ClassHistory: this.tempHistoryClasses,
+//       Birthday: "10/30/1998",
+//       Email: "fakecustomer@yahoo.com",
+//       Role: "0",
+//       AdminNotes: ""
+//     } as User
+
+//     this.authService.signInUsingFakeInformation(newUser);
+//   }
+
+//   signInAsAdmin() {
+//     const newUser = {
+//       UID: "4534543262436",
+//       Fname: "seany",
+//       Lname: "ynaes",
+//       Birthday: "10/30/1998",
+//       Email: "fakeadmin@gmail.com",
+//       Role: "1",
+//       AdminNotes: ""
+//     } as User
+
+//     this.authService.signInUsingFakeInformation(newUser);
+//   }
+
+//   triggerAlert() {
+//     alert("careful of the salmonella!!!1!");
+//   }
+// }

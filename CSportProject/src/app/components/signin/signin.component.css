@@ -1,12 +1,40 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 label {
     display: inline-block;
     text-align: right;
     width: 100px;
 }
-
-input {
-    margin-left: 5px;
+button{
+    margin-right: 5px;
 }
+.main-container{
+    display: grid;
+  grid-template-columns: auto ;
+  padding-top: 100px;
+    text-align: center;
+ 
+    /*color: "primary";*/
+}
+
+.form-container{
+    width: 400 px; 
+    margin: 0 px auto; 
+    margin-top: 200 px;
+    
+}
+mat-form-field {
+    width: 60%;
+    
+    font-size: 30px;
+    text-align: center;
+  }
+
+
+/* ng-deep is combinator can be used to force a style down to child component (overrides the input fills color)*/
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(181, 58, 218, 0.384);
+}
+
 
 div {
     margin-bottom: 10px;

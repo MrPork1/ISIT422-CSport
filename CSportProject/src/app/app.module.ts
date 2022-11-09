@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,6 +25,13 @@ import { AdminsUsersinfoUnitComponent } from './components/admins-usersinfo-unit
 import { EnrolledClassesComponent } from './components/enrolled-classes/enrolled-classes.component';
 import { CalenderComponent } from './components/calender/calender.component';
 import { AdminAddClassComponent } from './components/admin-add-class/admin-add-class.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//CSS Material Desgin Imports
+import { MatSliderModule } from '@angular/material/slider'; 
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule }from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so the signin.comp will recongize the form
 
 
 @NgModule({
@@ -54,6 +61,12 @@ import { AdminAddClassComponent } from './components/admin-add-class/admin-add-c
     AngularFireAuthModule,
     HttpClientModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
