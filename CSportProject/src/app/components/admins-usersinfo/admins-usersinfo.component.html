@@ -2,15 +2,17 @@
     <app-admins-usersinfo-unit
     *ngFor="let user of users"
     [user] = "user"
-    (onEdit)="editUserclass(user)"
+    (onEditUser)="editUser(user)"
     (onDeleteUser)="deleteUserAccount(user)"
+    (onAddUserClass)="addUserclass(user)"
+    (onDeleteUserClass)="delteUserclass(user)"
     >
 </app-admins-usersinfo-unit>
 
 
 
 
-<div class= "container" *ngIf="ironmancomeing">
+<!-- <div class= "container" *ngIf="ironmancomeing">
     <img class = "ironman" src="../../../assets/myimage_1.jpg" id="ironman" (click)="disappear()">
-</div>
+</div> -->
 
