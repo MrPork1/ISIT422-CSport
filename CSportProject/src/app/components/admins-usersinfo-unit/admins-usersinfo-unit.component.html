@@ -5,7 +5,11 @@
         <td>{{user.Fname}}
         </td>
         <td>{{user.Lname}}</td>
-        <td><div class="userClassListDiv" *ngFor="let userclass of user.ClassIDList">{{userclass}}</div></td>
+        <!-- <td><div class="userClassListDiv" *ngFor="let userclass of tempClasses">{{userclass.Name}}</div></td> -->
+
+        <!-- <p *ngIf=""></p>                           -->    
+        <td><div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList"><app-admin-class-db-call user_Class_Id = {{userclass_id}}></app-admin-class-db-call>
+        </div></td>
         <td>{{user.ClassHistory}}</td>
         <td>{{user.Birthday}}</td>
         <td>{{user.Email}}</td>
@@ -17,16 +21,18 @@
 </table>
 
 
+
+
 <div *ngIf="check_Edit">
     <h2>Edit {{user.Fname}}'s Profile</h2>
     <form>
 
 
     <label for="classes_add">Add Class Number:</label>
-    <input type="number" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
+    <input type="text" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
     <button (click)="add_to_list(classes_add, user)">Add</button><br><br>
     <label for="classes_delete">Delete Class Number: </label>
-    <input type="number" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
+    <input type="text" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
     <button (click)="delete_From_list(classes_delete, user)">Delete</button><br><br>
     <label for="user_role">User Role: </label>
 

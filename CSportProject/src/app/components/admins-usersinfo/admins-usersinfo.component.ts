@@ -3,6 +3,8 @@ import { User } from 'src/app/User';
 import { getCurrencySymbol } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs';
+
+
 @Component({
   selector: 'app-admins-usersinfo',
   templateUrl: './admins-usersinfo.component.html',
@@ -11,7 +13,7 @@ import { first } from 'rxjs';
 export class AdminsUsersinfoComponent implements OnInit {
   user !: User;
 
-  
+
   aa = document.getElementById("ironman");
 
   // users : User[] = USERS;
@@ -21,6 +23,10 @@ export class AdminsUsersinfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
+    //if get class Name at class side that would be more easy 
+
+
+
   }
 
    addUserclass(user_1 : User){ 
@@ -37,6 +43,7 @@ export class AdminsUsersinfoComponent implements OnInit {
 
 
   deleteUserAccount(user_1 : User){
+
     if(user_1.Fname == "what the heck michael"){
       alert("what the heck michael!")
     } else {

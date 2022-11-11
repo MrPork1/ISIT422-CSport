@@ -31,7 +31,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule }from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so the signin.comp will recongize the form
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component'; //add this so the signin.comp will recongize the form
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so
     EnrolledClassesComponent,
     CalenderComponent,
     AdminAddClassComponent,
+    AdminClassDbCallComponent,
     
   ],
   imports: [
