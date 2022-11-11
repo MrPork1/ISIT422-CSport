@@ -34,19 +34,18 @@
     <label for="classes_delete">Delete Class Number: </label>
     <input type="text" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
     <button (click)="delete_From_list(classes_delete, user)">Delete</button><br><br>
+
+
+    <label for="secret_node">Customer Note: </label>
+    <input type="text" name="secret_node" [(ngModel)]="n_admin_note" id="secret_node" placeholder="Customer Note: " /><br><br>
+
     <label for="user_role">User Role: </label>
-
-
-    <label for="secret_node">Delete Class Number: </label>
-    <input type="text" name="secret_node" [(ngModel)]="classes_delete" id="secret_node" placeholder="Customer Note: " />
     <select (change)="selectChangeHandler($event, user)">
+        <option>Check</option>
         <option value="1">User</option>
         <option value="0">Admin</option>
     </select> <br><br>
-    <input type="submit" (click)="confirm_edit(user)" class="btn btn-block"> 
-
-
-
+    <input type="submit" (click)="submit(user)" class="btn btn-block"> 
 
     </form>
 </div>

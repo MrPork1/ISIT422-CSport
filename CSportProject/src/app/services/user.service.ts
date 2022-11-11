@@ -47,7 +47,7 @@ export class UserService {
     return this.http.delete<User>(this.serverURL + "/DeleteUser/" + ID, httpOptions);
   }
 
-  deleteUser2(ID: string): Observable<User> {
+  deleteUser2(ID?: string): Observable<User> {
     return this.http.delete<User>(this.serverURL + "/DeleteUser2/" + ID, httpOptions);
   }
 }

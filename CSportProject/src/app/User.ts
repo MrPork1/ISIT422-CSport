@@ -1,5 +1,6 @@
 export interface User { //This matches the schema.
     UID: string;
+    _id ?: string;
     Fname: string;
     Lname: string;
     ClassIDList: string[];

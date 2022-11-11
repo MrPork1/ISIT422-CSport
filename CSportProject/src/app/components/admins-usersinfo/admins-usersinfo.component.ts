@@ -25,8 +25,6 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
     //if get class Name at class side that would be more easy 
 
-
-
   }
 
    addUserclass(user_1 : User){ 
@@ -42,13 +40,15 @@ export class AdminsUsersinfoComponent implements OnInit {
   }
 
 
+  
   deleteUserAccount(user_1 : User){
 
     if(user_1.Fname == "what the heck michael"){
       alert("what the heck michael!")
     } else {
       //this.userService.deleteUser2(user_1.UID).pipe(first()).subscribe(data => this.deletedUser());
-      this.userService.deleteUser2(user_1.UID).subscribe(() => (this.users = this.users.filter((t) => t.UID !== user_1.UID)));
+      alert("Delete is not working - Kay")
+      this.userService.deleteUser2(user_1._id).subscribe(() => (this.users = this.users.filter((t) => t._id !== user_1._id)));
     }
   }
 

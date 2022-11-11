@@ -27,8 +27,7 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   n_classHistory !: string[];
   n_birthday !: string;
   n_email !: string;
-  n_role !: string;
-  n_adminNotes !: string;
+  n_admin_note !: string;
 
 
 
@@ -111,19 +110,19 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
   selectChangeHandler (event: any, user : User) {
-    this.n_role = event.target.value;
-    user.Role = this.n_role;
+    user.Role = event.target.value;;
+    console.log(user.Role);
   }
 
 
-  confirm_edit(user_1 : User){
-
-    this.check_Edit = false;
+  submit(user_1 : User){
+    user_1.AdminNotes = this.n_admin_note
+    console.log(user_1);
     this.onEditUser.emit(user_1);
+    this.check_Edit = false;
   }
 
   onDelete_user(user_1 : User){
-    
     this.onDeleteUser.emit(user_1);
   }
 
