@@ -1,18 +1,29 @@
-<h3>Give me our beautiful API and Click User!</h3>
-    <app-admins-usersinfo-unit
-    *ngFor="let user of users"
-    [user] = "user"
-    (onEditUser)="editUser(user)"
-    (onDeleteUser)="deleteUserAccount(user)"
-    (onAddUserClass)="addUserclass(user)"
-    (onDeleteUserClass)="delteUserclass(user)"
-    >
-</app-admins-usersinfo-unit>
+
+<div class="rect2">
+    <h1>Add Class List</h1>
+    <div *ngFor="let class of classes">
+        <br>{{class.Name}}
+    </div>
+</div>
+
+<div class="rect">
+    <div class="table">
+        <app-admins-usersinfo-unit
+        *ngFor="let user of users"
+        [user] = "user"
+        (onEditUser)="editUser(user)"
+        (onDeleteUser)="deleteUserAccount(user)"
+        (onAddUserClass)="addUserclass(user)"
+        (onDeleteUserClass)="delteUserclass(user)"
+        >
+        </app-admins-usersinfo-unit>
+    </div>
+</div>
 
 
-
-
-<!-- <div class= "container" *ngIf="ironmancomeing">
-    <img class = "ironman" src="../../../assets/myimage_1.jpg" id="ironman" (click)="disappear()">
-</div> -->
-
+<div class="rect2">
+    <h1>Edit</h1>
+    <div *ngFor="let class of classes">
+        <br>{{class.Name}}
+    </div>
+</div>

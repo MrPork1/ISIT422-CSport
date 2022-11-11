@@ -3,8 +3,8 @@ import { User } from 'src/app/User';
 import { getCurrencySymbol } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs';
-
-
+import { ClassesService } from 'src/app/services/classes.service';
+import { Class } from 'src/app/Classes';
 @Component({
   selector: 'app-admins-usersinfo',
   templateUrl: './admins-usersinfo.component.html',
@@ -12,17 +12,20 @@ import { first } from 'rxjs';
 })
 export class AdminsUsersinfoComponent implements OnInit {
   user !: User;
+  Class !:Class;
 
 
   aa = document.getElementById("ironman");
 
   // users : User[] = USERS;
   users : User[] = [];
-
-  constructor(private userService: UserService) { }
+  classes : Class[] =[]
+  constructor(private userService: UserService,
+    private classService : ClassesService) { }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
+    this.classService.getAllClasses().subscribe((classes)=>this.classes = classes)
     //if get class Name at class side that would be more easy 
 
   }
