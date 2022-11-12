@@ -11,6 +11,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
+  signinForm = new FormGroup ({
+    email : new FormControl(''),
+    password : new FormControl(''),
+  });
+
    tempCurrentClasses =
      ["2", "3"];
 
