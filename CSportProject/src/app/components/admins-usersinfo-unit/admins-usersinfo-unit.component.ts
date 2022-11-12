@@ -14,24 +14,17 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   class !: Class;
   classes : Class[] =[]
 
+
   check_classList : boolean = false;
   check_Edit : boolean = false;
   check_AddClass : boolean = false;
 
-
-  classes_add !: string;
-  classes_delete !: string;
-  secret_node !: string;
-
-
-  n_id !: string;
-  n_firstName !: string;
-  n_lastName !: string;
-  n_classHistory !: string[];
-  n_birthday !: string;
-  n_email !: string;
+  fuser_name !: string;
+  luser_name !: string;
   n_admin_note !: string;
+  birthday !: string;
 
+  user_status !: string;
 
   @Input()
   user !: User;
@@ -46,85 +39,35 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   @Output()
   onDeleteUserClass : EventEmitter<User> = new EventEmitter();
 
-
-
   @Output()
   onDeleteUser : EventEmitter<User> = new EventEmitter();
-
-  // tempClasses: Class[] = [];
-
-//  constructor(private classService : ClassesService) { }
 
   constructor(private classService : ClassesService) { }
 
   ngOnInit(): void {
-
-    //this.classService.getAllClasses().pipe(first()).subscribe(data => this.getClasses_name(data));
-
-    this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
-    
-
+    this.classService.getAllClasses().subscribe((classes) => this.classes = classes);
+    if(this.user.Role == "0"){this.user_status = "Admin"};
   }
 
-  // getClasses_name(classes: Class[]) {
-  //   this.tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
-  // }
-
-  getEditUserclass(){    //get informaion and save it if adimin click specific user. 
-    this.check_Edit = !this.check_Edit;
+  submit(user_1 : User){
+    user_1.Fname = this.fuser_name;
+    user_1.Lname = this.luser_name;
+    user_1.Birthday = this.birthday;
+    user_1.AdminNotes = this.n_admin_note;
+    this.onEditUser.emit(user_1);
+    this.check_Edit = false;
   }
 
-// try show list to display so admin can see what will add but if admin does not click submit it will not change
-  add_to_list(classes_add_1 : string, user : User){
+  third_step_Add_class(class_1 : Class, user_1 : User){
 
-    if(user.ClassIDList.includes(classes_add_1.toString())){
-      alert("Sorry, Please Check again.");
-    } else{
-      user.ClassIDList.push(classes_add_1);
-      this.onAddUserClass.emit(user);
-    }
-    this.classes_add = "";
-  }
-
-
-  // dropClassHere(classID: string) {
-  //   const index = this.user.ClassIDList.indexOf(classID);
-  //   if (index !== -1) {
-  //     this.user.ClassIDList.splice(index, 1);
-  //   }
-  // }
-
-
-
-  delete_From_list(classID : string, user:User){
-
-    const index = this.user.ClassIDList.indexOf(classID);
-    if (index !== -1) {
-      this.user.ClassIDList.splice(index, 1);
-    }
-
-    // user.ClassIDList.forEach((value,index)=>{
-    //   if(value==classes_id) user.ClassIDList.splice(index,1)});
-    
-    // console.log("Test User" + user.ClassIDList);
-    this.onDeleteUserClass.emit(user);
-
+    user_1.ClassIDList.push(class_1._id!);
+    this.onAddUserClass.emit(user_1);
   }
 
   selectChangeHandler (event: any, user : User) {
     user.Role = event.target.value;;
     console.log(user.Role);
   }
-
-
-  submit(user_1 : User){
-    user_1.AdminNotes = this.n_admin_note
-    console.log(user_1);
-    this.onEditUser.emit(user_1);
-    this.check_Edit = false;
-  }
-
-
 
   onEdit_user(){
     if(this.check_AddClass){this.check_AddClass = !this.check_AddClass}
@@ -141,7 +84,9 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
   checkClassList(){
-      this.check_classList = !this.check_classList;
+
+    this.check_classList = !this.check_classList;
+      
   }
 
   delteClassID_Middle(class1 : Class, user_1: User){
@@ -151,13 +96,6 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
       
     console.log(user_1.ClassIDList);
     this.onDeleteUserClass.emit(user_1);
-
-    // const index = this.user.ClassIDList.indexOf(class1._id);
-    // if (index !== -1) {
-    //   this.user.ClassIDList.splice(index, 1);
-    // }  
-    //this.onDeleteUserClass.emit(user_1);
-
   }
 
 }

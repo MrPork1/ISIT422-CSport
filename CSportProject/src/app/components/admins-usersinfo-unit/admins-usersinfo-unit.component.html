@@ -4,23 +4,22 @@
     <button (click)="onDelete_user(user)">Delete</button>
 </div>
 
-        
-
 
 <div *ngIf="check_Edit">
     <h2>Edit {{user.Fname}}'s Profile</h2>
+
     <form>
+    <label for="fuser_name">First Name: </label>
+    <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
 
-    <label for="classes_add">Add Class Number:</label>
-    <input type="text" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
-    <button (click)="add_to_list(classes_add, user)">Add</button><br><br>
-    <label for="classes_delete">Delete Class Number: </label>
-    <input type="text" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
-    <button (click)="delete_From_list(classes_delete, user)">Delete</button><br><br>
+    <label for="luser_name">Last Name: </label>
+    <input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
 
+    <label for="birthday">Birthday: </label>
+    <input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
 
-    <label for="secret_node">Customer Note: </label>
-    <input type="text" name="secret_node" [(ngModel)]="n_admin_note" id="secret_node" placeholder="Customer Note: " /><br><br>
+    <label for="n_admin_note">Admin Note: </label>
+    <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
 
     <label for="user_role">User Role: </label>
     <select (change)="selectChangeHandler($event, user)">
@@ -29,7 +28,6 @@
         <option value="0">Admin</option>
     </select> <br><br>
     <input type="submit" (click)="submit(user)" class="btn btn-block"> 
-
     </form>
 </div>
 
@@ -38,6 +36,7 @@
             <app-admin-avaliable-class-list
             *ngFor="let class of classes"
             [class] = "class" 
+            (second_step_Add_class)="third_step_Add_class(class, user)"
             ></app-admin-avaliable-class-list>
     </div>
     
@@ -45,8 +44,7 @@
     <table class="type11">
         <tbody>
             <tr>
-            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}</td>
-
+            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">{{user_status}}</div></td>
             <div *ngIf="check_classList">
                 <td>
                     <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
@@ -56,20 +54,13 @@
                         [user_Class_Id]="userclass_id"
                         (sendClassInfo)="delteClassID_Middle(class, user)"
                         > 
-                        <p>asdasd<p>
                         </app-admin-class-db-call>
-                        <!-- (sendClassInfo)="saveDeteClassID(class)"  -->
-                        <!-- user_Class_Id = {{userclass_id}} -->
-
                     </div>
                 </td>
-                
+                <td>
+                    {{user.AdminNotes}}
+                </td>
             </div>
-            <!-- <td>{{user.ClassHistory}}</td>
-            <td>{{user.Birthday}}</td>
-            <td>{{user.Email}}</td>
-            <td>{{user.Role}}</td>
-            <td>{{user.AdminNotes}}</td> -->
         </tr>
         </tbody>    
     </table>
