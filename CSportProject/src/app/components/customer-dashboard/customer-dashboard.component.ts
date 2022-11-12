@@ -13,8 +13,8 @@ export class CustomerDashboardComponent implements OnInit {
   views = [false, false, false, false, false];
 
   user!: User;
-  fName1!: string;
-  lName1!: string;
+  // fName1!: string;
+  // lName1!: string;
 
   constructor(
     public authService: AuthService
@@ -22,8 +22,10 @@ export class CustomerDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    this.fName1 = this.user.Fname.substring(0, 1).toUpperCase();
-    this.lName1 = this.user.Lname.substring(0, 1).toUpperCase();
+    // this.fName1 = this.user.Fname.substring(0, 1).toUpperCase();
+    // this.lName1 = this.user.Lname.substring(0, 1).toUpperCase();
+
+    this.setView(0)
   }
 
   setView(num: number): void {

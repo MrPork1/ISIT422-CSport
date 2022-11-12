@@ -11,7 +11,7 @@ import { User } from 'src/app/User';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  views = [false, false,false, false];
+  views = [false, false,false];
 
   user ?: User;
   users: User[] = [];
