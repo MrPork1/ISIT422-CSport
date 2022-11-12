@@ -1,2 +1,17 @@
+<!-- 
 
-<div class="div" *ngFor="let class of classes"><p *ngIf="user_Class_Id == class._id">{{class.Name}}</p></div>
+<div *ngIf="user_Class_Id">
+    <div class="div" *ngFor="let class of classes"><p *ngIf="user_Class_Id == class._id">{{class.Name}} <button (click)="onSendClassInfo(class)">Delete</button></p></div>
+</div> -->
+
+
+
+<!-- 
+<div *ngIf="user_Class_Id">
+    <div class="div" *ngFor="let class of classes"><p *ngIf="user_Class_Id == class._id">{{class.Name}} <button (click)="onSendClassInfo(class)">Delete</button></p></div>
+</div> -->
+
+
+<div *ngIf="user_Class_Id == class._id">
+    {{class.Name}} <button (click)="onSendClassInfo(class)">Delete</button>
+</div>

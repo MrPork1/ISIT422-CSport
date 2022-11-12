@@ -11,28 +11,24 @@ import { first } from 'rxjs';
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
 
-  //classes : Class[] = [];
+  class !: Class;
+  classes : Class[] =[]
 
 
+  check_classList : boolean = false;
   check_Edit : boolean = false;
+  check_AddClass : boolean = false;
 
-  classes_add !: string;
-  classes_delete !: string;
-  secret_node !: string;
-
-
-  n_id !: string;
-  n_firstName !: string;
-  n_lastName !: string;
-  n_classHistory !: string[];
-  n_birthday !: string;
-  n_email !: string;
+  fuser_name !: string;
+  luser_name !: string;
   n_admin_note !: string;
+  birthday !: string;
 
-
+  user_status !: string;
 
   @Input()
   user !: User;
+  users : [] = [];
   check_infor : boolean = false;
 
   @Output()
@@ -44,86 +40,75 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   @Output()
   onDeleteUserClass : EventEmitter<User> = new EventEmitter();
 
-
-
   @Output()
   onDeleteUser : EventEmitter<User> = new EventEmitter();
 
-  // tempClasses: Class[] = [];
-
-//  constructor(private classService : ClassesService) { }
-
-  constructor() { }
+  constructor(private classService : ClassesService) { }
 
   ngOnInit(): void {
-    //this.classService.getAllClasses().pipe(first()).subscribe(data => this.getClasses_name(data));
-
-    //this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
     
+    this.classService.getAllClasses().subscribe((classes) => this.classes = classes);
+    if(this.user.Role == "0"){this.user_status = "Admin"};
+
+    this.fuser_name = this.user.Fname;
+    this.luser_name = this.user.Lname;
+    this.n_admin_note = this.user.AdminNotes;
+    this.birthday = this.user.Birthday;
 
   }
 
-  // getClasses_name(classes: Class[]) {
-  //   this.tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
-  // }
-
-  getEditUserclass(){    //get informaion and save it if adimin click specific user. 
-    this.check_Edit = !this.check_Edit;
-  }
-
-// try show list to display so admin can see what will add but if admin does not click submit it will not change
-  add_to_list(classes_add_1 : string, user : User){
-
-    if(user.ClassIDList.includes(classes_add_1.toString())){
-      alert("Sorry, Please Check again.");
-    } else{
-      user.ClassIDList.push(classes_add_1);
-      this.onAddUserClass.emit(user);
-    }
-    this.classes_add = "";
-  }
-
-
-  dropClassHere(classID: string) {
-    const index = this.user.ClassIDList.indexOf(classID);
-    if (index !== -1) {
-      this.user.ClassIDList.splice(index, 1);
-    }
-  }
-
-
-
-  delete_From_list(classID : string, user:User){
-
-    const index = this.user.ClassIDList.indexOf(classID);
-    if (index !== -1) {
-      this.user.ClassIDList.splice(index, 1);
-    }
-
-    // user.ClassIDList.forEach((value,index)=>{
-    //   if(value==classes_id) user.ClassIDList.splice(index,1)});
-    
-    // console.log("Test User" + user.ClassIDList);
-    this.onDeleteUserClass.emit(user);
-    this.classes_delete = "";
-
-  }
-
-  selectChangeHandler (event: any, user : User) {
-    user.Role = event.target.value;;
-    console.log(user.Role);
-  }
-
-
-  submit(user_1 : User){
-    user_1.AdminNotes = this.n_admin_note
-    console.log(user_1);
+  onUpdate(user_1 : User){
+    user_1.Fname = this.fuser_name;
+    user_1.Lname = this.luser_name;
+    user_1.Birthday = this.birthday;
+    user_1.AdminNotes = this.n_admin_note;
     this.onEditUser.emit(user_1);
     this.check_Edit = false;
+  }
+  selectChangeHandler (event: any, user : User) {
+    user.Role = event.target.value;;
+  }
+
+  third_step_Add_class(class_1 : Class, user_1 : User){
+
+    user_1.ClassIDList.push(class_1._id!);
+    this.onAddUserClass.emit(user_1);
+  }
+
+  third_confirm_edit(user_1 : User){
+    this.check_Edit = !this.check_Edit;
+    this.onEditUser.emit(user_1);
+  }
+
+  onEdit_user(){
+    if(this.user.Role == "0"){this.user_status = "Admin"};
+
+    if(this.check_AddClass){this.check_AddClass = !this.check_AddClass}
+    this.check_Edit = !this.check_Edit;
+
+  }
+  onShowClass(){
+    if(this.check_Edit){this.check_Edit = !this.check_Edit}
+    this.check_AddClass = !this.check_AddClass;
   }
 
   onDelete_user(user_1 : User){
     this.onDeleteUser.emit(user_1);
+  }
+
+  checkClassList(){
+
+    this.check_classList = !this.check_classList;
+      
+  }
+
+  delteClassID_Middle(class1 : Class, user_1: User){
+    console.log(class1._id);
+    user_1.ClassIDList.forEach((value,index)=>{
+      if(value==class1._id) user_1.ClassIDList.splice(index,1)});
+      
+    console.log(user_1.ClassIDList);
+    this.onDeleteUserClass.emit(user_1);
   }
 
 }

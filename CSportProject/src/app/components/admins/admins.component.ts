@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 import { Class } from 'src/app/Classes';
 import { ClassesService } from 'src/app/services/classes.service';
 @Component({

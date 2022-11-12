@@ -34,6 +34,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
+import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
+import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component'; //add this so the signin.comp will recongize the form
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { AccountComponent } from './components/account/account.component'; //add
     AdminAddClassComponent,
     AdminClassDbCallComponent,
     AccountComponent,
+    AdminAvaliableClassListComponent,
+    AdminEditUsershowsComponent,
     
   ],
   imports: [

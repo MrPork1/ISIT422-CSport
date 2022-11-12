@@ -1,54 +1,81 @@
-<table class="type11">
-    <tbody
-    (click)="getEditUserclass()">
-    <tr>
-        <td>{{user.Fname}}
-        </td>
-        <td>{{user.Lname}}</td>
-        <!-- <td><div class="userClassListDiv" *ngFor="let userclass of tempClasses">{{userclass.Name}}</div></td> -->
+<div class="buttonAndTable">
+    <div class="threeButton">
+        <button (click)="onEdit_user()">Edit</button>
+        <button (click)="onShowClass()">Add Class</button>
+        <button (click)="onDelete_user(user)">Delete User Account</button>
+    </div>
+    
+    <table class="type11">
+        <tbody>
+            <tr>
+            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">
+                <p *ngIf="user.Role === '1'">Customer</p>
+                <p *ngIf="user.Role === '0'">Admin</p>
+            </div></td>
+            <div *ngIf="check_classList">
+                <td>
+                    <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
+                        <app-admin-class-db-call 
+                        *ngFor="let class of classes"
+                        [class] = "class"
+                        [user_Class_Id]="userclass_id"
+                        (sendClassInfo)="delteClassID_Middle(class, user)"
+                        > 
+                        </app-admin-class-db-call>
+                    </div>
+                </td>
+                <td>
+                    {{user.AdminNotes}}
+                </td>
+            </div>
+        </tr>
+        </tbody>    
+    </table>
 
-        <!-- <p *ngIf=""></p>                           -->    
-        <td><div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList"><app-admin-class-db-call user_Class_Id = {{userclass_id}}></app-admin-class-db-call>
-        </div></td>
-        <td>{{user.ClassHistory}}</td>
-        <td>{{user.Birthday}}</td>
-        <td>{{user.Email}}</td>
-        <td>{{user.Role}}</td>
-        <td>{{user.AdminNotes}}</td>
-    </tr>
-    </tbody>
-    <button (click)="onDelete_user(user)">Delete</button>
-</table>
+</div>
 
 
 
 
-<div *ngIf="check_Edit">
-    <h2>Edit {{user.Fname}}'s Profile</h2>
-    <form>
-
-
-    <label for="classes_add">Add Class Number:</label>
-    <input type="text" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
-    <button (click)="add_to_list(classes_add, user)">Add</button><br><br>
-    <label for="classes_delete">Delete Class Number: </label>
-    <input type="text" name="classes_delete" [(ngModel)]="classes_delete" id="classes_delete" placeholder="Class number: " />
-    <button (click)="delete_From_list(classes_delete, user)">Delete</button><br><br>
-
-
-    <label for="secret_node">Customer Note: </label>
-    <input type="text" name="secret_node" [(ngModel)]="n_admin_note" id="secret_node" placeholder="Customer Note: " /><br><br>
-
-    <label for="user_role">User Role: </label>
-    <select (change)="selectChangeHandler($event, user)">
-        <option>Check</option>
-        <option value="1">User</option>
-        <option value="0">Admin</option>
-    </select> <br><br>
-    <input type="submit" (click)="submit(user)" class="btn btn-block"> 
-
+<div class="edit">
+    <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
+        <h2>Edit {{user.Fname}}'s Profile</h2>
+        <label for="fuser_name">First Name: </label>
+        <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
+    
+        <label for="luser_name">Last Name: </label>
+        <input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
+    
+        <label for="birthday">Birthday: </label>
+        <input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
+    
+        <label for="n_admin_note">Admin Note: </label>
+        <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
+    
+        <label for="user_role">User Role: </label>
+        <select (change)="selectChangeHandler($event, user)">
+            <option>Check</option>
+            <option value="1">User</option>
+            <option value="0">Admin</option>
+        </select> <br><br>
+        <input type="submit" value="Update" class="btn btn-block"> 
     </form>
 </div>
+
+
+<div class="addClass">
+    <div *ngIf="check_AddClass">
+        <app-admin-avaliable-class-list
+        *ngFor="let class of classes"
+        [class] = "class" 
+        (second_step_Add_class)="third_step_Add_class(class, user)"
+        ></app-admin-avaliable-class-list>
+</div>
+</div>
+
+    
+
+ 
 
 
 
