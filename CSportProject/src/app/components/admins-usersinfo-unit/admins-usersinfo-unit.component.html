@@ -1,48 +1,17 @@
-<div class="threeButton">
-    <button (click)="onEdit_user()">Edit</button>
-    <button (click)="onShowClass()">Add Class</button>
-    <button (click)="onDelete_user(user)">Delete User Account</button>
-</div>
-
-
-
-    <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
-    <h2>Edit {{user.Fname}}'s Profile</h2>
-    <label for="fuser_name">First Name: </label>
-    <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
-
-    <label for="luser_name">Last Name: </label>
-    <input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
-
-    <label for="birthday">Birthday: </label>
-    <input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
-
-    <label for="n_admin_note">Admin Note: </label>
-    <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
-
-    <label for="user_role">User Role: </label>
-    <select (change)="selectChangeHandler($event, user)">
-        <option>Check</option>
-        <option value="1">User</option>
-        <option value="0">Admin</option>
-    </select> <br><br>
-    <input type="submit" value="Update" class="btn btn-block"> 
-    </form>
-
-    
-    <div class="needToMoveRigtSide" *ngIf="check_AddClass">
-            <app-admin-avaliable-class-list
-            *ngFor="let class of classes"
-            [class] = "class" 
-            (second_step_Add_class)="third_step_Add_class(class, user)"
-            ></app-admin-avaliable-class-list>
+<div class="buttonAndTable">
+    <div class="threeButton">
+        <button (click)="onEdit_user()">Edit</button>
+        <button (click)="onShowClass()">Add Class</button>
+        <button (click)="onDelete_user(user)">Delete User Account</button>
     </div>
     
-
     <table class="type11">
         <tbody>
             <tr>
-            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">{{user.Role}}</div></td>
+            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">
+                <p *ngIf="user.Role === '1'">Customer</p>
+                <p *ngIf="user.Role === '0'">Admin</p>
+            </div></td>
             <div *ngIf="check_classList">
                 <td>
                     <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
@@ -63,6 +32,50 @@
         </tbody>    
     </table>
 
+</div>
+
+
+
+
+<div class="edit">
+    <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
+        <h2>Edit {{user.Fname}}'s Profile</h2>
+        <label for="fuser_name">First Name: </label>
+        <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
+    
+        <label for="luser_name">Last Name: </label>
+        <input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
+    
+        <label for="birthday">Birthday: </label>
+        <input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
+    
+        <label for="n_admin_note">Admin Note: </label>
+        <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
+    
+        <label for="user_role">User Role: </label>
+        <select (change)="selectChangeHandler($event, user)">
+            <option>Check</option>
+            <option value="1">User</option>
+            <option value="0">Admin</option>
+        </select> <br><br>
+        <input type="submit" value="Update" class="btn btn-block"> 
+    </form>
+</div>
+
+
+<div class="addClass">
+    <div *ngIf="check_AddClass">
+        <app-admin-avaliable-class-list
+        *ngFor="let class of classes"
+        [class] = "class" 
+        (second_step_Add_class)="third_step_Add_class(class, user)"
+        ></app-admin-avaliable-class-list>
+</div>
+</div>
+
+    
+
+ 
 
 
 

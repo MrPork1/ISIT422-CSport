@@ -1,35 +1,69 @@
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+.buttonAndTable{
+  float: right;
+  border: 2px solid #000;
+  width: 600px;
+  height: 300px;
+}
 
 table.type11 {
-  
-    border-collapse: separate;
-    border-spacing: 1px;
-    text-align: center;
-    line-height: 1.5;
-    margin: 20px 10px;
-  }
-  table.type11 th {
-    width: 155px;
-    padding: 10px;
-    font-weight: bold;
-    color: #fff;
-    background: black ;
-  }
-  table.type11 td {
-    width: 155px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #eee;
-    
-  }
+  float: left;
 
-  .threeButton{
-  top: 30px;
-  width: 20%;
-  background-color: royalblue;
-  flex-direction: row;
+  border: 2px solid #000;
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.5;
+  margin: 20px 10px;
 }
+
+table.type11 td {
+
+  width: 100px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #eee;
+  
+}
+
+.buttonAndTable.threeButton{
+float: right;
+top: 10px;
+width: 10%;
+background-color: royalblue;
+flex-direction: row;
+}
+
+
+
+.edit{
+  border: 2px solid #000;
+  width: 300px;
+  height: 300px;
+}
+
+.addClass{
+  border: 2px solid #000;
+  width: 300px;
+  height: 300px;
+}
+
+
+
+
 
 
 
