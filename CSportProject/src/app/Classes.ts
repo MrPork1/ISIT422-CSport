@@ -6,5 +6,6 @@ export interface Class {
     STime: string;
     ETime: string;
     Date: string;
-    ClassSeats: string; //This should just be a string no array
+    ClassSeats: string;
+    Price: number;
 }
