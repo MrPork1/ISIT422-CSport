@@ -13,7 +13,6 @@ import { Class } from 'src/app/Classes';
 export class AdminsUsersinfoComponent implements OnInit {
   user !: User;
   Class !:Class;
-  test !:string;
   check_addclass : boolean = true;
   check_editClass: boolean = true;
 
@@ -41,23 +40,8 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.userService.editUser(user_1).subscribe();
   }
 
-
-  
   deleteUserAccount(user_1 : User){
-
-    if(user_1.Fname == "what the heck michael"){
-      alert("what the heck michael!")
-    } else {
-      //this.userService.deleteUser2(user_1.UID).pipe(first()).subscribe(data => this.deletedUser());
-      alert("Delete is not working - Kay")
-      //this.userService.deleteUser2(user_1._id).subscribe(() => (this.users = this.users.filter((t) => t._id !== user_1._id)));
-    }
+    this.userService.deleteUser(user_1.UID).subscribe(() => (this.users = this.users.filter((t) => t.UID !== user_1.UID)));
   }
-
-  deletedUser(){
-    this.users= [];
-    this.userService.getAllUsers().subscribe((users) => this.users = users);
-  }
-
 
 }

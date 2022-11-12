@@ -1,0 +1,26 @@
+
+<div *ngIf="check_Edit">
+<form>
+<label for="fuser_name">First Name: </label>
+<input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
+
+<label for="luser_name">Last Name: </label>
+<input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
+
+<label for="birthday">Birthday: </label>
+<input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
+
+<label for="n_admin_note">Admin Note: </label>
+<input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
+
+<label for="user_role">User Role: </label>
+<select (change)="selectChangeHandler($event, user)">
+    <option>Check</option>
+    <option value="1">User</option>
+    <option value="0">Admin</option>
+</select> <br><br>
+<input type="submit" (click)="fisrt_confirm_edit(user)" class="btn btn-block"> 
+</form>
+
+
+</div>

@@ -28,6 +28,7 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
   @Input()
   user !: User;
+  users : [] = [];
   check_infor : boolean = false;
 
   @Output()
@@ -45,17 +46,27 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   constructor(private classService : ClassesService) { }
 
   ngOnInit(): void {
+    
     this.classService.getAllClasses().subscribe((classes) => this.classes = classes);
     if(this.user.Role == "0"){this.user_status = "Admin"};
+
+    this.fuser_name = this.user.Fname;
+    this.luser_name = this.user.Lname;
+    this.n_admin_note = this.user.AdminNotes;
+    this.birthday = this.user.Birthday;
+
   }
 
-  submit(user_1 : User){
+  onUpdate(user_1 : User){
     user_1.Fname = this.fuser_name;
     user_1.Lname = this.luser_name;
     user_1.Birthday = this.birthday;
     user_1.AdminNotes = this.n_admin_note;
     this.onEditUser.emit(user_1);
     this.check_Edit = false;
+  }
+  selectChangeHandler (event: any, user : User) {
+    user.Role = event.target.value;;
   }
 
   third_step_Add_class(class_1 : Class, user_1 : User){
@@ -64,9 +75,9 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     this.onAddUserClass.emit(user_1);
   }
 
-  selectChangeHandler (event: any, user : User) {
-    user.Role = event.target.value;;
-    console.log(user.Role);
+  third_confirm_edit(user_1 : User){
+    this.check_Edit = !this.check_Edit;
+    this.onEditUser.emit(user_1);
   }
 
   onEdit_user(){

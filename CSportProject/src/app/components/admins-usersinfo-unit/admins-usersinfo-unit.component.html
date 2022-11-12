@@ -1,14 +1,13 @@
 <div class="threeButton">
     <button (click)="onEdit_user()">Edit</button>
     <button (click)="onShowClass()">Add Class</button>
-    <button (click)="onDelete_user(user)">Delete</button>
+    <button (click)="onDelete_user(user)">Delete User Account</button>
 </div>
 
 
-<div *ngIf="check_Edit">
-    <h2>Edit {{user.Fname}}'s Profile</h2>
 
-    <form>
+    <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
+    <h2>Edit {{user.Fname}}'s Profile</h2>
     <label for="fuser_name">First Name: </label>
     <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
 
@@ -27,9 +26,8 @@
         <option value="1">User</option>
         <option value="0">Admin</option>
     </select> <br><br>
-    <input type="submit" (click)="submit(user)" class="btn btn-block"> 
+    <input type="submit" value="Update" class="btn btn-block"> 
     </form>
-</div>
 
     
     <div class="needToMoveRigtSide" *ngIf="check_AddClass">
