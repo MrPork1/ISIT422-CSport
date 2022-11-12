@@ -29,7 +29,6 @@ export class ClassesService {
   }
 
   getClass(CID?: string): Observable<Class[]> {
-    console.log(CID);
     return this.http.get<Class[]>(this.serverURL + "/GetOneClass/" + CID, httpOptions);
   }
 
@@ -38,7 +37,6 @@ export class ClassesService {
   }
 
   editClass(oneClass: Class): Observable<Class> { //this does not work right now - sean
-    console.log(oneClass);
     return this.http.put<Class>(this.serverURL + "/EditClass", oneClass, httpOptions);
   }
 

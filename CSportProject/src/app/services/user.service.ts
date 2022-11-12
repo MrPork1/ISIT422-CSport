@@ -37,9 +37,7 @@ export class UserService {
     return this.http.post<User>(this.serverURL + "/userscollection", user, httpOptions);
   }
 
-  editUser(user: User): Observable<User> { //This doesn't work right now - sean 
-                                           //make it work - michael
-    console.log(user);
+  editUser(user: User): Observable<User> {
     return this.http.put<User>(this.serverURL + "/EditUser", user, httpOptions);
   }
 

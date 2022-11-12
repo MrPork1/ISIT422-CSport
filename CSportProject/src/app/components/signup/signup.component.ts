@@ -18,16 +18,7 @@ export class SignupComponent implements OnInit {
 
   password !: string;
 
-  tempCurrentClasses =
-  ["2", "3"];
-
-  tempHistoryClasses =
-  ["4", "1"];
-
-  constructor(
-    private authService: AuthService,
-    private userService: UserService
-  ) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -38,12 +29,12 @@ export class SignupComponent implements OnInit {
     UID: "",
     Fname: this.fname,
     Lname: this.lname,
-    ClassIDList: this.tempCurrentClasses,
-    ClassHistory: this.tempHistoryClasses,
+    ClassIDList: [],
+    ClassHistory: [],
     Birthday: this.bday,
     Email: this.email,
     Role: this.role,
-    AdminNotes: "thats crazy" //Mongo won't allow an empty string :(
+    AdminNotes: ""
   } as User
 
     //Adds user to Firebase Authentication and then to MongoDB

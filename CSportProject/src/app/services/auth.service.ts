@@ -26,11 +26,9 @@ export class AuthService {
   signInUsingFakeInformation(user: User) {
     this.userData = user;
     if (this.userData.Role == "1") {
-      console.log('this is admin!');
       this.router.navigate(['/a-dashboard']);
     }
     else if (this.userData.Role == "0") {
-      console.log('this is a customer!');
       this.router.navigate(['/c-dashboard']);
     }
   }
@@ -38,11 +36,9 @@ export class AuthService {
   login(email: string, password: string) { //Login with email and password.
     this.aAuth.signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Login success!');
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
-          console.log(this.userData);
           this.router.navigate(['/c-dashboard']);
         });
       })
@@ -51,11 +47,8 @@ export class AuthService {
   emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
     this.aAuth.createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success', value);
-        //this.userData = value.user;
         //Add mongoDB user here.
         this.addUserToMongoDB(value.user!.uid, user);
-        console.log('sign up success!');
         this.router.navigate(['/signin']);
       })
       .catch(error => {
