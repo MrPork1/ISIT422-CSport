@@ -81,6 +81,8 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
   onEdit_user(){
+    if(this.user.Role == "0"){this.user_status = "Admin"};
+
     if(this.check_AddClass){this.check_AddClass = !this.check_AddClass}
     this.check_Edit = !this.check_Edit;
 

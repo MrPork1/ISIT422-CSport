@@ -42,7 +42,7 @@
     <table class="type11">
         <tbody>
             <tr>
-            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">{{user_status}}</div></td>
+            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">{{user.Role}}</div></td>
             <div *ngIf="check_classList">
                 <td>
                     <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
