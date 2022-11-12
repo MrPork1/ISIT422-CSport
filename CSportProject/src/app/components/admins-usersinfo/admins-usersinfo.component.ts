@@ -13,9 +13,9 @@ import { Class } from 'src/app/Classes';
 export class AdminsUsersinfoComponent implements OnInit {
   user !: User;
   Class !:Class;
-
-
-  aa = document.getElementById("ironman");
+  test !:string;
+  check_addclass : boolean = true;
+  check_editClass: boolean = true;
 
   // users : User[] = USERS;
   users : User[] = [];
@@ -27,7 +27,6 @@ export class AdminsUsersinfoComponent implements OnInit {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
     this.classService.getAllClasses().subscribe((classes)=>this.classes = classes)
     //if get class Name at class side that would be more easy 
-
   }
 
    addUserclass(user_1 : User){ 
@@ -51,7 +50,7 @@ export class AdminsUsersinfoComponent implements OnInit {
     } else {
       //this.userService.deleteUser2(user_1.UID).pipe(first()).subscribe(data => this.deletedUser());
       alert("Delete is not working - Kay")
-      this.userService.deleteUser2(user_1._id).subscribe(() => (this.users = this.users.filter((t) => t._id !== user_1._id)));
+      //this.userService.deleteUser2(user_1._id).subscribe(() => (this.users = this.users.filter((t) => t._id !== user_1._id)));
     }
   }
 

@@ -28,6 +28,7 @@
 
   }
   .rect{
+    float: left;
     top: 30px;
     margin-right: 1%;
     width: 65%;
@@ -35,8 +36,3 @@
     background-color: brown;
   }
 
-  .table{
-    float: left;
-    width: 65%;
-
-  }

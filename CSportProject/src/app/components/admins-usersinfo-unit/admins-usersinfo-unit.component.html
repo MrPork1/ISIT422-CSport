@@ -1,32 +1,15 @@
-<table class="type11">
-    <tbody
-    (click)="getEditUserclass()">
-    <tr>
-        <td>{{user.Fname}}
-        </td>
-        <td>{{user.Lname}}</td>
-        <!-- <td><div class="userClassListDiv" *ngFor="let userclass of tempClasses">{{userclass.Name}}</div></td> -->
-
-        <!-- <p *ngIf=""></p>                           -->    
-        <td><div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList"><app-admin-class-db-call user_Class_Id = {{userclass_id}}></app-admin-class-db-call>
-        </div></td>
-        <td>{{user.ClassHistory}}</td>
-        <td>{{user.Birthday}}</td>
-        <td>{{user.Email}}</td>
-        <td>{{user.Role}}</td>
-        <td>{{user.AdminNotes}}</td>
-    </tr>
-    </tbody>
+<div class="threeButton">
+    <button (click)="onEdit_user()">Edit</button>
+    <button (click)="onShowClass()">Add Class</button>
     <button (click)="onDelete_user(user)">Delete</button>
-</table>
+</div>
 
-
+        
 
 
 <div *ngIf="check_Edit">
     <h2>Edit {{user.Fname}}'s Profile</h2>
     <form>
-
 
     <label for="classes_add">Add Class Number:</label>
     <input type="text" name="classes_add" [(ngModel)]="classes_add" id="classes_add" placeholder="Class number: " />
@@ -49,6 +32,48 @@
 
     </form>
 </div>
+
+    
+    <div class="needToMoveRigtSide" *ngIf="check_AddClass">
+            <app-admin-avaliable-class-list
+            *ngFor="let class of classes"
+            [class] = "class" 
+            ></app-admin-avaliable-class-list>
+    </div>
+    
+
+    <table class="type11">
+        <tbody>
+            <tr>
+            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}</td>
+
+            <div *ngIf="check_classList">
+                <td>
+                    <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
+                        <app-admin-class-db-call 
+                        *ngFor="let class of classes"
+                        [class] = "class"
+                        [user_Class_Id]="userclass_id"
+                        (sendClassInfo)="delteClassID_Middle(class, user)"
+                        > 
+                        <p>asdasd<p>
+                        </app-admin-class-db-call>
+                        <!-- (sendClassInfo)="saveDeteClassID(class)"  -->
+                        <!-- user_Class_Id = {{userclass_id}} -->
+
+                    </div>
+                </td>
+                
+            </div>
+            <!-- <td>{{user.ClassHistory}}</td>
+            <td>{{user.Birthday}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.Role}}</td>
+            <td>{{user.AdminNotes}}</td> -->
+        </tr>
+        </tbody>    
+    </table>
+
 
 
 

@@ -11,10 +11,13 @@ import { first } from 'rxjs';
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
 
-  //classes : Class[] = [];
+  class !: Class;
+  classes : Class[] =[]
 
-
+  check_classList : boolean = false;
   check_Edit : boolean = false;
+  check_AddClass : boolean = false;
+
 
   classes_add !: string;
   classes_delete !: string;
@@ -28,7 +31,6 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   n_birthday !: string;
   n_email !: string;
   n_admin_note !: string;
-
 
 
   @Input()
@@ -53,12 +55,13 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
 //  constructor(private classService : ClassesService) { }
 
-  constructor() { }
+  constructor(private classService : ClassesService) { }
 
   ngOnInit(): void {
+
     //this.classService.getAllClasses().pipe(first()).subscribe(data => this.getClasses_name(data));
 
-    //this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
+    this.classService.getAllClasses().subscribe((classes) => this.classes = classes)
     
 
   }
@@ -84,12 +87,12 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
 
-  dropClassHere(classID: string) {
-    const index = this.user.ClassIDList.indexOf(classID);
-    if (index !== -1) {
-      this.user.ClassIDList.splice(index, 1);
-    }
-  }
+  // dropClassHere(classID: string) {
+  //   const index = this.user.ClassIDList.indexOf(classID);
+  //   if (index !== -1) {
+  //     this.user.ClassIDList.splice(index, 1);
+  //   }
+  // }
 
 
 
@@ -105,7 +108,6 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     
     // console.log("Test User" + user.ClassIDList);
     this.onDeleteUserClass.emit(user);
-    this.classes_delete = "";
 
   }
 
@@ -122,8 +124,40 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     this.check_Edit = false;
   }
 
+
+
+  onEdit_user(){
+    if(this.check_AddClass){this.check_AddClass = !this.check_AddClass}
+    this.check_Edit = !this.check_Edit;
+
+  }
+  onShowClass(){
+    if(this.check_Edit){this.check_Edit = !this.check_Edit}
+    this.check_AddClass = !this.check_AddClass;
+  }
+
   onDelete_user(user_1 : User){
     this.onDeleteUser.emit(user_1);
+  }
+
+  checkClassList(){
+      this.check_classList = !this.check_classList;
+  }
+
+  delteClassID_Middle(class1 : Class, user_1: User){
+    console.log(class1._id);
+    user_1.ClassIDList.forEach((value,index)=>{
+      if(value==class1._id) user_1.ClassIDList.splice(index,1)});
+      
+    console.log(user_1.ClassIDList);
+    this.onDeleteUserClass.emit(user_1);
+
+    // const index = this.user.ClassIDList.indexOf(class1._id);
+    // if (index !== -1) {
+    //   this.user.ClassIDList.splice(index, 1);
+    // }  
+    //this.onDeleteUserClass.emit(user_1);
+
   }
 
 }
