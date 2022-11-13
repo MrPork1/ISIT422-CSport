@@ -35,7 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
-import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component'; //add this so the signin.comp will recongize the form
+import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component';
+import { CalenderDayComponent } from './components/calender-day/calender-day.component'; //add this so the signin.comp will recongize the form
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/a
     AccountComponent,
     AdminAvaliableClassListComponent,
     AdminEditUsershowsComponent,
+    CalenderDayComponent,
     
   ],
   imports: [

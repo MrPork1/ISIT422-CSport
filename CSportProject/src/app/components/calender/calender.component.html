@@ -1,19 +1,27 @@
 <div class="calender">
     <div class="calender-header">
-        <button><</button>
-        <button>></button>
-        <h1>Month string <br> Year string</h1>
+        <button (click)="previousMonth()"><</button>
+        <button (click)="nextMonth()">></button><br>
+        <button (click)="showCurrentMonth()">Current Month</button>
+        <h1>{{currentMonthString}} <br> {{currentYearString}}</h1>
     </div>
     <div class="grid-container">
-        <div class="grid-item months">Sun</div>
-        <div class="grid-item months">Mon</div>
-        <div class="grid-item months">Tue</div>
-        <div class="grid-item months">Wed</div>
-        <div class="grid-item months">Thu</div>
-        <div class="grid-item months">Fri</div>
-        <div class="grid-item months">Sat</div>
-        <div class="grid-item days" *ngFor="let day of days">
-            <div>{{day}}</div>
+        <div class="grid-item weekDays">Sun</div>
+        <div class="grid-item weekDays">Mon</div>
+        <div class="grid-item weekDays">Tue</div>
+        <div class="grid-item weekDays">Wed</div>
+        <div class="grid-item weekDays">Thu</div>
+        <div class="grid-item weekDays">Fri</div>
+        <div class="grid-item weekDays">Sat</div>
+        <div class="grid-item days otherDays" *ngFor="let day of daysInterfacePreviousDays">
+            <app-calender-day [day]="day" (getDayDetails)="returnDay($event)"></app-calender-day>
+        </div>
+        <div class="grid-item days" *ngFor="let day of daysInterface">
+            <app-calender-day [day]="day" (getDayDetails)="returnDay($event)"></app-calender-day>
+        </div>
+
+        <div class="grid-item days otherDays" *ngFor="let day of daysInterfaceNextMonthDays">
+            <app-calender-day [day]="day" (getDayDetails)="returnDay($event)"></app-calender-day>
         </div>
     </div>
   </div>
