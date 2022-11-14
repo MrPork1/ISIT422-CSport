@@ -33,6 +33,7 @@
 
     <div class="flex-child-element-add" [ngClass]="{'one': this.check_Edit}">
         <div *ngIf="check_AddClass">
+            <h3>*Double Click Add Class -Kay*</h3>
             <app-admin-avaliable-class-list
             *ngFor="let class of classes"
             [class] = "class" 
