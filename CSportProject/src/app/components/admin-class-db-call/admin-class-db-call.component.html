@@ -12,6 +12,15 @@
 </div> -->
 
 
+
 <div *ngIf="user_Class_Id == class._id">
-    {{class.Name}} <button (click)="onSendClassInfo(class)">Delete</button>
+    {{class.Name}} <fa-icon 
+    (click)="onSendClassInfo(class)"
+    [ngStyle]="{'color':'red'}" [icon]="faTimes"
+    ></fa-icon>
 </div>
+
+
+<!-- <div *ngIf="user_Class_Id == class._id">
+    {{class.Name}} <button (click)="onSendClassInfo(class)">Delete</button>
+</div> -->

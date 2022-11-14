@@ -67,7 +67,7 @@
 }
 
 #input{
-  width: 100px;
+  width: 170px;
   height: 55px;
   border-top: none;
   border-left: none;
@@ -95,8 +95,4 @@ textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px #999;
-}
-
-.CLh1{
-  text-align:center;
 }

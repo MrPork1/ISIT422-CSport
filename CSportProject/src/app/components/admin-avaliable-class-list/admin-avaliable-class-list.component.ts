@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { cwd } from 'process';
 import { Class } from 'src/app/Classes';
-import { ClassesService } from 'src/app/services/classes.service';
-
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/User';
 @Component({
   selector: 'app-admin-avaliable-class-list',
   templateUrl: './admin-avaliable-class-list.component.html',
@@ -12,12 +12,17 @@ export class AdminAvaliableClassListComponent implements OnInit {
   @Input()
   class !: Class;
   classes : Class[] = [];
-  
+  @Input()
+  user !: User;
+
+
   @Output()
   second_step_Add_class : EventEmitter<Class> = new EventEmitter();
 
 
-  constructor() { }
+  constructor(private userService : UserService) { 
+
+  }
 
   ngOnInit(): void {
   }

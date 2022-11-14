@@ -30,12 +30,13 @@
         </form>
     </div>
     
-    <!-- <div class="flex-child-element-add" [ngClass]="{'one': !this.check_AddClass}"> -->
+
     <div class="flex-child-element-add" [ngClass]="{'one': this.check_Edit}">
         <div *ngIf="check_AddClass">
             <app-admin-avaliable-class-list
             *ngFor="let class of classes"
             [class] = "class" 
+            [user] = "user"
             (second_step_Add_class)="third_step_Add_class(class, user)"
             ></app-admin-avaliable-class-list>
         </div>
