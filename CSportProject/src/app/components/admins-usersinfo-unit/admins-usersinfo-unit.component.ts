@@ -12,7 +12,7 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
 
-
+  image : Number = Math.floor(Math.random() * (4 - 1 + 1) + 1); 
 
   class !: Class;
   classes : Class[] =[]
