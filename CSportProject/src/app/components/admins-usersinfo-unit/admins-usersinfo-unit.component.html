@@ -1,81 +1,95 @@
-<div class="buttonAndTable">
-    <div class="threeButton">
-        <button (click)="onEdit_user()">Edit</button>
-        <button (click)="onShowClass()">Add Class</button>
-        <button (click)="onDelete_user(user)">Delete User Account</button>
+
+<div class="flex-parent-element">
+
+
+    <div class="flex-child-element-edit" [ngClass]="{'one': !this.check_Edit}">
+        <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
+            <h2>Edit {{user.Fname}}'s Profile</h2>
+            <label for="fuser_name">First Name: </label>
+            <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="input" placeholder="First Name: " /><br>
+        
+            <label for="luser_name">Last Name: </label>
+            <input type="text" name="luser_name" [(ngModel)]="luser_name" id="input" placeholder="luser_name: " /><br>
+        
+            <label for="birthday">Birthday: </label>
+            <input type="date" name="birthday" [(ngModel)]="birthday" id="input"/><br>
+        
+            <label for="n_admin_note">Admin Note: </label>
+            <textarea id="input" name="n_admin_note" rows="15" cols="100" [(ngModel)]="n_admin_note"></textarea><br><br>
+
+
+            <!-- <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="input"/><br> -->
+        
+            <label for="user_role">User Role: </label>
+            <select (change)="selectChangeHandler($event, user)">
+                <option>Check</option>
+                <option value="1">User</option>
+                <option value="0">Admin</option>
+            </select> <br><br>
+            <input type="submit" value="Update" class="btn btn-block"> 
+        </form>
     </div>
     
-    <table class="type11">
-        <tbody>
-            <tr>
-            <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">
-                <p *ngIf="user.Role === '1'">Customer</p>
-                <p *ngIf="user.Role === '0'">Admin</p>
-            </div></td>
-            <div *ngIf="check_classList">
-                <td>
-                    <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
-                        <app-admin-class-db-call 
-                        *ngFor="let class of classes"
-                        [class] = "class"
-                        [user_Class_Id]="userclass_id"
-                        (sendClassInfo)="delteClassID_Middle(class, user)"
-                        > 
-                        </app-admin-class-db-call>
-                    </div>
-                </td>
-                <td>
+
+    <div class="flex-child-element-add" [ngClass]="{'one': this.check_Edit}">
+
+        <div *ngIf="!this.check_AddClass">
+            <img src="../../../assets/{{image}}.jpg" width="100" height="100" class="center">
+        </div>
+
+        <div *ngIf="check_AddClass">
+            <h3>*Double Click Add Class -Kay*</h3>
+            <app-admin-avaliable-class-list
+            *ngFor="let class of classes"
+            [class] = "class" 
+            [user] = "user"
+            (second_step_Add_class)="third_step_Add_class(class, user)"
+            ></app-admin-avaliable-class-list>
+        </div>
+    </div>
+    
+
+
+    <div class="flex-child-element-add-buttonAndTable">
+
+        <table class="type11">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th *ngIf="check_classList">Enrolled Class</th>
+                    <th *ngIf="check_classList">Note</th>
+                </tr>
+                <tr>
+                <td (click)="checkClassList()">{{user.Fname}} {{user.Lname}}<br><br><div class="userStatus">
+                    <p *ngIf="user.Role === '1'">Customer</p>
+                    <p *ngIf="user.Role === '0'">Admin</p>
+                </div></td>
+                <div *ngIf="check_classList">
+                    <td>
+                        <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
+                            <app-admin-class-db-call 
+                            *ngFor="let class of classes"
+                            [class] = "class"
+                            [user_Class_Id]="userclass_id"
+                            (sendClassInfo)="delteClassID_Middle(class, user)"
+                            > 
+                            </app-admin-class-db-call>
+                        </div>
+                    </td>
+                </div>
+                <td *ngIf="check_classList">
                     {{user.AdminNotes}}
                 </td>
+            </tr>
+            <div>
+                <button class="button" (click)="onEdit_user()">Edit</button>
+                <button class="button" (click)="onShowClass()">Add Class</button>
+                <button class="button button2" (click)="onDelete_user(user)">Delete User</button>
             </div>
-        </tr>
-        </tbody>    
-    </table>
+            </tbody>
+        </table>
 
+
+
+    </div>
 </div>
-
-
-
-
-<div class="edit">
-    <form class="modifiy" (ngSubmit)="onUpdate(user)" *ngIf="check_Edit">
-        <h2>Edit {{user.Fname}}'s Profile</h2>
-        <label for="fuser_name">First Name: </label>
-        <input type="text" name="fuser_name" [(ngModel)]="fuser_name" id="fuser_name" placeholder="First Name: " /><br>
-    
-        <label for="luser_name">Last Name: </label>
-        <input type="text" name="luser_name" [(ngModel)]="luser_name" id="luser_name" placeholder="luser_name: " /><br>
-    
-        <label for="birthday">Birthday: </label>
-        <input type="date" name="birthday" [(ngModel)]="birthday" id="birthday"/><br>
-    
-        <label for="n_admin_note">Admin Note: </label>
-        <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="n_admin_note"/><br>
-    
-        <label for="user_role">User Role: </label>
-        <select (change)="selectChangeHandler($event, user)">
-            <option>Check</option>
-            <option value="1">User</option>
-            <option value="0">Admin</option>
-        </select> <br><br>
-        <input type="submit" value="Update" class="btn btn-block"> 
-    </form>
-</div>
-
-
-<div class="addClass">
-    <div *ngIf="check_AddClass">
-        <app-admin-avaliable-class-list
-        *ngFor="let class of classes"
-        [class] = "class" 
-        (second_step_Add_class)="third_step_Add_class(class, user)"
-        ></app-admin-avaliable-class-list>
-</div>
-</div>
-
-    
-
- 
-
-
-

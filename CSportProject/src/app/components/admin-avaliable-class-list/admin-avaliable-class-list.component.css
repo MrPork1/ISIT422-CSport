@@ -1,0 +1,25 @@
+label {
+    color: black;
+    font-weight: bold;
+    display: block;
+    width: 200px;
+    float: left;
+    }
+button{
+    display: inline-flex;
+    vertical-align:auto;
+    color: black;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.task {
+    background: #f4f4f4;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  

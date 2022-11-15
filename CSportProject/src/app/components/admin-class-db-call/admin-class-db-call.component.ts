@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
 import { Class } from 'src/app/Classes';
-
+import { faTimes } from '@fortawesome/free-solid-svg-icons';      // 1. From angular-fontawesome    
 
 
 @Component({
@@ -12,6 +12,7 @@ export class AdminClassDbCallComponent implements OnInit {
   // @Output()
   // class !: Class;
 
+  faTimes = faTimes; // 2. From angular-fontawesome
 
   @Input()
   class !: Class;
@@ -28,7 +29,6 @@ export class AdminClassDbCallComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.classService.getAllClasses().pipe(first()).subscribe(data => this.getClasses_name(data));
   }
 
   

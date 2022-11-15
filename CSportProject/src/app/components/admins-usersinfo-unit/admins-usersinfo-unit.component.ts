@@ -4,6 +4,7 @@ import { User } from 'src/app/User';
 import { Class } from 'src/app/Classes';
 import { ClassesService } from 'src/app/services/classes.service';
 import { first } from 'rxjs';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-admins-usersinfo-unit',
   templateUrl: './admins-usersinfo-unit.component.html',
@@ -11,9 +12,10 @@ import { first } from 'rxjs';
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
 
+  image : Number = Math.floor(Math.random() * (4 - 1 + 1) + 1); 
+
   class !: Class;
   classes : Class[] =[]
-
 
   check_classList : boolean = false;
   check_Edit : boolean = false;
@@ -42,6 +44,10 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
 
   @Output()
   onDeleteUser : EventEmitter<User> = new EventEmitter();
+
+  
+  @Output()
+  test_check_include_classID2 : EventEmitter<Class> = new EventEmitter();
 
   constructor(private classService : ClassesService) { }
 
@@ -79,7 +85,6 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     this.check_Edit = !this.check_Edit;
     this.onEditUser.emit(user_1);
   }
-
   onEdit_user(){
     if(this.user.Role == "0"){this.user_status = "Admin"};
 
@@ -103,11 +108,11 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   }
 
   delteClassID_Middle(class1 : Class, user_1: User){
-    console.log(class1._id);
+    this.check_AddClass = false;
+
     user_1.ClassIDList.forEach((value,index)=>{
       if(value==class1._id) user_1.ClassIDList.splice(index,1)});
       
-    console.log(user_1.ClassIDList);
     this.onDeleteUserClass.emit(user_1);
   }
 

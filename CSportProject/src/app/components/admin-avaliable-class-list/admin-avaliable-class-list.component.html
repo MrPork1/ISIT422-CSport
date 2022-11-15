@@ -1,3 +1,10 @@
 
+<div 
+class="task"
+(dblclick)="first_step_Add_class(user,class)"
+*ngIf="check">
+{{class.Name}}
+</div>
 
-<div>{{class.Name}} <button (click)="first_step_Add_class(class)">Add</button></div>
+
+<!-- <label *ngIf="check" [ngClass]="{'one': !check}">{{class.Name}}<label><br><button (click)="first_step_Add_class(user,class)" [ngStyle]="{'color':'green'}">Add</button><br> -->
