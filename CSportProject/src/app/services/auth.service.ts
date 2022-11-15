@@ -39,7 +39,15 @@ export class AuthService {
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
-          this.router.navigate(['/c-dashboard']);
+          if (this.userData.Role == "1") {
+            this.router.navigate(['/a-dashboard']);
+          }
+          else if (this.userData.Role == "0") {
+            this.router.navigate(['/c-dashboard']);
+          } else {
+            console.error("Error logging in.");
+            this.router.navigate(['/'])
+          }
         });
       })
   }
