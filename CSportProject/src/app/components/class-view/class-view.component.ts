@@ -5,6 +5,8 @@ import { User } from 'src/app/User';
 import { UserService } from 'src/app/services/user.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import { first } from 'rxjs';
+import { PaymentService } from 'src/app/services/payment.service';
+import { Transaction } from 'src/app/Transaction';
 
 @Component({
   selector: 'app-class-view',
@@ -16,14 +18,18 @@ export class ClassViewComponent implements OnInit {
   classes: Class[] = [];
   tempClasses: Class[] = [];
   user!: User;
+  tempClass!: Class;
+  selectedClass?: Class;
 
   loading: boolean = true;
   canEnrollForClass: boolean = true;
+  showEnroll: boolean = false;
 
   constructor(
     public authService: AuthService,
     public userService: UserService,
-    public classesService: ClassesService
+    public classesService: ClassesService,
+    public paymentService: PaymentService
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +40,16 @@ export class ClassViewComponent implements OnInit {
     this.user = user[0];
     console.log(this.user);
     this.refreshClassList();
+  }
+
+  showPayment(classId: string){
+    this.selectedClass = this.tempClasses.find(x => x._id === classId);
+    this.showEnroll = true;
+  }
+
+  Cancel(){
+    this.selectedClass = this.tempClass;
+    this.showEnroll = false;
   }
 
   private getClassesThenShowThem(classes: Class[]) {
@@ -54,14 +70,16 @@ export class ClassViewComponent implements OnInit {
     this.loading = false;
   }
 
-  enrollForClassHere(classID: string) {
+  enrollForClassHere(classID: string, transaction: Transaction) {
     //If it gets to here, its been confirmed that the class was not in the ClassIDList,
     //thats why we can push it right away without checking if it was already in there.
+    this.showEnroll = false;
     if (this.canEnrollForClass) {
       this.user.ClassIDList.push(classID);
+      this.user.TransactionHistory.push(transaction._id!);
       console.log("before ", this.user);
       this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
-      this.canEnrollForClass = false;
+      this.canEnrollForClass = false;      
     }
   }
 
@@ -79,5 +97,15 @@ export class ClassViewComponent implements OnInit {
     this.loading = true;
     this.tempClasses = [];
     this.classesService.getAllClasses().pipe(first()).subscribe(data => this.getClassesThenShowThem(data));
+  }
+
+  CompleteTransaction(pCID: string){
+    const newPayment = {
+      CID: pCID,
+      UID: this.user.UID,
+      Price: this.selectedClass!.Price
+    } as Transaction
+
+    return this.paymentService.addTransaction(newPayment).subscribe(data => this.enrollForClassHere(pCID, data));
   }
 }

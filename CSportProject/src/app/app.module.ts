@@ -36,7 +36,8 @@ import { AdminClassDbCallComponent } from './components/admin-class-db-call/admi
 import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
 import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component';
-import { CalenderDayComponent } from './components/calender-day/calender-day.component'; //add this so the signin.comp will recongize the form
+import { CalenderDayComponent } from './components/calender-day/calender-day.component';
+import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 
 
 @NgModule({
@@ -61,8 +62,9 @@ import { CalenderDayComponent } from './components/calender-day/calender-day.com
     AdminAvaliableClassListComponent,
     AdminEditUsershowsComponent,
     CalenderDayComponent,
-    
+    TransactionHistoryComponent,    
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -31,6 +31,7 @@ export class SignupComponent implements OnInit {
     Lname: this.lname,
     ClassIDList: [],
     ClassHistory: [],
+    TransactionHistory: [],
     Birthday: this.bday,
     Email: this.email,
     Role: this.role,

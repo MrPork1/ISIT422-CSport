@@ -5,6 +5,7 @@ export interface User { //This matches the schema.
     Lname: string;
     ClassIDList: string[];
     ClassHistory: string[];
+    TransactionHistory: string[];
     Birthday: string;
     Email: string;
     Role: string;

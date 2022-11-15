@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
 import { ClassesService } from 'src/app/services/classes.service';
 import { first } from 'rxjs';
+import { PaymentService } from 'src/app/services/payment.service';
+import { Transaction } from 'src/app/Transaction';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class EnrolledClassesComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public userService: UserService,
-    public classesService: ClassesService
+    public classesService: ClassesService,
+    public transactionService: PaymentService
   ) { }
 
   ngOnInit(): void {
@@ -48,11 +51,25 @@ export class EnrolledClassesComponent implements OnInit {
   }
 
   dropClassHere(classID: string) {
-    const index = this.user.ClassIDList.indexOf(classID);
-    if (index !== -1) {
-      this.user.ClassIDList.splice(index, 1);
-      this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
+    const classIndex = this.user.ClassIDList.indexOf(classID);
+    if (classIndex !== -1) {
+      this.user.ClassIDList.splice(classIndex, 1);      
     }
+    this.transactionService.getAllTransactions().pipe(first()).subscribe(data => this.dropTransactionHere(data, classID));  
+  }
+
+  dropTransactionHere(allTransaction: Transaction[], classID: string){
+    var transactionID = "";
+    allTransaction.forEach(transaction => {
+      if(transaction.CID === classID){
+        transactionID = transaction._id!;
+      }
+    })
+    const transactionIndex = this.user.TransactionHistory.indexOf(transactionID);
+    if (transactionIndex !== -1) {
+      this.user.TransactionHistory.splice(transactionIndex, 1);      
+    }
+    this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
   }
 
   private editClassSeatsHere(user: User, classID: string) {

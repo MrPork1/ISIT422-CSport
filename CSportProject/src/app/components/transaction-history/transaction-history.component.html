@@ -1,0 +1,12 @@
+<h2>Class History</h2>
+
+<table class="table" *ngIf="user.TransactionHistory.length > 0">
+  <tr>
+    <th>Class Name</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let class of tempClasses">
+    <td>{{class.Name}}</td>
+    <td>{{class.Price}}</td>
+  </tr>
+</table>
