@@ -13,6 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   
 //groups all the inputs together
 export class SigninComponent {
+  
   signinForm = new FormGroup ({
     email : new FormControl(''),
     password : new FormControl(''),

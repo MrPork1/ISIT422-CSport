@@ -30,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider'; 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule }from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
+//simport { FlexLayoutModule } from '@angular/flex-layout'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so the signin.comp will recongize the form
 
 
@@ -67,8 +69,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+         MatButtonModule,
+         MatInputModule,
+         MatCardModule,
+       
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// MatToolbarModule,
+// MatMenuModule,
+// MatIconModule,
+// MatTableModule,
+// MatDividerModule,
+// MatProgressSpinnerModule,
+// MatCardModule,
+// MatSlideToggleModule,
+// MatSelectModule,
+// MatOptionModule from '@angular/material'

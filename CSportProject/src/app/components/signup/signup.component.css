@@ -3,6 +3,18 @@ label {
     text-align: right;
     width: 100px;
 }
+button{
+    margin-right: 5px;
+    background-color: purple; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+    box-shadow: 10px 10px 5px  purple;
+}
+#matcard{
+    background-color: rgb(234, 226, 237);
+    box-shadow: 10px 10px 5px  purple;
+    width: 38%;
+    display: inline-flex;
+}
 
 input {
     margin-left: 5px;

@@ -1,41 +1,57 @@
 <!-- PROFILE HAS BEEN TURNED INTO EDIT-PROFILE. DO NOT UNHIDE THIS PLEASE :) -->
-<div class="displayTable"> 
-  <div class="displayTableCell">  
-   <!-- <div class="authBlock">-->
-    <div class="main-container" >
+
+
+
+<!-- need these divs to help center the card -->
+<body>
+    <div class="main-container" > 
       <div class="form-container"  >
-      <form [formGroup]="signinForm" class ="form" >
-      <h3 >Sign In</h3>
-   <!-- <div class="formGroup">-->
-    <mat-form-field appearance ="fill"  class ="form-item">
-        <input matInput type="text" id="signEmail" formControlName="email" placeholder="Email" #userName required>
-      </mat-form-field>
-      <mat-form-field appearance ="fill" class ="form-item">
-        <input matInput type="password" id="signPassword"formControlName="password" placeholder="Password" #userPassword required>
-      </mat-form-field>
-     
-             
-             <button mat-raised-button color = "accent" class="btn btnPrimary"  (click)="authService.login(userName.value, userPassword.value)">Log in</button>
-            </form>
-            <a routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one here</strong></a>
+        
+<mat-card id="matcard">
 
-<h3>Sign In As Fake User (this pretends the data is in mongoDB)</h3>
-<div class="formGroup">
-  <!-- was input before-->
-  <button mat-raised-button color = "accent" (click)="signInAsAdmin()">Log in as Admin</button>
-</div>
-<div class="formGroup"> 
-  <!-- was   <input type="button"  before -->
-  <button mat-raised-button color = "accent" (click)="signInAsCustomer()">Log in as Customer</button>
+  <mat-card-content >
 
-</div>
+    <div >
+
+      <div>
+
+        <form [formGroup]="signinForm" class ="form" >
+          <h3 >Sign In</h3>
+       <!-- <div class="formGroup">-->
+        <mat-form-field appearance ="fill"  class ="form-item">
+            <input matInput type="text" id="signEmail" formControlName="email" placeholder="Email" #userName required>
+          </mat-form-field>
+          <mat-form-field appearance ="fill" class ="form-item">
+            <input matInput type="password" id="signPassword"formControlName="password" placeholder="Password" #userPassword required>
+          </mat-form-field>
+         
+                 
+                 <button mat-raised-button class="btn btnPrimary"  (click)="authService.login(userName.value, userPassword.value)">Log in</button>
+                </form>
+                <a routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one here</strong></a>
+    
+    <h3>Sign In As Fake User (this pretends the data is in mongoDB)</h3>
+    <div class="formGroup">
+      <!-- was input before-->
+      <button mat-raised-button  (click)="signInAsAdmin()">Log in as Admin</button>
+    </div>
+    <div class="formGroup"> 
+      <!-- was   <input type="button"  before -->
+      <button mat-raised-button  (click)="signInAsCustomer()">Log in as Customer</button>
+    
+    </div>
+
+      </div>
 
     </div>
-  </div>
+
+  </mat-card-content>
+
+</mat-card>
+</div>
 </div>
 
-
-
+</body>
 <!-- <marquee behavior="alternate" direction="left" style="bottom:0px;position:absolute;">
   <img src="../../../assets/SalmonellaNIAID.jpg" [style.width.px]="getPos()" [style.height.px]="getPos()" (click)="triggerAlert()">
 </marquee> -->

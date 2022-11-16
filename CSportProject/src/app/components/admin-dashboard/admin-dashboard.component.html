@@ -1,15 +1,17 @@
+<body>
+
 <div class="row" *ngIf="authService.userData as user">
   <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 </div>
 
-<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
-<input type="button" class="btn btn-primary" value="Edit Profile" (click)="setView(0)">
-<input type="button" class="btn btn-primary" value="Manage Classes" (click)="setView(1)">
-<input type="button" class="btn btn-primary" value="Manager Users" (click)="setView(2)">
+<input type="button" class="btn-primary" value="Sign out" (click)="authService.logout()">
+<input type="button" class="btn-primary" value="Edit Profile" (click)="setView(0)">
+<input type="button" class="btn-primary" value="Manage Classes" (click)="setView(1)">
+<input type="button" class="btn-primary" value="Manager Users" (click)="setView(2)">
 <input type="button" class="server" value="Get Users (temp btn)" (click)="getUsers()" (click)="setView(3)">
 <input type="button" class="server" value="Get Classes (temp btn)" (click)="getClasses()" (click)="setView(4)">
 
-<hr class="rounded">
+
 <ul class="list-group" *ngIf="views[3]">
     <li *ngFor="let user of users" class="list-group-item">
         <p>Name: {{user.Fname}} 
@@ -39,3 +41,4 @@
         <p>Description: {{class.Descript}}</p>
     </li>
   </ul>
+</body>
