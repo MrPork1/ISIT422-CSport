@@ -3,8 +3,8 @@ import { User } from 'src/app/User';
 import { USERS } from 'src/app/mock-Profiles';
 import { getCurrencySymbol } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
-
-
+import { first } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-admins-usersinfo',
   templateUrl: './admins-usersinfo.component.html',
@@ -22,7 +22,9 @@ export class AdminsUsersinfoComponent implements OnInit {
   // users : User[] = USERS;
   users : User[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public authService: AuthService,
+    ) { }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
@@ -34,13 +36,18 @@ export class AdminsUsersinfoComponent implements OnInit {
   }
 
   deleteUserAccount(user_1 : User){
-    //this.userService.deleteUser2(user_1).subscribe();
     if(user_1.Fname == "Robert"){
       this.ironmancomeing =true;
       alert("iron-man never dies")
-    } else{
-      alert("Never Delete Robert");
+    } else {
+      this.userService.deleteUser2(user_1.UID).pipe(first()).subscribe(data => this.deletedUser());
+      //this.userService.deleteUser2(user_1.UID).subscribe(() => (this.users = this.users.filter((t) => t.UID !== user_1.UID)));
     }
+  }
+
+  deletedUser(){
+    this.users= [];
+    this.userService.getAllUsers().subscribe((users) => this.users = users);
   }
 
   disappear(){
