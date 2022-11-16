@@ -1,6 +1,10 @@
+body{
+    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+}
 .server {
     background-color: green;
     color: white;
+
 }
 
 hr.rounded {

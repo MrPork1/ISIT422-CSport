@@ -1,0 +1,13 @@
+Starting this app
+1. Open and start your node.js server (ISIT422-CSport-Nodejs-Server)
+    1a. open the folder in VSC
+    1b. open a new terminal and cd into correct file (cd routes)
+    1c. type,  node index.js  ,and hit enter
+
+2. Open your angular app and start it (ISIT422-CSport)
+    2a. open folder in VSC
+    2b. open a new terminal and cd into the project (cd CSportProject)
+    2c. type, ng serve --open , and hit enter
+
+    To override your angular css (change the primary color), you need to add a scss file 
+    and put in the angular.json file under styles
