@@ -14,7 +14,7 @@ button{
     margin-right: 5px;
     background-color: purple; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
-    box-shadow: 10px 10px 5px  purple;
+    /* box-shadow: 10px 10px 5px  purple; */
 }
 #matcard{
     background-color: rgb(234, 226, 237);
@@ -36,6 +36,7 @@ button{
     width: 400 px; 
     margin: 0 px auto; 
     margin-top: 200 px;
+    
     
 }
 mat-form-field {

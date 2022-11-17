@@ -1,40 +1,56 @@
-<h3>Sign Up</h3>
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
+<body>
+
+
+<!-- need these divs to help center the card -->
+<div class="main-container">
+  <div class="form-container"> 
+  
+  <mat-card id="matcard">
+
+        <mat-card-content>
+          
+            <div id = "titleSignUp">
+              <mat-card-title id =title>Sign Up</mat-card-title>
+            </div>
+          
+          
 
       <div class="formGroup">
-        <label>Email:*</label>
+
         <input type="email" class="formControl" placeholder="Email" #userName [(ngModel)]="email" required>
       </div>
       <div class="formGroup">
-        <label>Password:*</label>
+    
         <input type="password" class="formControl" placeholder="Password" [(ngModel)]="password" #userPassword required>
       </div>
       <div class="formGroup">
-        <label>First name:*</label>
+      
         <input type="text" class="formControl" placeholder="First name" #userFName [(ngModel)]="fname" required>
       </div>
       <div class="formGroup">
-        <label>Last name:</label>
+       
         <input type="text" class="formControl" placeholder="Last name" #userLName [(ngModel)]="lname">
       </div>
       <div class="formGroup">
-        <label>Birthday:</label>
+    
         <input type="date" class="formControl" #userBday [(ngModel)]="bday">
       </div>
       <div class="formGroup">
-        <label>Admin:</label>
+ 
         <!-- <input type="checkbox" class="formControl" #userIsAdmin [(ngModel)]="isAdmin"> -->
         <input type="text" class="formControl" #userIsAdmin placeholder="type 1 for admin" [(ngModel)]="role">
       </div>
       <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Sign up" (click)="signUpNewUser()">
+      <div>
+        <button mat-raised-button  class="btn btnPrimary" value="Sign up" (click)="signUpNewUser()">Sign up</button>
       </div>
-    </div>
+
 
     <a routerLink="/signin" routerLinkActive="active" class="login-account-txt">Got an account? <strong>Login here</strong></a>
-  </div>
 
+</mat-card-content>
+</mat-card>
 </div>
+</div>
+</body> 
+

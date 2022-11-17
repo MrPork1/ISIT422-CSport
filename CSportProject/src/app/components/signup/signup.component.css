@@ -1,3 +1,11 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+body {
+
+    background-color: purple; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+  }
+
+  
 label {
     display: inline-block;
     text-align: right;
@@ -7,7 +15,7 @@ button{
     margin-right: 5px;
     background-color: purple; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
-    box-shadow: 10px 10px 5px  purple;
+    
 }
 #matcard{
     background-color: rgb(234, 226, 237);
@@ -15,9 +23,30 @@ button{
     width: 38%;
     display: inline-flex;
 }
+.main-container{
+    display: grid;
+  grid-template-columns: auto ;
+  padding-top: 100px;
+    text-align: center;
+ 
+    /*color: "primary"; does not work*/
+}
 
-input {
-    margin-left: 5px;
+.form-container{
+    width: 400 px; 
+    margin: 0 px auto; 
+    margin-top: 200 px;
+    
+    
+}
+
+
+.formGroup {
+ 
+    width: 500px; /* any higher and the text shifts too far right */
+    font-size: 30px;
+    text-align: center;
+    display: center;
 }
 
 div {
