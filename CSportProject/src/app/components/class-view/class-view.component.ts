@@ -32,6 +32,12 @@ export class ClassViewComponent implements OnInit {
     public paymentService: PaymentService
   ) { }
 
+  
+  //one at a time b/c it is an async code and you do not want them to run at the same time
+  // "pipe" is used for multpile subscribes and calls
+  // "first" returns the first thing from the server that we want to get (array of the user)
+  //  it also unsubscribes auto once the data is presented (like a get and close)
+  
   ngOnInit(): void {
     this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.getUserHere(data));
   }
@@ -69,7 +75,7 @@ export class ClassViewComponent implements OnInit {
 
     this.loading = false;
   }
-
+//make a method in here to call the api
   enrollForClassHere(classID: string, transaction: Transaction) {
     //If it gets to here, its been confirmed that the class was not in the ClassIDList,
     //thats why we can push it right away without checking if it was already in there.

@@ -9,6 +9,16 @@ import { User } from 'src/app/User';
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
+// breaks every thing 
+// dropdown.component.ts
+// export class MyDropDownComponent {
+//   public items: Array<{ field: string }> = [
+//       { field: 'Option 1' },
+//       { field: 'Option 2' },
+//       { field: 'Option 3' }
+//   ];
+// }
+
 export class AdminDashboardComponent implements OnInit {
 
   views = [false, false,false];

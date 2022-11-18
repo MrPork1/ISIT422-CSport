@@ -13,6 +13,7 @@ import { HistoryClassComponent } from './components/history-class/history-class.
 import { ClassViewComponent } from './components/class-view/class-view.component';
 import { AdminsClassinfoComponent } from './components/admins-classinfo/admins-classinfo.component';
 import { AdminsComponent } from './components/admins/admins.component';
+import { GooglePayComponent } from './components/google-pay/google-pay.component'
 
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -27,19 +28,20 @@ import { CalenderComponent } from './components/calender/calender.component';
 import { AdminAddClassComponent } from './components/admin-add-class/admin-add-class.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';   
 //CSS Material Desgin Imports
+// import { IgxDropDownModule } from 'igniteui-angular';
+import{MatCardModule} from '@angular/material/card'
 import { MatSliderModule } from '@angular/material/slider'; 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule }from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
 import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component';
 import { CalenderDayComponent } from './components/calender-day/calender-day.component';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
-//simport { FlexLayoutModule } from '@angular/flex-layout'; 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so the signin.comp will recongize the form
+import {GooglePayButtonModule} from '@google-pay/button-angular';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so
     AdminAvaliableClassListComponent,
     AdminEditUsershowsComponent,
     CalenderDayComponent,
-    TransactionHistoryComponent,    
+    TransactionHistoryComponent,
+    GooglePayComponent,    
   ],
   
   imports: [
@@ -81,23 +84,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //add this so
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-         MatButtonModule,
-         MatInputModule,
-         MatCardModule,
-       
+    MatCardModule,
+    GooglePayButtonModule,
+    // IgxDropDownModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-// MatToolbarModule,
-// MatMenuModule,
-// MatIconModule,
-// MatTableModule,
-// MatDividerModule,
-// MatProgressSpinnerModule,
-// MatCardModule,
-// MatSlideToggleModule,
-// MatSelectModule,
-// MatOptionModule from '@angular/material'

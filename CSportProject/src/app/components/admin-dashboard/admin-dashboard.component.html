@@ -1,5 +1,6 @@
 <body>
 
+
 <div class="row" *ngIf="authService.userData as user">
   <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 </div>
@@ -7,6 +8,7 @@
 <input type="button" class="btn btn-primary" value="Account" (click)="setView(0)">
 <input type="button" class="btn btn-primary" value="Manage Classes" (click)="setView(1)">
 <input type="button" class="btn btn-primary" value="Manager Users" (click)="setView(2)">
+<input type="button" class="btn btn-primary" value="Google Pay" (click)="setView(3)">
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
 
 <hr class="rounded">
@@ -21,4 +23,7 @@
   
   <div *ngIf="views[2]">
     <app-admins-usersinfo></app-admins-usersinfo>
+  </div>
+  <div *ngIf="views[3]">
+    <app-google-pay></app-google-pay>
   </div>
