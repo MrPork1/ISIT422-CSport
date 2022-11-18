@@ -6,12 +6,21 @@
   </div>
 </div> -->
 
-<input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
+<ul>
+  <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Home</li>
+  <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Account</li>
+  <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Enrolled Classes</li>
+  <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Available Classes</li>
+  <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Past Classes</li>
+  <li style="float:right" (click)="authService.logout()">Sign out</li>
+</ul>
+
+<!-- <input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
 <input type="button" class="btn btn-primary" (click)="setView(1)" value="Account">
 <input type="button" class="btn btn-primary" (click)="setView(2)" value="Show Enrolled Classes">
 <input type="button" class="btn btn-primary" (click)="setView(3)" value="View Available Classes">
 <input type="button" class="btn btn-primary" (click)="setView(4)" value="View Past Classes">
-<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
+<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()"> -->
 
 
 <hr class="rounded">
