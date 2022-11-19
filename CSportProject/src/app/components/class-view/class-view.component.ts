@@ -25,6 +25,8 @@ export class ClassViewComponent implements OnInit {
   canEnrollForClass: boolean = true;
   showEnroll: boolean = false;
 
+  // displayedColumns = ['name', 'description', 'time', 'date', 'seats'];
+
   constructor(
     public authService: AuthService,
     public userService: UserService,
