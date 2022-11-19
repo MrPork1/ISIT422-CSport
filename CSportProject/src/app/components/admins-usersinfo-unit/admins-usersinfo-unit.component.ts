@@ -11,9 +11,6 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./admins-usersinfo-unit.component.css']
 })
 export class AdminsUsersinfoUnitComponent implements OnInit {
-
-  image : Number = Math.floor(Math.random() * (4 - 1 + 1) + 1); 
-
   class !: Class;
   classes : Class[] =[]
 
@@ -25,8 +22,10 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   luser_name !: string;
   n_admin_note !: string;
   birthday !: string;
-
   user_status !: string;
+
+  class_TotalPrice !: number;
+
 
   @Input()
   user !: User;
@@ -52,10 +51,8 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   constructor(private classService : ClassesService) { }
 
   ngOnInit(): void {
-    
     this.classService.getAllClasses().subscribe((classes) => this.classes = classes);
     if(this.user.Role == "0"){this.user_status = "Admin"};
-
     this.fuser_name = this.user.Fname;
     this.luser_name = this.user.Lname;
     this.n_admin_note = this.user.AdminNotes;
@@ -86,7 +83,7 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     this.onEditUser.emit(user_1);
   }
   onEdit_user(){
-    if(this.user.Role == "0"){this.user_status = "Admin"};
+    if(this.user.Role == "1"){this.user_status = "Admin"};
 
     if(this.check_AddClass){this.check_AddClass = !this.check_AddClass}
     this.check_Edit = !this.check_Edit;

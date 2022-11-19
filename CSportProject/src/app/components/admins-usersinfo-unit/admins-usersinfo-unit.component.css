@@ -103,3 +103,18 @@ textarea {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+.circle {
+  margin-left: 150px;
+  margin-top: 80px;
+  display: block;
+  height: 75px;
+  width: 75px;
+  background-color: #555;
+  border-radius: 50%;
+  position: absolute;
+  text-align: center;
+  color: white;
+}

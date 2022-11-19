@@ -14,7 +14,9 @@
 
 
 <div *ngIf="user_Class_Id == class._id">
-    {{class.Name}} <fa-icon 
+    {{class.Name}} <br>
+    <strong>${{class.Price}} </strong>
+    <fa-icon 
     (click)="onSendClassInfo(class)"
     [ngStyle]="{'color':'red'}" [icon]="faTimes"
     ></fa-icon>

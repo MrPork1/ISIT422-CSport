@@ -17,7 +17,7 @@ export class AdminAddClassComponent implements OnInit {
   end !: string;
   sets !: string;
   Tdate !: string;
-
+  price !: number;
 
   check_add !: boolean;
 
@@ -41,13 +41,14 @@ export class AdminAddClassComponent implements OnInit {
     else{
 
       const addClass = {
-        CID : "Test1234", // This is for the Test. Need to delete After remove "Class.ts => CID"  
+        //CID : "Test1234", // This is for the Test. Need to delete After remove "Class.ts => CID"  
         Name : this.name,
         Descript : this.desc,
         STime : this.start,
         ETime : this.end,
         Date: this.Tdate,
-        ClassSeats: this.sets
+        ClassSeats: this.sets,
+        Price : this.price,
       } as Class
   
       this.onAddClass.emit(addClass);

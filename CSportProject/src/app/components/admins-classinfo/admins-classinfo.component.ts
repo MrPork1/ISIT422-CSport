@@ -23,6 +23,7 @@ export class AdminsClassinfoComponent implements OnInit {
   start_fix !: string;
   end_fix !: string;
   sets_fix!: number;
+  price_fix !: number;
   // check_add !: boolean;
 
 
@@ -45,6 +46,7 @@ export class AdminsClassinfoComponent implements OnInit {
     class2.Descript = this.desc_fix;
     class2.STime = this.start_fix;
     class2.ETime = this.end_fix;
+    class2.Price = this.price_fix;
     class2.ClassSeats = this.sets_fix.toString();
     this.check_edit = false;
     this.onUpateClass.emit(class2);
@@ -52,10 +54,13 @@ export class AdminsClassinfoComponent implements OnInit {
 
 
   onDisplay_Update_function(class2 : Class){
+
     this.name_fix = class2.Name;
     this.desc_fix = class2.Descript;
     this.start_fix = class2.STime;
     this.end_fix = class2.ETime;
+    this.price_fix = class2.Price;
+    this.sets_fix = Number(class2.ClassSeats);
 
     this.check_edit = !this.check_edit;
   }

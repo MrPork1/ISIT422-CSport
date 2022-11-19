@@ -4,9 +4,7 @@
 
 
 <div *ngIf="check_add">
-
     <form class="add-form" (ngSubmit)="onCreatClass()">
-        <h2>Add Class</h2>
         <!-- <div class="form-control">
             <input type="number" name="class-id" [(ngModel)]="id" id="class-id" placeholder="Type Class ID (Only Number): " />        
         </div> -->
@@ -19,14 +17,18 @@
         <div class="form-control">
             <input type="text" name="desc" [(ngModel)]="desc" id="desc" placeholder="Type Class Description: " />
         </div>
+
+        <div class="form-control">
+            <input type="number" name="price" [(ngModel)]="price" id="price" placeholder="Price: " />
+        </div>
     
         <div class="form-control form-control-check">
-            <label class="class-start">Class Start </label>
+            <!-- <label class="class-start">Class Start </label><br> -->
             <input type="time" name="start" [(ngModel)]="start" id="start"/>
         </div>
     
         <div class="form-control form-control-check">
-            <label class="class-end">Class End </label>
+            <!-- <label class="class-end">Class End </label><br> -->
             <input type="time" name="end" [(ngModel)]="end" id="end"/>
         </div>
 
@@ -37,14 +39,9 @@
         <div class="form-control">
             <input type="date" name="Tdate" [(ngModel)]="Tdate" id="Tdate" placeholder="Type Date: " />
         </div>
-
-    
         <div class="wrap">
-            <input type="submit" value="Add Class" class="btn btn-block"> 
+            <input type="submit" value="Add Class" class="btn-block"> 
         </div>
-
-
-    
     </form>
 
 </div>

@@ -3,12 +3,12 @@
         (click)="onDisplay_Update_function(class)">
         <tr>
             <td>{{class.Name}}</td>
+            <td>{{class.Descript}}</td>
             <td>{{class.STime}}</td>
             <td>{{class.ETime}}</td>
-            <td>{{class.Descript}}</td>
             <td>{{class.Date}}</td>
             <td>{{class.ClassSeats}}</td>
-            <td>{{class._id}}</td>
+            <td>${{class.Price}}</td>
         </tr>
         </tbody>
         <button (click)="onDelete(class)">Delete Class</button>
@@ -28,8 +28,8 @@
     </div>
 
     <div class="form-control">
-        <label for="class-sets_fix">Class Sets</label>
-        <input type="number" name="sets_fix" [(ngModel)]="sets_fix" id="sets_fix" placeholder="Type Class Sets: " />
+        <label for="class-price">Class Price</label>
+        <input type="number" name="class-price" [(ngModel)]="price_fix" id="class-price" placeholder="Type Class Price: " />
     </div>
 
     <div class="form-control form-control-check">
@@ -41,6 +41,12 @@
         <label class="class-end">Class End </label>
         <input type="time" name="end_fix" [(ngModel)]="end_fix" id="end_fix"/>
     </div>
+
+    <div class="form-control">
+        <label for="class-sets_fix">Class Sets</label>
+        <input type="number" name="sets_fix" [(ngModel)]="sets_fix" id="sets_fix" placeholder="Type Class Sets: " />
+    </div>
+
 
     <div class="wrap">
         <input type="submit" value="Update" class="btn btn-block"> 
