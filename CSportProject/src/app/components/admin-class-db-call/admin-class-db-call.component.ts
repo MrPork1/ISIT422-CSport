@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';      // 1. From angular-fontawesome    
-
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-class-db-call',
@@ -12,7 +12,7 @@ export class AdminClassDbCallComponent implements OnInit {
   // @Output()
   // class !: Class;
 
-  faTimes = faTimes; // 2. From angular-fontawesome
+  faTrashCan = faTrashCan; // 2. From angular-fontawesome
 
   @Input()
   class !: Class;

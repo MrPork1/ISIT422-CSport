@@ -57,7 +57,6 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
     this.luser_name = this.user.Lname;
     this.n_admin_note = this.user.AdminNotes;
     this.birthday = this.user.Birthday;
-
   }
 
   onUpdate(user_1 : User){
