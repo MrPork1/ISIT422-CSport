@@ -51,7 +51,7 @@ button::after {
 }
 
 button:hover {
-  color: red;
+  color: greenyellow;
 }
 
 /* BUTTON 1 */
