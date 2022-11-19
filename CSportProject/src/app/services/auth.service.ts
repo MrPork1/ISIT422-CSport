@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; //Import fireauth
 import { Router } from '@angular/router'; //Import router
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../User';
 import { UserService } from './user.service';
 
@@ -10,6 +11,7 @@ import { UserService } from './user.service';
 export class AuthService {
 
   userData!: User;
+  sessionStorageUserData!: User;
   newUserData: User[] = [];
   newnewUserData!: User;
 
@@ -17,6 +19,8 @@ export class AuthService {
 
   isLogin: boolean = false;
   roleAs: string = "Customer";
+
+  user = new BehaviorSubject<any>(null);
 
   constructor(
     private aAuth: AngularFireAuth,
@@ -27,6 +31,8 @@ export class AuthService {
     this.userData = user;
     if (this.userData.Role == "1") {
       this.router.navigate(['/a-dashboard']);
+      this.user.next(this.userData)
+      sessionStorage.setItem('userData', JSON.stringify(this.userData))
     }
     else if (this.userData.Role == "0") {
       this.router.navigate(['/c-dashboard']);
@@ -39,17 +45,32 @@ export class AuthService {
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
-          if (this.userData.Role == "1") {
-            this.router.navigate(['/a-dashboard']);
-          }
-          else if (this.userData.Role == "0") {
-            this.router.navigate(['/c-dashboard']);
-          } else {
+          if (this.userData.Role != "1" && this.userData.Role != "0") {
             console.error("Error logging in.");
             this.router.navigate(['/'])
+          } else {
+            if (this.userData.Role == "1") {
+              this.router.navigate(['/a-dashboard']);
+            }
+            else if (this.userData.Role == "0") {
+              this.router.navigate(['/c-dashboard']);
+            }
+
+            this.user.next(this.userData)
+            sessionStorage.setItem('userData', JSON.stringify(this.userData))
           }
         });
       })
+  }
+
+  autoLogin() {
+    const userData = sessionStorage.getItem('userData');
+    if (!userData) {
+      this.user.next(null);
+      return;
+    }
+    this.user.next(userData)
+    this.userData = JSON.parse(userData) as User;
   }
 
   emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
@@ -75,6 +96,7 @@ export class AuthService {
       this.userData = this.emptyUserData;
       this.isLogin = false;
       this.roleAs = '';
+      sessionStorage.clear();
       this.router.navigate(['/']);
     });
   }
@@ -82,21 +104,18 @@ export class AuthService {
   deleteUser() {
     if (this.isLoggedIn) {
       this.aAuth.currentUser
-      .then(value => {
-        value?.delete()
-        .then(value2 => {
-          this.userService.deleteUser(value.uid).subscribe(deletedUser => {
-            console.log("User deleted from firebase and mongoDB! Returning to signin page.");
-            this.userData = this.emptyUserData;
-            this.isLogin = false;
-            this.roleAs = '';
-            this.router.navigate(['/signin']);
-          });
+        .then(value => {
+          value?.delete()
+            .then(value2 => {
+              this.userService.deleteUser(value.uid).subscribe(deletedUser => {
+                console.log("User deleted from firebase and mongoDB! Returning to signin page.");
+                this.logout();
+              });
+            })
         })
-      })
-      .catch(error => {
-        console.log('Cant delete account from firebase: ', error);
-      });
+        .catch(error => {
+          console.log('Cant delete account from firebase: ', error);
+        });
     }
   }
 
@@ -105,7 +124,8 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean { //Gets a boolean on whether a user is logged in or not.
-    if (this.userData !== undefined) {
+    if (sessionStorage.getItem("userData")) {
+      console.log('user is still logged in');
       return true;
     }
     return false;
