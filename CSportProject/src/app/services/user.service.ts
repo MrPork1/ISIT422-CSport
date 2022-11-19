@@ -47,4 +47,8 @@ export class UserService {
   deleteUser2(ID: string): Observable<User> {
     return this.http.delete<User>(this.serverURL + "/DeleteUser2/" + ID, httpOptions);
   }
+
+  getMongoStatus(): Observable<string> {
+    return this.http.get<string>(this.serverURL + "/ConnectionStatus", httpOptions);
+  }
 }

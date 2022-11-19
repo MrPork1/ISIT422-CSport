@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; //Import fireauth
 import { Router } from '@angular/router'; //Import router
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, first } from 'rxjs';
 import { User } from '../User';
 import { UserService } from './user.service';
 
@@ -19,6 +19,8 @@ export class AuthService {
 
   isLogin: boolean = false;
   roleAs: string = "Customer";
+
+  dbStatus: string = ""
 
   user = new BehaviorSubject<any>(null);
 
@@ -74,15 +76,20 @@ export class AuthService {
   }
 
   emailSignUp(email: string, password: string, user: User) { //Sign up with email and password.
-    this.aAuth.createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        //Add mongoDB user here.
-        this.addUserToMongoDB(value.user!.uid, user);
-        this.router.navigate(['/signin']);
-      })
-      .catch(error => {
-        console.log('Something went wrong: ', error);
-      });
+    this.userService.getMongoStatus().subscribe(data => {
+      this.dbStatus = data;
+      if (this.dbStatus === "Connected!") {
+        this.aAuth.createUserWithEmailAndPassword(email, password)
+          .then(value => {
+            //Add mongoDB user here.
+            this.addUserToMongoDB(value.user!.uid, user);
+            this.router.navigate(['/signin']);
+          })
+          .catch(error => {
+            console.log('Something went wrong: ', error);
+          });
+      }
+    });
   }
 
   private addUserToMongoDB(uid: string, user: User) {
