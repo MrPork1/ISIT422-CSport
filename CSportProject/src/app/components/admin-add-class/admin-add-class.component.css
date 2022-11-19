@@ -1,73 +1,70 @@
-.add-form {
-    margin-bottom: 40px;
-  }
-
-.form-control {
-  margin: 20px 0;
-  
+.form-control{
+  position: relative;
+  border-left: none;
+  border-right: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.form-control label {
+.btn-block{
+  margin-bottom: 10px;
+}
+
+.add-form{
+  border-top: none;
+  border: 2px solid #fff;
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.5;
+  margin: 20px 430px ;
+}
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+button {
+  background: none;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  color: #fff;
   display: block;
-}
-  
-.form-control input {
-  width: 30%;
-  height: 20px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
-  display:inline-block;
-
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 2em 6em;
+  position: relative;
+  text-transform: uppercase;
 }
 
-.btn-block {
-  display: flex;
-  width: 10%;
+button::before,
+button::after {
+  background: #fff;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: greenyellow;
+}
+
+/* BUTTON 1 */
+.btn-1::after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.btn-1:hover:after {
+  height: 100%;
 }
 
 
-.wrap {
-  display: flex;
-}
 
-.btn-5 {
-  width: 130px;
-  height: 40px;
-  line-height: 42px;
-  padding: 0;
-  border: none;
-  background: rgb(255,27,0);
-background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
-}
-.btn-5:hover {
-  color: #f0094a;
-  background: transparent;
-   box-shadow:none;
-}
-.btn-5:before,
-.btn-5:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #f0094a;
-  box-shadow:
-   -1px -1px 5px 0px #fff,
-   7px 7px 20px 0px #0003,
-   4px 4px 5px 0px #0002;
-  transition:400ms ease all;
-}
-.btn-5:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.btn-5:hover:before,
-.btn-5:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}

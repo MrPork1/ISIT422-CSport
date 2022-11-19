@@ -12,13 +12,15 @@
 </div> -->
 
 
-
 <div *ngIf="user_Class_Id == class._id">
-    {{class.Name}} <fa-icon 
+    <br>
+    <strong>{{class.Name}} </strong>
+     <fa-icon 
     (click)="onSendClassInfo(class)"
-    [ngStyle]="{'color':'red'}" [icon]="faTimes"
+    [ngStyle]="{'color':'red'}" [icon]="faTrashCan"
     ></fa-icon>
 </div>
+
 
 
 <!-- <div *ngIf="user_Class_Id == class._id">
