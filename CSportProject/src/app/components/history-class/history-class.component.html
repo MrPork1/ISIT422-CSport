@@ -2,7 +2,7 @@
   <h2 *ngIf="tempClasses.length > 0">Class History</h2>
   <h2 *ngIf="tempClasses.length <= 0">No Class History</h2>
 
-    <table mat-table [dataSource]="tempClasses" class="mat-elevation-z8">
+    <table mat-table [dataSource]="tempClasses" class="mat-elevation-z8" *ngIf="tempClasses.length > 0">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let class">{{class.Name}}</mat-cell>

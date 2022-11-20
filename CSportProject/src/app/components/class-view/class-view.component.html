@@ -51,7 +51,7 @@
   </table>
 </div> -->
 
-<div class="grid-container">
+<div class="grid-container" *ngIf="tempClasses.length > 0">
   <div *ngFor="let class of tempClasses" class="grid-item">
     <app-class-view-card [class]="class" (returnClassDetails)="showPayment($event)"></app-class-view-card>
   </div>
