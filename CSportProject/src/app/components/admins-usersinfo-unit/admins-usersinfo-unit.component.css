@@ -5,13 +5,13 @@
 
   .flex-child-element-edit{
     flex:2;
-    border: 2px solid red;
+    border: 2px solid white;
     margin: 10px;
     max-height: 250;
   }
   .flex-child-element-add{
     flex: 2;
-    border: 2px solid red;
+    border: 2px solid white;
     margin: 10px;
     /* display: none; */
 
@@ -21,7 +21,7 @@
 .flex-child-element-add-buttonAndTable{
   display: flex;
   flex: 5;
-  border: 2px solid red;
+  border: 2px solid white;
   margin: 10px;
   float : left;
 }
@@ -76,19 +76,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #input{
   width: 170px;
   height: 55px;
@@ -117,18 +104,38 @@ textarea {
     box-shadow: 1px 1px 1px #999;
 }
 
+
+.Initaltext{
+  margin-top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
 .circle {
-  margin-left: 150px;
-  margin-top: 80px;
+  margin-left: 11%;
+  margin-top: 5%;
   display: block;
-  height: 75px;
-  width: 75px;
+  height: 100px;
+  width: 100px;
   background-color: #555;
   border-radius: 50%;
   position: absolute;
   text-align: center;
   color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .button{
   background-color: #4CAF50; /* Green */
@@ -151,3 +158,19 @@ textarea {
   display: none;
 }
 
+
+
+.btn-Update{
+
+  background-color: #4CAF50; /* Green */
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+
+  border: 2px solid #000;
+  margin: 5px;
+
+  margin-left: 25%;
+}
