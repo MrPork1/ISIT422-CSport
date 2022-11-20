@@ -1,20 +1,75 @@
-<h2>Class History</h2>
+<div *ngIf="!loading">
+  <h2 *ngIf="tempClasses.length > 0">Class History</h2>
+  <h2 *ngIf="tempClasses.length <= 0">No Class History</h2>
 
-<table class="table" *ngIf="user.ClassHistory.length > 0">
-  <tr>
-    <th>Name</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>Seats</th>
-  </tr>
-  <tr *ngFor="let class of tempClasses">
-    <td>{{class.Name}}</td>
-    <td>{{class.STime}}</td>
-    <td>{{class.ETime}}</td>
-    <td>{{class.Descript}}</td>
-    <td>{{class.Date}}</td>
-    <td>{{class.ClassSeats}}</td>
-  </tr>
-</table>
+    <table mat-table [dataSource]="tempClasses" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.Name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.Descript}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="time">
+      <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.STime}} - {{class.ETime}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.Date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+      <mat-cell *matCellDef="let class">${{class.Price}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+  </table>
+  
+  <!-- <table mat-table [dataSource]="tempClasses" multiTemplateDataRows class="mat-elevation-z8">
+
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-diagram">
+            <div class="example-element-position"> {{element.Name}} </div>
+            <div class="example-element-symbol"> {{element.Descript}} </div>
+            <div class="example-element-name"> {{element.STime}} </div>
+            <div class="example-element-weight"> {{element.Date}} </div>
+            <div class="example-element-weight"> {{element.Price}} </div>
+          </div>
+          <div class="example-element-description">
+            {{element.Name}}
+            <span class="example-element-description-attribution"> -- Wikipedia </span>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  </table> -->
+</div>
