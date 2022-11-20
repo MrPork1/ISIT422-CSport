@@ -18,7 +18,7 @@ export class AdminClassDbCallComponent implements OnInit {
   class !: Class;
   @Input()
   user_Class_Id !: string;
-
+  testnum : number = 0
   @Output()
   sendClassInfo : EventEmitter<Class> =new EventEmitter();
 
@@ -35,6 +35,6 @@ export class AdminClassDbCallComponent implements OnInit {
   onSendClassInfo(class1 : Class){
     this.sendClassInfo.emit(class1);
   }
-  
+
 
 }

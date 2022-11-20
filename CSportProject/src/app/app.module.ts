@@ -44,7 +44,6 @@ import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/a
 import { CalenderDayComponent } from './components/calender-day/calender-day.component';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import {GooglePayButtonModule} from '@google-pay/button-angular';
-import { AdminTotalPriceComponent } from './components/admin-total-price/admin-total-price.component';
 
 
 @NgModule({
@@ -71,7 +70,6 @@ import { AdminTotalPriceComponent } from './components/admin-total-price/admin-t
     CalenderDayComponent,
     TransactionHistoryComponent,
     GooglePayComponent,
-    AdminTotalPriceComponent,    
   ],
   
   imports: [
