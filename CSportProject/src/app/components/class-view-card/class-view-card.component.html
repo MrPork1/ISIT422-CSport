@@ -1,0 +1,20 @@
+<mat-card class="mat-card">
+    <mat-card-header class="mat-card-header">
+      <mat-card-title>{{class.Name}}</mat-card-title>
+      <mat-card-subtitle>{{class.Date}} at {{class.STime}} - {{class.ETime}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="mat-card-content">
+      <p>
+        {{class.Descript}}
+      </p>
+      <p>
+        Remaining Seats: {{class.ClassSeats}}
+      </p>
+      <p>
+        Price: ${{class.Price}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button (click)="getClassId(class._id!)">ENROLL FOR ${{class.Price}}</button>
+    </mat-card-actions>
+  </mat-card>

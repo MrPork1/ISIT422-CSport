@@ -51,6 +51,7 @@ export class ClassViewComponent implements OnInit {
   }
 
   showPayment(classId: string){
+    console.log('this ran');
     this.selectedClass = this.tempClasses.find(x => x._id === classId);
     this.showEnroll = true;
   }
