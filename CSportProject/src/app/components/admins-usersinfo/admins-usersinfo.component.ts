@@ -43,8 +43,4 @@ export class AdminsUsersinfoComponent implements OnInit {
   deleteUserAccount(user_1 : User){
     this.userService.deleteUser2(user_1.UID).subscribe(() => (this.users = this.users.filter((t) => t.UID !== user_1.UID)));
   }
-  test_check_include_classID2(){
-    console.log("finals");
-  }
-
 }

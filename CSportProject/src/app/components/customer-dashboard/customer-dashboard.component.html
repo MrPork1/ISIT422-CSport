@@ -3,6 +3,9 @@
     <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
     <!-- <div class="circle">
+<div class="row">
+  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+  <div class="circle">
     <h1>{{fName1}}{{lName1}}</h1>
   </div>
 </div> -->
@@ -22,27 +25,27 @@
 <input type="button" class="btn btn-primary" (click)="setView(3)" value="View Available Classes">
 <input type="button" class="btn btn-primary" (click)="setView(4)" value="View Past Classes">
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()"> -->
-
-
-    <hr class="rounded">
-
-    <div *ngIf="views[0]">
-      <app-calender></app-calender>
-    </div>
-
-    <div *ngIf="views[1]">
-      <app-account></app-account>
-    </div>
-
-    <div *ngIf="views[2]">
-      <app-enrolled-classes></app-enrolled-classes>
-    </div>
-
-    <div *ngIf="views[3]">
-      <app-class-view></app-class-view>
-    </div>
-
-    <div *ngIf="views[4]">
-      <app-history-class></app-history-class>
-    </div>
   </div>
+
+  <hr class="rounded">
+
+  <div *ngIf="views[0]">
+    <app-calender></app-calender>
+  </div>
+
+  <div *ngIf="views[1]">
+    <app-account></app-account>
+  </div>
+
+  <div *ngIf="views[2]">
+    <app-enrolled-classes></app-enrolled-classes>
+  </div>
+
+  <div *ngIf="views[3]">
+    <app-class-view></app-class-view>
+  </div>
+
+  <div *ngIf="views[4]">
+    <app-history-class></app-history-class>
+  </div>
+</div>

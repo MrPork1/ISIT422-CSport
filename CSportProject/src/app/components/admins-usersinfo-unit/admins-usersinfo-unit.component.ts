@@ -23,8 +23,9 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
   n_admin_note !: string;
   birthday !: string;
   user_status !: string;
-
-  class_TotalPrice !: number;
+  color : string = "red";
+  count : number = 0;
+  dic_enrolled_Class = new Set();
 
 
   @Input()
@@ -111,5 +112,16 @@ export class AdminsUsersinfoUnitComponent implements OnInit {
       
     this.onDeleteUserClass.emit(user_1);
   }
+
+//userclass_id : string, class_1 :Class
+  // totalPriceCal(user_1 : User){
+  //     // // Dictionary dose not allow the same key value
+  //     // if(userclass_id == class_1._id){
+  //     //   this.dic_enrolled_Class.add(class_1.Price);
+  //     //   console.log( userclass_id + "   " + this.dic_enrolled_Class.forEach((value) => console.log(value)));
+  //     // }
+  //     if(user_1.UID =="8VXT9nQ5PqgkkWFWn1FrTFacFul1")
+  //     this.count++;
+  // }
 
 }

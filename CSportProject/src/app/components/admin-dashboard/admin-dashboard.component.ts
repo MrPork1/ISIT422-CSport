@@ -34,6 +34,12 @@ export class AdminDashboardComponent implements OnInit {
     private classesService: ClassesService) {}
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('viewIndex')) {
+      let viewNum = +sessionStorage.getItem('viewIndex')!;
+      this.setView(viewNum);
+    } else {
+      this.setView(0);
+    }
   }
 
   setView(num: number): void {
@@ -42,6 +48,7 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     this.views[num] = true;
+    sessionStorage.setItem('viewIndex', num.toString());
   }
 
   getUsers() {

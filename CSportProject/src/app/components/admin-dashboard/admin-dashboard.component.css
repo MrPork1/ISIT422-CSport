@@ -1,13 +1,47 @@
 body{
     background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
 }
-.server {
-    background-color: green;
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: purple;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li.right {
+    float:right;
+  }
+  
+  li {
+    display: block;
     color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
 
-}
-
-hr.rounded {
-    border-top: 8px solid #bbb;
-    border-radius: 5px;
+  li:hover {
+    cursor: pointer;
+  }
+  
+  li:hover:not(.active) {
+    background-color: plum;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
+  
+  @media screen and (max-width: 700px) {
+    ul li.right, 
+    ul li {float: none;}
   }

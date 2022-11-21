@@ -14,11 +14,15 @@
 
 <div *ngIf="user_Class_Id == class._id">
     <br>
-    <strong>{{class.Name}} </strong>
-     <fa-icon 
-    (click)="onSendClassInfo(class)"
-    [ngStyle]="{'color':'red'}" [icon]="faTrashCan"
-    ></fa-icon>
+    <table>
+        <td><strong>{{class.Name}} </strong></td>
+        <td><strong>${{class.Price}} </strong></td>
+        <td><fa-icon 
+            (click)="onSendClassInfo(class)"
+            [ngStyle]="{'color':'red'}" [icon]="faTrashCan"
+            ></fa-icon>
+        </td>
+    </table>
 </div>
 
 

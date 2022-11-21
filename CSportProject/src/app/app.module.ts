@@ -35,6 +35,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule }from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
@@ -43,7 +44,7 @@ import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/a
 import { CalenderDayComponent } from './components/calender-day/calender-day.component';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import {GooglePayButtonModule} from '@google-pay/button-angular';
-import { AdminTotalPriceComponent } from './components/admin-total-price/admin-total-price.component';
+import { ClassViewCardComponent } from './components/class-view-card/class-view-card.component';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import { AdminTotalPriceComponent } from './components/admin-total-price/admin-t
     CalenderDayComponent,
     TransactionHistoryComponent,
     GooglePayComponent,
-    AdminTotalPriceComponent,    
+    ClassViewCardComponent,
   ],
   
   imports: [
@@ -89,6 +90,7 @@ import { AdminTotalPriceComponent } from './components/admin-total-price/admin-t
     ReactiveFormsModule,
     MatCardModule,
     MatTableModule,
+    MatExpansionModule,
     GooglePayButtonModule,
     // IgxDropDownModule,
   ],

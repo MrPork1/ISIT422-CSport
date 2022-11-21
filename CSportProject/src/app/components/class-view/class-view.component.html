@@ -1,7 +1,7 @@
 <div *ngIf="!loading" class="Display">
   <h2 *ngIf="tempClasses.length > 0">Available Classes</h2>
   <h2 *ngIf="tempClasses.length <= 0">No Classes Available</h2>
-  
+
   <!-- <table mat-table [dataSource]="tempClasses" style="width:100%;">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
@@ -30,7 +30,7 @@
 
   </table> -->
 
-  <table class="table" *ngIf="tempClasses.length > 0" style="width: 100%;">
+  <!-- <table class="table" *ngIf="tempClasses.length > 0" style="width: 100%;">
     <tr>
       <th>Name</th>
       <th>Start time</th>
@@ -49,15 +49,22 @@
       <button *ngIf="canEnrollForClass" (click)="showPayment(class._id!)">Enroll</button>
     </tr>
   </table>
+</div> -->
+
+<div class="grid-container" *ngIf="tempClasses.length > 0">
+  <div *ngFor="let class of tempClasses" class="grid-item">
+    <app-class-view-card [class]="class" (returnClassDetails)="showPayment($event)"></app-class-view-card>
+  </div>
 </div>
 
 <div *ngIf="showEnroll">
   <h2>Enrolling in {{selectedClass!.Name}}</h2>
   <h3>Price: {{selectedClass!.Price}}</h3>
 
-<button (click)="Cancel()">Cancel Transaction</button>
-<button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)">Complete Transaction</button>
-<div>
-  
+  <button (click)="Cancel()">Cancel Transaction</button>
+  <button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)">Complete Transaction</button>
+  <div>
+
+  </div>
 </div>
-</div>
+

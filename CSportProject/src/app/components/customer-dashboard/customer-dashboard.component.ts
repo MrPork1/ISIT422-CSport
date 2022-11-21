@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
+import { Class } from 'src/app/Classes';
+import { ClassViewComponent } from '../class-view/class-view.component';
+import { ClassesService } from 'src/app/services/classes.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -17,21 +21,55 @@ export class CustomerDashboardComponent implements OnInit {
   // lName1!: string;
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private classService: ClassesService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    // this.fName1 = this.user.Fname.substring(0, 1).toUpperCase();
-    // this.lName1 = this.user.Lname.substring(0, 1).toUpperCase();
-
-    this.setView(0)
+    if (sessionStorage.getItem('viewIndex')) {
+      let viewNum = +sessionStorage.getItem('viewIndex')!;
+      this.setView(viewNum);
+    } else {
+      this.setView(0);
+    }
   }
 
   setView(num: number): void {
     for (let i = 0; i < this.views.length; i++) {
       this.views[i] = false;
     }
+    
     this.views[num] = true;
+    sessionStorage.setItem('viewIndex', num.toString());
+  }
+
+  checkClassesForPastDate() {
+    if (this.user.ClassIDList.length <= 0) {
+      return;
+    }
+    this.classService.getAllClasses().subscribe(x => this.checkClassList(x));
+  }
+
+  checkClassList(classes: Class[]) {
+    var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
+
+    var date = new Date();
+
+    tempClasses.forEach(value => {
+      const newDate = new Date(value.Date);
+      if (newDate.toDateString() > date.toDateString()) {
+        const classIndex = this.user.ClassIDList.indexOf(value._id!);
+        if (classIndex !== -1) {
+          this.user.ClassIDList.splice(classIndex, 1);
+          this.user.ClassHistory.push(value._id!); 
+        }
+      }
+    });
+
+    this.userService.editUser(this.user).subscribe(x => {
+      this.authService.userData = x;
+    })
   }
 }
