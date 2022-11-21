@@ -1,17 +1,18 @@
 <body>
+  <div class="row" *ngIf="authService.userData as user">
+    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
 
-<div class="row" *ngIf="authService.userData as user">
-  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
-</div>
+    <ul>
+      <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Account</li>
+      <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Manage Classes</li>
+      <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Manage Users</li>
+      <li class="right" (click)="authService.logout()">Sign out</li>
+    </ul>
 
-<input type="button" class="btn btn-primary" value="Account" (click)="setView(0)">
-<input type="button" class="btn btn-primary" value="Manage Classes" (click)="setView(1)">
-<input type="button" class="btn btn-primary" value="Manager Users" (click)="setView(2)">
-<input type="button" class="btn btn-primary" value="Google Pay" (click)="setView(3)">
-<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()">
+  </div>
 
-<hr class="rounded">
+  <hr class="rounded">
 
   <div *ngIf="views[0]">
     <app-account></app-account>
@@ -20,10 +21,8 @@
   <div *ngIf="views[1]">
     <app-admins></app-admins>
   </div>
-  
+
   <div *ngIf="views[2]">
     <app-admins-usersinfo></app-admins-usersinfo>
   </div>
-  <div *ngIf="views[3]">
-    <app-google-pay></app-google-pay>
-  </div>
+</body>
