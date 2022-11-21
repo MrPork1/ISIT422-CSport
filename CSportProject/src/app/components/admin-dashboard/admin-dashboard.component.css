@@ -28,6 +28,10 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
   }
+
+  li:hover {
+    cursor: pointer;
+  }
   
   li:hover:not(.active) {
     background-color: plum;
