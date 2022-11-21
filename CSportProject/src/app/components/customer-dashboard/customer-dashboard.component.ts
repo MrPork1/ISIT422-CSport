@@ -28,14 +28,21 @@ export class CustomerDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    this.setView(0)
+    if (sessionStorage.getItem('viewIndex')) {
+      let viewNum = +sessionStorage.getItem('viewIndex')!;
+      this.setView(viewNum);
+    } else {
+      this.setView(0);
+    }
   }
 
   setView(num: number): void {
     for (let i = 0; i < this.views.length; i++) {
       this.views[i] = false;
     }
+    
     this.views[num] = true;
+    sessionStorage.setItem('viewIndex', num.toString());
   }
 
   checkClassesForPastDate() {
