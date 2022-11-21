@@ -13,6 +13,10 @@ li {
   float: left;
 }
 
+li.right {
+  float:right;
+}
+
 li {
   display: block;
   color: white;
@@ -27,4 +31,9 @@ li:hover:not(.active) {
 
 .active {
   background-color: #04AA6D;
+}
+
+@media screen and (max-width: 700px) {
+  ul li.right, 
+  ul li {float: none;}
 }
