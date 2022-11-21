@@ -5,6 +5,7 @@
   max-width: 1000px;
   text-align: center;
   color: black;
+  margin: auto;
 }
 /* purple: #9d4ac5 */
 .grid-container {
@@ -40,4 +41,42 @@
 
 .otherDays {
   color: gray;
+}
+
+.days .event {
+  width: auto;
+  height: auto;
+  color: white;
+  font-size: 0.5vw;
+  background-color: green;
+}
+
+.days .enrolledEvents {
+  width: auto;
+  height: auto;
+  color: white;
+  font-size: 0.5vw;
+  background-color: blue;
+}
+
+.days .pastEvents {
+  width: auto;
+  height: auto;
+  color: white;
+  font-size: 0.5vw;
+  background-color: gray;
+}
+
+.grid-header {
+  position: relative;
+}
+
+.legend {
+  position: absolute;
+  top: -16px;
+  right: 0px;
+}
+
+button {
+  width: 10%;
 }
