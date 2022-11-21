@@ -42,7 +42,6 @@ ul li ul {
   display: none;
   position: absolute;
   background-color: purple;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -57,4 +56,21 @@ ul li ul:hover {
 ul li ul li {
   clear: both;
   width: 100%;
+  text-align: start;
+}
+
+@media screen and (max-width: 700px) {
+  ul li.right, 
+  ul li { 
+    float: none;
+    display: block;
+  }
+  ul li ul {
+    display: none;
+  }
+  ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
 }
