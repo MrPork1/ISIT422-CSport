@@ -11,7 +11,7 @@ import { User } from 'src/app/User';
 })
 export class AccountComponent implements OnInit {
 
-  views = [false, false];
+  views = [true, false];
 
   user !: User;
   email !: string;
@@ -19,6 +19,7 @@ export class AccountComponent implements OnInit {
   lname !: string;
   bday !: string;
   role !: string;
+  drop : string = "Options";
 
   constructor(
     private authService: AuthService,
@@ -30,8 +31,18 @@ export class AccountComponent implements OnInit {
   }
 
   setView(num: number): void {
+    console.log(num)
     for (let i = 0; i < this.views.length; i++) {
       this.views[i] = false;
+    }
+    if(num == 0){
+      this.drop = "Details";
+    }
+    if(num == 1){
+      this.drop = "Edit Profile";
+    }
+    if(num == 2){
+      this.drop = "Transaction History";
     }
 
     this.views[num] = true;

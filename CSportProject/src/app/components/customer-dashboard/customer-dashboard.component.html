@@ -1,21 +1,22 @@
-<div class="row">
-  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
+<div class="Display">
+  <div class="row">
+    <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
-  <!-- <div class="circle">
+    <!-- <div class="circle">
     <h1>{{fName1}}{{lName1}}</h1>
   </div>
 </div> -->
 
-<ul>
-  <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Home</li>
-  <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Account</li>
-  <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Enrolled Classes</li>
-  <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Available Classes</li>
-  <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Past Classes</li>
-  <li style="float:right" (click)="authService.logout()">Sign out</li>
-</ul>
+    <ul>
+      <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Home</li>
+      <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Account</li>
+      <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Enrolled Classes</li>
+      <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Available Classes</li>
+      <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Past Classes</li>
+      <li style="float:right" (click)="authService.logout()">Sign out</li>
+    </ul>
 
-<!-- <input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
+    <!-- <input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
 <input type="button" class="btn btn-primary" (click)="setView(1)" value="Account">
 <input type="button" class="btn btn-primary" (click)="setView(2)" value="Show Enrolled Classes">
 <input type="button" class="btn btn-primary" (click)="setView(3)" value="View Available Classes">
@@ -23,26 +24,25 @@
 <input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()"> -->
 
 
-<hr class="rounded">
+    <hr class="rounded">
 
-<div *ngIf="views[0]">
-  <app-calender></app-calender>
-</div>
+    <div *ngIf="views[0]">
+      <app-calender></app-calender>
+    </div>
 
-<div *ngIf="views[1]">
-  <app-account></app-account>
-</div>
+    <div *ngIf="views[1]">
+      <app-account></app-account>
+    </div>
 
-<div *ngIf="views[2]">
-  <app-enrolled-classes></app-enrolled-classes>
-</div>
+    <div *ngIf="views[2]">
+      <app-enrolled-classes></app-enrolled-classes>
+    </div>
 
-<div *ngIf="views[3]">
-  <app-class-view></app-class-view>
-</div>
+    <div *ngIf="views[3]">
+      <app-class-view></app-class-view>
+    </div>
 
-<div *ngIf="views[4]">
-  <app-history-class></app-history-class>
-</div>
-
-
+    <div *ngIf="views[4]">
+      <app-history-class></app-history-class>
+    </div>
+  </div>

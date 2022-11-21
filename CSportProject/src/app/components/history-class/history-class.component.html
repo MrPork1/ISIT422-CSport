@@ -1,20 +1,22 @@
-<h2>Class History</h2>
+<div class="Display">
+  <h2>Class History</h2>
 
-<table class="table" *ngIf="user.ClassHistory.length > 0">
-  <tr>
-    <th>Name</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>Seats</th>
-  </tr>
-  <tr *ngFor="let class of tempClasses">
-    <td>{{class.Name}}</td>
-    <td>{{class.STime}}</td>
-    <td>{{class.ETime}}</td>
-    <td>{{class.Descript}}</td>
-    <td>{{class.Date}}</td>
-    <td>{{class.ClassSeats}}</td>
-  </tr>
-</table>
+  <table class="table" *ngIf="user.ClassHistory.length > 0">
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Seats</th>
+    </tr>
+    <tr *ngFor="let class of tempClasses">
+      <td>{{class.Name}}</td>
+      <td>{{class.STime}}</td>
+      <td>{{class.ETime}}</td>
+      <td>{{class.Descript}}</td>
+      <td>{{class.Date}}</td>
+      <td>{{class.ClassSeats}}</td>
+    </tr>
+  </table>
+</div>
