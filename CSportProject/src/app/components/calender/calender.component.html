@@ -23,16 +23,34 @@
         <div class="grid-item days otherDays" *ngFor="let day of daysInterfacePreviousDays">
             <app-calender-day [day]="day" (getDayDetails)="returnDay($event)"></app-calender-day>
         </div>
-        <div class="grid-item days" *ngFor="let day of daysInterface">
+        <div class="grid-item days tooltip" *ngFor="let day of daysInterface">
             <app-calender-day [day]="day" (getDayDetails)="returnDay($event)"></app-calender-day>
             <div *ngFor="let classList of day.classIDsList">
-                <div class="enrolledEvents">{{classList}}</div>
+                <div class="enrolledEvents">{{classList.STime}} | {{classList.Name}}</div>
             </div>
             <div *ngFor="let classList of day.classIDsPast">
-                <div class="pastEvents">{{classList}}</div>
+                <div class="pastEvents">{{classList.STime}} | {{classList.Name}}</div>
             </div>
             <div *ngFor="let classList of day.classIDsAvailable">
-                <div class="event">{{classList}}</div>
+                <div class="event">{{classList.STime}} | {{classList.Name}}</div>
+            </div>
+
+            <div class="tooltiptext" *ngFor="let classDetails of day.classIDsList">
+                <p>Name: {{classDetails.Name}}</p>
+                <p>Description: {{classDetails.Descript}}</p>
+                <p>Time: {{classDetails.STime}} - {{classDetails.ETime}}</p>
+                <p>Date: {{classDetails.Date}}</p>
+                <p>Remaining Seats: {{classDetails.ClassSeats}}</p>
+                <p>Price: ${{classDetails.Price}}</p>
+            </div>
+
+            <div class="tooltiptext" style="background-color:green ;" *ngFor="let classDetails of day.classIDsAvailable">
+                <p>Name: {{classDetails.Name}}</p>
+                <p>Description: {{classDetails.Descript}}</p>
+                <p>Time: {{classDetails.STime}} - {{classDetails.ETime}}</p>
+                <p>Date: {{classDetails.Date}}</p>
+                <p>Remaining Seats: {{classDetails.ClassSeats}}</p>
+                <p>Price: ${{classDetails.Price}}</p>
             </div>
         </div>
 

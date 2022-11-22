@@ -148,8 +148,7 @@ export class CalenderComponent implements OnInit {
       const dateHere = new Date(matchingClassID?.Date!);
       const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
       if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsList?.push(
-          matchingClassID?.STime + " | " + matchingClassID?.Name);
+        this.daysInterface[dateHere.getUTCDate() - 1].classIDsList?.push(matchingClassID!);
       }
     }
 
@@ -160,8 +159,7 @@ export class CalenderComponent implements OnInit {
       const dateHere = new Date(matchingClassID?.Date!);
       const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
       if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(
-          matchingClassID?.STime + " | " + matchingClassID?.Name);
+        this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(matchingClassID!);
       }
     }
 
@@ -171,8 +169,7 @@ export class CalenderComponent implements OnInit {
       const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
       console.log(utcDateHere, 'utc date');
       if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsAvailable?.push(
-          x.STime + " | " + x.Name);
+        this.daysInterface[dateHere.getUTCDate() - 1].classIDsAvailable?.push(x);
       }
     })
   }

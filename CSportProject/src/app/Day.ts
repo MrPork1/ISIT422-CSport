@@ -1,9 +1,11 @@
+import { Class } from "./Classes";
+
 export interface Day {
     id: number,
     date: Date,
     utcDate: string,
     currentDay?: boolean,
-    classIDsList?: string[],
-    classIDsPast?: string[],
-    classIDsAvailable?: string[]
+    classIDsList?: Class[],
+    classIDsPast?: Class[],
+    classIDsAvailable?: Class[]
 }
