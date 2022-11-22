@@ -90,15 +90,18 @@ button {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 300px;
-  background-color: blue;
-  color: #fff;
-  text-align: center;
+  background-color:purple;
+  color: white;
+  text-align: start;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
+  font-size: 15px;
   z-index: 1;
   bottom: 100%;
   margin-left: -50%;
+  box-sizing:border-box;
+  box-shadow:0 1px 8px rgba(0,0,0,0.5);
 }
 
 .tooltip .tooltiptext::after {
