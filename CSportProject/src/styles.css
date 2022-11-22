@@ -18,11 +18,15 @@ input {
 }
 
 body {
+    height: fit-content;
     margin: 0;
+    background-repeat: no-repeat;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: purple;
+    background-attachment: fixed;
     /* For browsers that do not support gradients */
-    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+    background-image: linear-gradient(to bottom right, purple, rgb(184, 82, 184));
+    
 }
 
 label {
@@ -126,7 +130,7 @@ button {
 
 /* Links inside the dropdown */
 #drpbtn {
-    color: linear-gradient(right, purple, black);
+    color: linear-gradient(to right, purple, black);
     text-decoration: none;
     display: block;
     border: none;
@@ -135,7 +139,7 @@ button {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: linear-gradient(right, purple, black);
+    background-color: linear-gradient(to right, purple, black);
 }
 
 /* Show the dropdown menu on hover */
