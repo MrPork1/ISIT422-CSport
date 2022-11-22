@@ -30,6 +30,10 @@ export class EnrolledClassesComponent implements OnInit {
     public classesService: ClassesService,
     public transactionService: PaymentService
   ) { }
+// Pipe sets up the code to unsubscirbe after it finishes it's task
+// first postions ourseleves to the first set of data
+// subscribe allows us to do stuff from what comes out off "all transactions"
+
 
   ngOnInit(): void {
     this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.getUserHere(data));

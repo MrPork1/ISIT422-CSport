@@ -16,7 +16,7 @@
       <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Enrolled Classes</li>
       <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Available Classes</li>
       <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Past Classes</li>
-      <li style="float:right" (click)="authService.logout()">Sign out</li>
+      <li class="right" (click)="authService.logout()">Sign out</li>
     </ul>
 
     <!-- <input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
