@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; //Import fireauth
 import { Router } from '@angular/router'; //Import router
+import { Console } from 'console';
 import { BehaviorSubject, first } from 'rxjs';
 import { User } from '../User';
 import { UserService } from './user.service';
@@ -79,6 +80,7 @@ export class AuthService {
     this.userService.getMongoStatus().subscribe(data => {
       this.dbStatus = data;
       if (this.dbStatus === "Connected!") {
+        console.log("say something please");
         this.aAuth.createUserWithEmailAndPassword(email, password)
           .then(value => {
             //Add mongoDB user here.
