@@ -1,7 +1,7 @@
-<div *ngIf="!loading">
+<div *ngIf="!loading" class="Display">
   <h2 *ngIf="tempClasses.length > 0">Enrolled Classes</h2>
   <h2 *ngIf="tempClasses.length <= 0">Not Currently Enrolled in any Classes</h2>
-  
+
   <table class="table" *ngIf="tempClasses.length > 0" style="width: 100%;">
     <tr>
       <th>Name</th>

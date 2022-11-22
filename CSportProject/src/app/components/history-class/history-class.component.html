@@ -1,8 +1,8 @@
-<div *ngIf="!loading">
+<div *ngIf="!loading" class="Display">
   <h2 *ngIf="tempClasses.length > 0">Class History</h2>
   <h2 *ngIf="tempClasses.length <= 0">No Class History</h2>
 
-    <table mat-table [dataSource]="tempClasses" class="mat-elevation-z8" *ngIf="tempClasses.length > 0">
+  <table mat-table [dataSource]="tempClasses" class="mat-elevation-z8" *ngIf="tempClasses.length > 0">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let class">{{class.Name}}</mat-cell>
@@ -29,7 +29,7 @@
     <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
 
   </table>
-  
+
   <!-- <table mat-table [dataSource]="tempClasses" multiTemplateDataRows class="mat-elevation-z8">
 
     <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
