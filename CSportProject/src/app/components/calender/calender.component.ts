@@ -142,6 +142,7 @@ export class CalenderComponent implements OnInit {
 
   putEventsOnCalender(): void {
     for (var i = 0; i < this.user.ClassIDList.length; i++) {
+
       //1. class with matching ID
       var matchingClassID = this.classes.find(x => x._id === this.user.ClassIDList[i]);
       //2. get date and make event for html
