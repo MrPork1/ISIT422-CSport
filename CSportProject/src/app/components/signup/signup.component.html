@@ -14,33 +14,27 @@
             <mat-card-title id=title>Sign Up</mat-card-title>
           </div>
 
-
-
-          <div class="formGroup">
-
-            <input type="email" class="formControl" placeholder="Email" #userName [(ngModel)]="email" required>
+          <div class="border">
+            
+            <div id="label">Email</div>
+            <input type="email" class="signupinput" placeholder="Email" #userName [(ngModel)]="email" required>
           </div>
-          <div class="formGroup">
-
-            <input type="password" class="formControl" placeholder="Password" [(ngModel)]="password" #userPassword
+          <div class="border">
+            <div id="label">Password</div>
+            <input type="password" class="signupinput" placeholder="Password" [(ngModel)]="password" #userPassword
               required>
           </div>
-          <div class="formGroup">
-
-            <input type="text" class="formControl" placeholder="First name" #userFName [(ngModel)]="fname" required>
+          <div class="border">
+            <div id="label">First Name</div>
+            <input type="text" class="signupinput" placeholder="First name" #userFName [(ngModel)]="fname" required>
           </div>
-          <div class="formGroup">
-
-            <input type="text" class="formControl" placeholder="Last name" #userLName [(ngModel)]="lname">
+          <div class="border">
+            <div id="label">Last Name</div>
+            <input type="text" class="signupinput" placeholder="Last name" #userLName [(ngModel)]="lname">
           </div>
-          <div class="formGroup">
-
-            <input type="date" class="formControl" #userBday [(ngModel)]="bday">
-          </div>
-          <div class="formGroup">
-
-            <!-- <input type="checkbox" class="formControl" #userIsAdmin [(ngModel)]="isAdmin"> -->
-            <input type="text" class="formControl" #userIsAdmin placeholder="type 1 for admin" [(ngModel)]="role">
+          <div class="border">
+            <div id="label">Birthday</div>
+            <input type="date" class="signupinput" #userBday [(ngModel)]="bday">
           </div>
           <!-- Calling SignIn Api from AuthService -->
           <div>

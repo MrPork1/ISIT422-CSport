@@ -1,4 +1,4 @@
-<div id="dashboard" class="Display">
+<div id="dashboard">
   <div class="row">
     <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
@@ -33,19 +33,19 @@
     <app-calender></app-calender>
   </div>
 
-  <div *ngIf="views[1]">
+  <div *ngIf="views[1]" class="Display">
     <app-account></app-account>
   </div>
 
-  <div *ngIf="views[2]">
+  <div *ngIf="views[2]" class="Display">
     <app-enrolled-classes></app-enrolled-classes>
   </div>
 
-  <div *ngIf="views[3]">
+  <div *ngIf="views[3]" class="Display">
     <app-class-view></app-class-view>
   </div>
 
-  <div *ngIf="views[4]">
+  <div *ngIf="views[4]" class="Display">
     <app-history-class></app-history-class>
   </div>
 </div>

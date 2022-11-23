@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from '../../services/auth.service';
 import {User} from '../../User';
@@ -10,11 +11,16 @@ import {User} from '../../User';
 })
 export class SignupComponent implements OnInit {
 
+  signupForm = new FormGroup({
+    email : new FormControl(''),
+    password : new FormControl(''),
+  })
   email !: string;
   fname !: string;
   lname !: string;
   bday !: string;
   role !: string;
+  
 
   password !: string;
   
