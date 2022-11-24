@@ -1,16 +1,12 @@
 <div class="calender">
     <div class="grid-header">
         <button (click)="previousMonth()"><</button>
-        <button (click)="nextMonth()">></button><br>
         <button (click)="showCurrentMonth()" style="width:15%;">Current Month</button>
-        <h1>{{currentMonthString}} <br> {{currentYearString}}</h1>
-        <div class="legend">
-            <ul style="list-style-type: none;">
-                <li class="pastEventsColor" style="color: white;">History Classes</li>
-                <li class="enrolledEventsColor" style="color: white;">Currently Enrolled Classes</li>
-                <li class="eventColor" style="color: white;">Available Classes</li>
-            </ul>
-        </div>
+        <button (click)="nextMonth()">></button><br>
+        <h1>{{currentMonthString}} {{currentYearString}}</h1>
+        <p class="pastEventsColor" style="color: white;margin:0 15px;padding:0;">History Classes</p>
+        <p class="enrolledEventsColor" style="color: white;margin:0 15px;padding:0;">Currently Enrolled Classes</p>
+        <p class="eventColor" style="color: white;margin:0 15px;padding:0;margin-bottom: 10px;">Available Classes</p>
     </div>
     <div class="grid-container">
         <div class="grid-item weekDays">Sun</div>

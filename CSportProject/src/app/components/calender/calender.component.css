@@ -26,7 +26,8 @@
   background-color: purple;
   color: white;
   text-align: center;
-  height: 25px;
+  height: 21px;
+  font-size: 21px;
 }
 
 .days {
@@ -96,14 +97,9 @@
   position: relative;
 }
 
-.legend {
-  position: absolute;
-  top: -16px;
-  right: 0px;
-}
 
 button {
-  width: 10%;
+  width: 6%;
   color: white;
 }
 
