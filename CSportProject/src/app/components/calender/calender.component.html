@@ -6,9 +6,9 @@
         <h1>{{currentMonthString}} <br> {{currentYearString}}</h1>
         <div class="legend">
             <ul style="list-style-type: none;">
-                <li style="background-color:gray;color: white;">History Classes</li>
-                <li style="background-color:blue;color: white;">Currently Enrolled Classes</li>
-                <li style="background-color:green;color: white;">Available Classes</li>
+                <li class="pastEventsColor" style="color: white;">History Classes</li>
+                <li class="enrolledEventsColor" style="color: white;">Currently Enrolled Classes</li>
+                <li class="eventColor" style="color: white;">Available Classes</li>
             </ul>
         </div>
     </div>
@@ -37,36 +37,27 @@
 
             <div class="tooltiptext" *ngIf="day.classIDsList!.length! > 0 || day.classIDsAvailable!.length > 0 
                 || day.classIDsPast!.length > 0">
-                <h3>{{day.utcDate}}</h3>
-                <div *ngFor="let classDetails of day.classIDsList" style="background-color:blue;">
-                    <hr>
-                    <p>Name: {{classDetails.Name}}</p>
+                <h3>{{day.date | date:'longDate'}}</h3>
+                <div *ngFor="let classDetails of day.classIDsList" class="textList enrolledEventsColor" >
+                    <p style="font-weight:500;">{{classDetails.Name}}</p>
                     <p>Description: {{classDetails.Descript}}</p>
                     <p>Time: {{classDetails.STime}} - {{classDetails.ETime}}</p>
-                    <p>Date: {{classDetails.Date}}</p>
                     <p>Remaining Seats: {{classDetails.ClassSeats}}</p>
                     <p>Price: ${{classDetails.Price}}</p>
-                    <hr>
                 </div>
-                <div *ngFor="let classDetails of day.classIDsAvailable" style="background-color:green;">
-                    <hr>
-                    <p>Name: {{classDetails.Name}}</p>
+                <div *ngFor="let classDetails of day.classIDsAvailable" class="textList eventColor">
+                    <p style="font-weight:500;">{{classDetails.Name}}</p>
                     <p>Description: {{classDetails.Descript}}</p>
                     <p>Time: {{classDetails.STime}} - {{classDetails.ETime}}</p>
-                    <p>Date: {{classDetails.Date}}</p>
                     <p>Remaining Seats: {{classDetails.ClassSeats}}</p>
                     <p>Price: ${{classDetails.Price}}</p>
-                    <hr>
                 </div>
-                <div *ngFor="let classDetails of day.classIDsPast" style="background-color:gray;">
-                    <hr>
-                    <p>Name: {{classDetails.Name}}</p>
+                <div *ngFor="let classDetails of day.classIDsPast" class="textList pastEventsColor">
+                    <p style="font-weight:500;">{{classDetails.Name}}</p>
                     <p>Description: {{classDetails.Descript}}</p>
                     <p>Time: {{classDetails.STime}} - {{classDetails.ETime}}</p>
-                    <p>Date: {{classDetails.Date}}</p>
                     <p>Remaining Seats: {{classDetails.ClassSeats}}</p>
                     <p>Price: ${{classDetails.Price}}</p>
-                    <hr>
                 </div>
             </div>
 
