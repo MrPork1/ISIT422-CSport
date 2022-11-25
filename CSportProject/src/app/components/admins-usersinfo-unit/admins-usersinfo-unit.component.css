@@ -9,13 +9,38 @@
     margin: 10px;
     max-height: 250;
   }
+
+
+
+
+
+
   .flex-child-element-add{
     flex: 2;
     border: 2px solid white;
     margin: 10px;
-    /* display: none; */
-
+    position: relative;
+    
   }
+
+  .circle {
+    height: 100px;
+    width: 100px;
+    background-color: #555;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+  
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: 38%;
+  }
+
+
+
+
+
 
 
 .flex-child-element-add-buttonAndTable{
@@ -69,6 +94,8 @@
   }
   
 
+
+
   td {
     width: 300px;
     height: 100px;
@@ -113,18 +140,7 @@ textarea {
 
 
 
-.circle {
-  margin-left: 11%;
-  margin-top: 5%;
-  display: block;
-  height: 100px;
-  width: 100px;
-  background-color: #555;
-  border-radius: 50%;
-  position: absolute;
-  text-align: center;
-  color: white;
-}
+
 
 
 
