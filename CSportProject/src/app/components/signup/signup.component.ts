@@ -19,9 +19,7 @@ export class SignupComponent implements OnInit {
   fname !: string;
   lname !: string;
   bday !: string;
-  role !: string;
   
-
   password !: string;
   
   constructor(private authService: AuthService) { }
@@ -40,7 +38,7 @@ export class SignupComponent implements OnInit {
     TransactionHistory: [],
     Birthday: this.bday,
     Email: this.email,
-    Role: this.role,
+    Role: "0",
     AdminNotes: ""
   } as User
 
