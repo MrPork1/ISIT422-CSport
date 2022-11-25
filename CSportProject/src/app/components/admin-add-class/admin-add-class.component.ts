@@ -40,6 +40,8 @@ export class AdminAddClassComponent implements OnInit {
 
     else{
 
+      this.startTimeChange(this.start);
+      this.endTimeChange(this.end);
       const addClass = {
         //CID : "Test1234", // This is for the Test. Need to delete After remove "Class.ts => CID"  
         Name : this.name,
@@ -62,5 +64,53 @@ export class AdminAddClassComponent implements OnInit {
     }
   }
 
+
+  
+  startTimeChange(inputEle : String) {
+    var timeSplit = inputEle.split(':'),
+      hours,
+      minutes,
+      meridian;
+    hours =  Number(timeSplit[0]);
+    minutes = timeSplit[1];
+
+
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }
+    
+    this.start = hours + ':' + minutes + ' ' + meridian;
+  }
+  endTimeChange(inputEle : String) {
+    var timeSplit = inputEle.split(':'),
+      hours,
+      minutes,
+      meridian;
+    hours =  Number(timeSplit[0]);
+    minutes = timeSplit[1];
+
+
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }
+    
+    this.end = hours + ':' + minutes + ' ' + meridian;
+  }
 
 }

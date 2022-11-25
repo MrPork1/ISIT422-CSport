@@ -46,6 +46,8 @@ export class AdminsClassinfoComponent implements OnInit {
   }
 
   onUpdate(class2 : Class){
+    this.startTimeChange(this.start_fix)
+    this.endTimeChange(this.end_fix)
     class2.Name = this.name_fix;
     class2.Descript = this.desc_fix;
     class2.STime = this.start_fix;
@@ -71,6 +73,50 @@ export class AdminsClassinfoComponent implements OnInit {
     this.check_edit = !this.check_edit;
   }
   
+  startTimeChange(inputEle : String) {
+    var timeSplit = inputEle.split(':'),
+      hours,
+      minutes,
+      meridian;
+    hours =  Number(timeSplit[0]);
+    minutes = timeSplit[1];
 
 
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }
+    
+    this.start_fix = hours + ':' + minutes + ' ' + meridian;
+  }
+  endTimeChange(inputEle : String) {
+    var timeSplit = inputEle.split(':'),
+      hours,
+      minutes,
+      meridian;
+    hours =  Number(timeSplit[0]);
+    minutes = timeSplit[1];
+
+
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }
+    
+    this.end_fix = hours + ':' + minutes + ' ' + meridian;
+  }
 }
