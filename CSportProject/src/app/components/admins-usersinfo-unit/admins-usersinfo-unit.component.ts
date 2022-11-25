@@ -13,7 +13,6 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 export class AdminsUsersinfoUnitComponent implements OnInit {
   class !: Class;
   classes : Class[] =[]
-
   check_classList : boolean = false;
   check_Edit : boolean = false;
   check_AddClass : boolean = false;

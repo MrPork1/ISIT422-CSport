@@ -41,7 +41,6 @@
         </div>
 
         <div *ngIf="check_AddClass">
-                <h3>*Double Click Add Class*</h3>
                 <app-admin-avaliable-class-list
                 *ngFor="let class of classes"
                 [class] = "class" 
@@ -88,7 +87,6 @@
                     <td>
                         {{user.AdminNotes}}
                     </td>
-
                     <td>
                         <button class="button" (click)="onEdit_user()">Edit</button><br>
                         <button class="button" (click)="onShowClass()">Add Class</button><br>

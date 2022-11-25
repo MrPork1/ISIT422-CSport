@@ -1,26 +1,34 @@
 .flex-parent-element{
   display: flex;
   width: 100;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  
 }
 
   .flex-child-element-edit{
     flex:2;
-    border: 2px solid white;
+    border: 2px solid black;
     margin: 10px;
     max-height: 250;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+
   }
 
 
 
-
+  button{
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+  }
 
 
   .flex-child-element-add{
     flex: 2;
-    border: 2px solid white;
+    border: 2px solid black;
     margin: 10px;
     position: relative;
-    
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+
   }
 
   .circle {
@@ -30,11 +38,11 @@
     border-radius: 50%;
     text-align: center;
     color: white;
-  
     position: absolute;
     top: 50%;
     margin-top: -50px;
-    margin-left: 38%;
+    margin-left: 38%;  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+
   }
 
 
@@ -46,9 +54,11 @@
 .flex-child-element-add-buttonAndTable{
   display: flex;
   flex: 5;
-  border: 2px solid white;
+  border: 2px solid black;
   margin: 10px;
   float : left;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+
 }
 
   /* table.type11 {
@@ -87,10 +97,11 @@
   }
 
   table, th, td {
+    background-color: white;
     margin: 20px 50px;
-    border: 1px solid #bcbcbc;
+    border: 1px solid black;
     text-align: center;
-
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
   }
   
 

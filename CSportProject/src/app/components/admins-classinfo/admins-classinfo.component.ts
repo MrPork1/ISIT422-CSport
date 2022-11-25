@@ -32,6 +32,9 @@ export class AdminsClassinfoComponent implements OnInit {
   faTimes = faTimes; // 2. From angular-fontawesome
   faPenNib = faPenNib; // 2. From angular-fontawesome
 
+  columnsToDisplay = ['name', 'description', 'Stime', 'Etime', 'date','ClassSeats', 'price', 'D/E'];
+
+
   constructor() { }
 
   ngOnInit(): void {
