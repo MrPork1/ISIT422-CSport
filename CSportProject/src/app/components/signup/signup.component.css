@@ -1,45 +1,4 @@
-.signupinput {
-    border: none;
-    background-color: #E8F0FE;
-    width: 100%;
-}
-
 #inputcon {
     display: flex;
     flex-direction: column;
-}
-
-#matcard {
-    background-color: rgb(234, 226, 237);
-    box-shadow: 10px 10px 5px purple;
-    width: 400px;
-    min-width: fit-content;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-}
-
-
-.form-item{
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-}
-
-.main-container {
-    padding-top: 100px;
-    text-align: center;
-    align-items: center;
-
-    /*color: "primary"; does not work*/
-}
-
-input {
-    height: 20px;
-}
-
-
-/* ng-deep is combinator can be used to force a style down to child component (overrides the input fills color)*/
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: none;
 }
