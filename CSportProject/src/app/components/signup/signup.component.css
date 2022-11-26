@@ -1,35 +1,12 @@
-#label {
-    margin-top: 0;
-    margin-bottom: 0.5em;
-}
-
-.border {
-    border-radius: 4px;
-    background-color: #E1D9E4;
-    box-shadow: 1px 1px 1px #837E84;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    width: 50%;
-}
-
 .signupinput {
     border: none;
     background-color: #E8F0FE;
     width: 100%;
 }
 
-label {
-    display: inline-block;
-    text-align: right;
-    width: 100px;
-}
-
-button {
-    margin-right: 5px;
-    background-color: purple;
-    /* For browsers that do not support gradients */
-    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
-    /* box-shadow: 10px 10px 5px  purple; */
+#inputcon {
+    display: flex;
+    flex-direction: column;
 }
 
 #matcard {
@@ -43,20 +20,8 @@ button {
     align-items: center;
 }
 
-.mat-form-field-infix{
-    border: none;
-}
-
-.form {
-    min-width: fit-content;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
 
 .form-item{
-    min-width: fit-content;
-    width: auto;
     margin-left: 0.5em;
     margin-right: 0.5em;
 }

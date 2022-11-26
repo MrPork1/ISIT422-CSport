@@ -1,50 +1,41 @@
 <body>
-
-
-  <!-- need these divs to help center the card -->
   <div class="main-container">
     <div class="form-container">
-
       <mat-card id="matcard">
-
         <mat-card-content>
-
-          <div id="titleSignUp">
+          <form [formGroup]="signupForm" class="form">
             <h1>CSports</h1>
-            <mat-card-title id=title>Sign Up</mat-card-title>
-          </div>
-
-          <div class="border">
-            
-            <div id="label">Email</div>
-            <input type="email" class="signupinput" placeholder="Email" #userName [(ngModel)]="email" required>
-          </div>
-          <div class="border">
-            <div id="label">Password</div>
-            <input type="password" class="signupinput" placeholder="Password" [(ngModel)]="password" #userPassword
-              required>
-          </div>
-          <div class="border">
-            <div id="label">First Name</div>
-            <input type="text" class="signupinput" placeholder="First name" #userFName [(ngModel)]="fname" required>
-          </div>
-          <div class="border">
-            <div id="label">Last Name</div>
-            <input type="text" class="signupinput" placeholder="Last name" #userLName [(ngModel)]="lname">
-          </div>
-          <div class="border">
-            <div id="label">Birthday</div>
-            <input type="date" class="signupinput" #userBday [(ngModel)]="bday">
-          </div>
-          <!-- Calling SignIn Api from AuthService -->
-          <div>
-            <button mat-raised-button class="btn btnPrimary" value="Sign up" (click)="signUpNewUser()">Sign up</button>
-          </div>
-
-
-          <a routerLink="/signin" routerLinkActive="active" class="login-account-txt">Got an account? <strong>Login
-              here</strong></a>
-
+            <mat-card-title>Sign Up</mat-card-title>
+            <p id="inputcon">
+              <mat-form-field appearance="fill" class="form-item">
+                <div id="label">First name</div>
+                <input matInput type="text" id="signEmail" formControlName="fname"
+                  placeholder="First name" [(ngModel)]="fname" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="form-item">
+                <div id="label">Last name</div>
+                <input matInput type="text" id="signEmail" formControlName="lname"
+                  placeholder="Last name" [(ngModel)]="lname">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="form-item">
+                <div id="label">Email</div>
+                <input matInput type="text" id="signEmail" formControlName="email"
+                   placeholder="Email" [(ngModel)]="email" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="form-item">
+                <div id="label">Password</div>
+                <input matInput type="password" id="signPassword" formControlName="password"
+                   placeholder="Password" [(ngModel)]="password" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="form-item">
+                <div id="label">Birthday</div>
+                <input matInput type="date" id="signPassword" formControlName="bday"
+                    placeholder="Birthday" [(ngModel)]="bday">
+              </mat-form-field>
+            </p>
+            <button mat-raised-button class="btn btnPrimary" (click)="signUpNewUser()">Sign up</button>
+          </form>
+          <a routerLink="/signin" routerLinkActive="active" class="login-account-txt">Got an account? <strong>Login here</strong></a>
         </mat-card-content>
       </mat-card>
     </div>

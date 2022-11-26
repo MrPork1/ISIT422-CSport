@@ -80,7 +80,6 @@ export class AuthService {
     this.userService.getMongoStatus().subscribe(data => {
       this.dbStatus = data;
       if (this.dbStatus === "Connected!") {
-        console.log("say something please");
         this.aAuth.createUserWithEmailAndPassword(email, password)
           .then(value => {
             //Add mongoDB user here.
