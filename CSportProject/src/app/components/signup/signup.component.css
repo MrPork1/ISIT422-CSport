@@ -1,0 +1,80 @@
+#label {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.border {
+    border-radius: 4px;
+    background-color: #E1D9E4;
+    box-shadow: 1px 1px 1px #837E84;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+.signupinput {
+    border: none;
+    background-color: #E8F0FE;
+    width: 100%;
+}
+
+label {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
+
+button {
+    margin-right: 5px;
+    background-color: purple;
+    /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+    /* box-shadow: 10px 10px 5px  purple; */
+}
+
+#matcard {
+    background-color: rgb(234, 226, 237);
+    box-shadow: 10px 10px 5px purple;
+    width: 400px;
+    min-width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.mat-form-field-infix{
+    border: none;
+}
+
+.form {
+    min-width: fit-content;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.form-item{
+    min-width: fit-content;
+    width: auto;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.main-container {
+    padding-top: 100px;
+    text-align: center;
+    align-items: center;
+
+    /*color: "primary"; does not work*/
+}
+
+input {
+    height: 20px;
+}
+
+
+/* ng-deep is combinator can be used to force a style down to child component (overrides the input fills color)*/
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: none;
+}
