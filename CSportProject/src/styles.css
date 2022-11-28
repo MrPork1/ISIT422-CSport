@@ -7,10 +7,15 @@ body {
 }
 
 button {
+    color: white;
     height: 30px;
     width: 40%;
     /* if the bttn width is wide the inputs will stack - need to figure out why*/
     /*color: "accent"; only works in html tags*/
+}
+
+.mat-raised-button {
+    color:white;
 }
 
 input {
@@ -18,7 +23,8 @@ input {
 }
 
 body {
-    height: fit-content;
+    min-height: fit-content;
+    height: 100%;
     margin: 0;
     background-repeat: no-repeat;
     font-family: Roboto, "Helvetica Neue", sans-serif;
