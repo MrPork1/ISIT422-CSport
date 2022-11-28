@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/User';
+import { CustomerDashboardComponent } from '../customer-dashboard/customer-dashboard.component';
 
 @Component({
   selector: 'app-calender',
@@ -66,13 +67,11 @@ export class CalenderComponent implements OnInit {
   populateCalender(currentYear: number, currentMonth: number): void {
     this.currentMonthString = this.monthNames[currentMonth];
     this.currentYearString = currentYear.toString();
-    //console.log(this.monthNames[this.monthIndex] + ", " + currentYear);
 
     var firstDay = this.getFirstDayOfMonth(currentYear, currentMonth);
     var lastDay = this.getLastDayOfWeekOfMonth(currentYear, currentMonth);
     var lastDayOfMonth = this.getLastDayOfMonth(currentYear, currentMonth);
     var previousLastDay = new Date(currentYear, currentMonth, 0).getDate();
-    //console.log(firstDay.getDay()); //returns 0-6 (first day of the month in number form).
     this.showingCurrentMonth = false;
 
     for (var i = firstDay.getDay(); i > 0; i--) { //Counts from 2 down to 0. 2 being index of tuesday
@@ -147,7 +146,7 @@ export class CalenderComponent implements OnInit {
       var matchingClassID = this.classes.find(x => x._id === this.user.ClassIDList[i]);
       //2. get date and make event for html
       const dateHere = new Date(matchingClassID?.Date!);
-      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
+      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
       if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
         this.daysInterface[dateHere.getUTCDate() - 1].classIDsList?.push(matchingClassID!);
       }
@@ -158,21 +157,28 @@ export class CalenderComponent implements OnInit {
       var matchingClassID = this.classes.find(x => x._id === this.user.ClassHistory[i]);
       //2. get date and make event for html
       const dateHere = new Date(matchingClassID?.Date!);
-      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
+      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
       if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
         this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(matchingClassID!);
       }
     }
 
+
+    const today = new Date();
     this.classes.forEach(x => {
       const dateHere = new Date(x.Date);
-      console.log(dateHere, 'date');
-      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0,0,0);
-      console.log(utcDateHere, 'utc date');
-      if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsAvailable?.push(x);
+      if (!this.user.ClassIDList.includes(x._id!)) {
+        if (new Date(x.Date) >= today) {
+          if (~~x.ClassSeats > 0) {
+            //If it gets to here, it means the class is available for the user to enroll
+            const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
+            if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
+              this.daysInterface[dateHere.getUTCDate() - 1].classIDsAvailable?.push(x);
+            }
+          }
+        }
       }
-    })
+    });
   }
 
   nextMonth() {
