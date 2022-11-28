@@ -79,12 +79,10 @@ export class ClassViewComponent implements OnInit {
 
   private getUserHere(user: User[]) {
     this.user = user[0];
-    console.log(this.user);
     this.refreshClassList();
   }
 
   showPayment(classId: string){
-    console.log('this ran');
     this.selectedClass = this.tempClasses.find(x => x._id === classId);
     this.showEnroll = true;
   }
@@ -119,14 +117,12 @@ export class ClassViewComponent implements OnInit {
     if (this.canEnrollForClass) {
       this.user.ClassIDList.push(classID);
       this.user.TransactionHistory.push(transaction._id!);
-      console.log("before ", this.user);
       this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
       this.canEnrollForClass = false;      
     }
   }
 
   private editClassSeatsHere(user: User, classID: string) {
-    console.log("after", user);
     this.canEnrollForClass = true;
 
     var tempClass = this.classes.find(x => x._id === classID);
@@ -142,7 +138,6 @@ export class ClassViewComponent implements OnInit {
   }
  
   onLoadPaymentData (data:any){
-    console.log(data);
     // this.router.navigate(['/confirm']);
   }
   CompleteTransaction(pCID: string){

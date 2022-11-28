@@ -1,7 +1,7 @@
 <mat-card class="mat-card">
     <mat-card-header class="mat-card-header">
       <mat-card-title>{{class.Name}}</mat-card-title>
-      <mat-card-subtitle>{{class.Date}} at {{class.STime}} - {{class.ETime}}</mat-card-subtitle>
+      <mat-card-subtitle>{{class.Date | date:'M/d/yyyy'}} at {{class.STime}} - {{class.ETime}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="mat-card-content">
       <p>

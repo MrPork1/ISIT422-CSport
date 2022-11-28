@@ -2,77 +2,24 @@
   <h2 *ngIf="tempClasses.length > 0">Available Classes</h2>
   <h2 *ngIf="tempClasses.length <= 0">No Classes Available</h2>
 
-  <!-- <table mat-table [dataSource]="tempClasses" style="width:100%;">
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let class">{{class.Name}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let class">{{class.Descript}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="time">
-      <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
-      <mat-cell *matCellDef="let class">{{class.STime}} - {{class.ETime}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-      <mat-cell *matCellDef="let class">{{class.Date}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="seats">
-      <mat-header-cell *matHeaderCellDef>Seats</mat-header-cell>
-      <mat-cell *matCellDef="let class">{{class.ClassSeats}}</mat-cell>
-    </ng-container>
-
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="showPayment(row)"></mat-row>
-
-  </table> -->
-
-  <!-- <table class="table" *ngIf="tempClasses.length > 0" style="width: 100%;">
-    <tr>
-      <th>Name</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Seats</th>
-    </tr>
-    <tr *ngFor="let class of tempClasses">
-      <td>{{class.Name}}</td>
-      <td>{{class.STime}}</td>
-      <td>{{class.ETime}}</td>
-      <td>{{class.Descript}}</td>
-      <td>{{class.Date}}</td>
-      <td>{{class.ClassSeats}}</td>
-      <button *ngIf="canEnrollForClass" (click)="showPayment(class._id!)">Enroll</button>
-    </tr>
-  </table>
-</div> -->
-
-<div class="grid-container" *ngIf="tempClasses.length > 0">
-  <div *ngFor="let class of tempClasses" class="grid-item">
-    <app-class-view-card [class]="class" (returnClassDetails)="showPayment($event)"></app-class-view-card>
+  <div class="grid-container" *ngIf="tempClasses.length > 0">
+    <div *ngFor="let class of tempClasses" class="grid-item">
+      <app-class-view-card [class]="class" (returnClassDetails)="showPayment($event)"></app-class-view-card>
+    </div>
   </div>
-</div>
 
-<div *ngIf="showEnroll">
-  <h2>Enrolling in {{selectedClass!.Name}}</h2>
-  <h3>Price: {{selectedClass!.Price}}</h3>
+  <div *ngIf="showEnroll">
+    <h2>Enrolling in {{selectedClass!.Name}}</h2>
+    <h3>Price: {{selectedClass!.Price}}</h3>
 
-  <button (click)="Cancel()">Cancel Enrollment</button>
-  <!-- <button *ngIf="canEnrollForClass" (click)="enrollForClassHere(selectedClass!._id!)">Enroll For Class</button>  -->
-  <google-pay-button  *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)"
-  environment="TEST"
-  buttonType="buy"
-  buttonColor="black"
-  [paymentRequest] = "paymentRequest"
-  (loadpaymentdata) = "onLoadPaymentData($event)"></google-pay-button>
-  <!-- <button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)">Complete Transaction</button>  -->
-  <!-- later scope, add a shopping cart and do not charge right away  -->
-  <div>
+    <button (click)="Cancel()">Cancel Enrollment</button>
+    <!-- <button *ngIf="canEnrollForClass" (click)="enrollForClassHere(selectedClass!._id!)">Enroll For Class</button>  -->
+    <google-pay-button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)" environment="TEST"
+      buttonType="buy" buttonColor="black" [paymentRequest]="paymentRequest"
+      (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+    <!-- <button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)">Complete Transaction</button>  -->
+    <!-- later scope, add a shopping cart and do not charge right away  -->
+    <div>
 
+    </div>
   </div>
-</div>
-
