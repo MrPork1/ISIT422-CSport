@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+.mat-column-name {
+    font-size: 18px;
+}
+
+button {
+    width: fit-content;
+}
+
+.drop-button {
+    background-image: none;
+    background-color: white;
+    border: 2px solid red;
+    color: red;
+    width: fit-content;
+}
