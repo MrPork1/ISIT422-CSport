@@ -4,9 +4,14 @@
 
 
     <ul>
-      <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Account</li>
-      <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Manage Classes</li>
-      <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Manage Users</li>
+      <li class="dropdown" [ngClass]="views[0] || views[1] ? 'active' : ''">Account
+        <ul class="dropdown-content">
+          <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Details</li>
+          <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Edit Profile</li>
+        </ul>
+      </li>
+      <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Manage Classes</li>
+      <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Manage Users</li>
       <li class="right" (click)="authService.logout()">Sign out</li>
     </ul>
 
@@ -14,15 +19,19 @@
 
   <hr class="rounded">
 
-  <div *ngIf="views[0]">
-    <app-account></app-account>
+  <div *ngIf="views[0]" class="Display">
+    <app-account-details></app-account-details>
   </div>
 
-  <div *ngIf="views[1]">
-    <app-admins></app-admins>
+  <div *ngIf="views[1]" class="Display">
+    <app-edit-profile></app-edit-profile>
   </div>
 
   <div *ngIf="views[2]">
+    <app-admins></app-admins>
+  </div>
+
+  <div *ngIf="views[3]">
     <app-admins-usersinfo></app-admins-usersinfo>
   </div>
 </body>

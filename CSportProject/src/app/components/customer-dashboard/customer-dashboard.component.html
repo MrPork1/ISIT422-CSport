@@ -2,50 +2,48 @@
   <div class="row">
     <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
-    <!-- <div class="circle">
-<div class="row">
-  <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
-  <div class="circle">
-    <h1>{{fName1}}{{lName1}}</h1>
-  </div>
-</div> -->
-
-    <ul>
+    <ul class="navbar">
       <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Home</li>
-      <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Account</li>
-      <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Enrolled Classes</li>
-      <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Available Classes</li>
-      <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Past Classes</li>
+      <li class="dropdown" [ngClass]="views[1] || views[2] || views[3] ? 'active' : ''">Account
+        <ul class="dropdown-content">
+          <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Details</li>
+          <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Edit Profile</li>
+          <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Transaction History</li>
+        </ul>
+      </li>
+      <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Enrolled Classes</li>
+      <li (click)="setView(5)" [ngClass]="views[5] ? 'active' : ''">Available Classes</li>
+      <li (click)="setView(6)" [ngClass]="views[6] ? 'active' : ''">Past Classes</li>
       <li class="right" (click)="authService.logout()">Sign out</li>
     </ul>
 
-    <!-- <input type="button" class="btn btn-primary" (click)="setView(0)" value="Home">
-<input type="button" class="btn btn-primary" (click)="setView(1)" value="Account">
-<input type="button" class="btn btn-primary" (click)="setView(2)" value="Show Enrolled Classes">
-<input type="button" class="btn btn-primary" (click)="setView(3)" value="View Available Classes">
-<input type="button" class="btn btn-primary" (click)="setView(4)" value="View Past Classes">
-<input type="button" class="btn btn-primary" value="Sign out" (click)="authService.logout()"> -->
-  </div>
+  <hr>
 
-  <hr class="rounded">
-
-  <div *ngIf="views[0]" >
+  <div *ngIf="views[0]">
     <app-calender></app-calender>
   </div>
 
   <div *ngIf="views[1]" class="Display">
-    <app-account></app-account>
+    <app-account-details></app-account-details>
   </div>
 
   <div *ngIf="views[2]" class="Display">
-    <app-enrolled-classes></app-enrolled-classes>
+    <app-edit-profile></app-edit-profile>
   </div>
 
   <div *ngIf="views[3]" class="Display">
-    <app-class-view></app-class-view>
+    <app-transaction-history></app-transaction-history>
   </div>
 
   <div *ngIf="views[4]" class="Display">
+    <app-enrolled-classes></app-enrolled-classes>
+  </div>
+
+  <div *ngIf="views[5]" class="Display">
+    <app-class-view></app-class-view>
+  </div>
+
+  <div *ngIf="views[6]" class="Display">
     <app-history-class></app-history-class>
   </div>
 </div>
