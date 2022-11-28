@@ -60,7 +60,6 @@ export class CustomerDashboardComponent implements OnInit {
     var date = new Date();
     tempClasses.forEach(value => {
       const newDate = new Date(value.Date);
-      console.log(newDate, 'date of class');
       if (newDate.toDateString() > date.toDateString()) {
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {

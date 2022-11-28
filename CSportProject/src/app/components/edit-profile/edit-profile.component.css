@@ -1,13 +1,16 @@
-label {
-    display: inline-block;
-    text-align: right;
-    width: 100px;
+.table {
+    background-color: white;
+    border: 2px solid black;
+    width: fit-content;
+    padding: 15px;
+
 }
 
-input {
-    margin-left: 5px;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-div {
-    margin-bottom: 10px;
+button {
+    width: fit-content;
 }

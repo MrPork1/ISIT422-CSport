@@ -23,6 +23,8 @@ export class AuthService {
 
   dbStatus: string = ""
 
+  firebaseUserData!: any;
+
   user = new BehaviorSubject<any>(null);
 
   constructor(
@@ -48,6 +50,7 @@ export class AuthService {
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
+          this.firebaseUserData = value.user?.metadata;
           if (this.userData.Role != "1" && this.userData.Role != "0") {
             console.error("Error logging in.");
             this.router.navigate(['/'])

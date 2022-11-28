@@ -46,7 +46,6 @@ export class EnrolledClassesComponent implements OnInit {
 
   private getUserHere(user: User[]) {
     this.user = user[0];
-    console.log(this.user);
     this.refreshClassList();
   }
 
@@ -82,7 +81,6 @@ export class EnrolledClassesComponent implements OnInit {
   }
 
   viewTransaction(cid: string) {
-    console.log(cid);
     sessionStorage.setItem("transactionId", cid);
     this.cd.setView(3);
   }
