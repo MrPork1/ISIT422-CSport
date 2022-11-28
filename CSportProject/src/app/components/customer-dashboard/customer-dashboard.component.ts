@@ -34,6 +34,8 @@ export class CustomerDashboardComponent implements OnInit {
     } else {
       this.setView(0);
     }
+
+    this.checkClassesForPastDate();
   }
 
   setView(num: number): void {
@@ -56,9 +58,9 @@ export class CustomerDashboardComponent implements OnInit {
     var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
 
     var date = new Date();
-
     tempClasses.forEach(value => {
       const newDate = new Date(value.Date);
+      console.log(newDate, 'date of class');
       if (newDate.toDateString() > date.toDateString()) {
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {
