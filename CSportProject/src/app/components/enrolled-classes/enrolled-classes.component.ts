@@ -7,6 +7,8 @@ import { ClassesService } from 'src/app/services/classes.service';
 import { first } from 'rxjs';
 import { PaymentService } from 'src/app/services/payment.service';
 import { Transaction } from 'src/app/Transaction';
+import { TransactionHistoryComponent } from '../transaction-history/transaction-history.component';
+import { CustomerDashboardComponent } from '../customer-dashboard/customer-dashboard.component';
 
 
 @Component({
@@ -24,11 +26,14 @@ export class EnrolledClassesComponent implements OnInit {
   loading: boolean = true;
   canDropClass: boolean = true;
 
+  columnsToDisplay = ['name', 'time', 'date', 'description', 'seats', 'actions'];
+
   constructor(
     public authService: AuthService,
     public userService: UserService,
     public classesService: ClassesService,
-    public transactionService: PaymentService
+    public transactionService: PaymentService,
+    private cd: CustomerDashboardComponent
   ) { }
 // Pipe sets up the code to unsubscirbe after it finishes it's task
 // first postions ourseleves to the first set of data
@@ -41,7 +46,6 @@ export class EnrolledClassesComponent implements OnInit {
 
   private getUserHere(user: User[]) {
     this.user = user[0];
-    console.log(this.user);
     this.refreshClassList();
   }
 
@@ -74,6 +78,11 @@ export class EnrolledClassesComponent implements OnInit {
       this.user.TransactionHistory.splice(transactionIndex, 1);      
     }
     this.userService.editUser(this.user).pipe(first()).subscribe(data => this.editClassSeatsHere(data, classID));
+  }
+
+  viewTransaction(cid: string) {
+    sessionStorage.setItem("transactionId", cid);
+    this.cd.setView(3);
   }
 
   private editClassSeatsHere(user: User, classID: string) {

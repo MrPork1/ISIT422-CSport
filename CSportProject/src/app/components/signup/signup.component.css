@@ -1,0 +1,4 @@
+#inputcon {
+    display: flex;
+    flex-direction: column;
+}

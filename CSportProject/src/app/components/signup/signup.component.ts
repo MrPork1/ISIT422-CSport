@@ -7,13 +7,16 @@ import {User} from '../../User';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'], 
+  styleUrls: ['../signin/signin.component.css', './signup.component.css'], 
 })
 export class SignupComponent implements OnInit {
 
   signupForm = new FormGroup({
     email : new FormControl(''),
     password : new FormControl(''),
+    fname : new FormControl(''),
+    lname : new FormControl(''),
+    bday : new FormControl('')
   })
   email !: string;
   fname !: string;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { FormGroup, FormControl } from '@angular/forms';
 import { User } from 'src/app/User';
 
 @Component({
@@ -10,11 +11,15 @@ import { User } from 'src/app/User';
 })
 export class EditProfileComponent implements OnInit {
 
-  email !: string;
+  editProfileForm = new FormGroup({
+    fname : new FormControl(''),
+    lname : new FormControl(''),
+    bday : new FormControl('')
+  })
+
   fname !: string;
   lname !: string;
   bday !: string;
-  password !: string;
   
   user !: User;
 
@@ -26,11 +31,9 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
     this.fillValues(this.user);
-    console.log(this.user);
   }
 
   fillValues(user: User) {
-    this.email = user.Email;
     this.fname = user.Fname;
     this.lname = user.Lname;
     this.bday = user.Birthday;

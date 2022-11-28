@@ -50,7 +50,6 @@ export class HistoryClassComponent implements OnInit {
       this.classes = x;
       this.tempClasses = this.classes.filter(element => this.user.ClassHistory.includes(element._id!));
       this.loading = false;
-      console.log(this.tempClasses);
     });
   }
 }

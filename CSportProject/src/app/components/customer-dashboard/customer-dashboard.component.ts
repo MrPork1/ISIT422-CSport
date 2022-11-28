@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CustomerDashboardComponent implements OnInit {
 
-  views = [false, false, false, false, false];
+  views = [false, false, false, false, false, false, false];
 
   user!: User;
   // fName1!: string;
@@ -34,6 +34,8 @@ export class CustomerDashboardComponent implements OnInit {
     } else {
       this.setView(0);
     }
+
+    this.checkClassesForPastDate();
   }
 
   setView(num: number): void {
@@ -56,7 +58,6 @@ export class CustomerDashboardComponent implements OnInit {
     var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
 
     var date = new Date();
-
     tempClasses.forEach(value => {
       const newDate = new Date(value.Date);
       if (newDate.toDateString() > date.toDateString()) {

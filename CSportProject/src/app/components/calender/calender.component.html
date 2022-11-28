@@ -4,9 +4,11 @@
         <button (click)="showCurrentMonth()" style="width:15%;">Current Month</button>
         <button (click)="nextMonth()">></button><br>
         <h1>{{currentMonthString}} {{currentYearString}}</h1>
-        <p class="pastEventsColor" style="color: white;margin:0 15px;padding:0;">History Classes</p>
-        <p class="enrolledEventsColor" style="color: white;margin:0 15px;padding:0;">Currently Enrolled Classes</p>
-        <p class="eventColor" style="color: white;margin:0 15px;padding:0;margin-bottom: 10px;">Available Classes</p>
+        <div class="legendH">
+            <p class="eventColor" style="color: white;margin:0 10px;padding:0px 5px;border: 1px solid white;">Available Classes</p>
+            <p class="enrolledEventsColor" style="color: white;margin:0 10px;padding:0px 5px;border: 1px solid white;">Currently Enrolled Classes</p>
+            <p class="pastEventsColor" style="color: white;margin:0 10px;padding:0px 5px;border: 1px solid white;">History Classes</p>
+        </div>
     </div>
     <div class="grid-container">
         <div class="grid-item weekDays">Sun</div>

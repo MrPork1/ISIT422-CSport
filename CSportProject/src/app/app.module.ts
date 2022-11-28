@@ -36,15 +36,16 @@ import {MatInputModule }from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
-import { AccountComponent } from './components/account/account.component'; //add this so the signin.comp will recongize the form
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
 import { AdminEditUsershowsComponent } from './components/admin-edit-usershows/admin-edit-usershows.component';
 import { CalenderDayComponent } from './components/calender-day/calender-day.component';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import {GooglePayButtonModule} from '@google-pay/button-angular';
 import { ClassViewCardComponent } from './components/class-view-card/class-view-card.component';
+import { AccountDetailsComponent } from './components/account-details/account-details.component';
 
 
 @NgModule({
@@ -65,13 +66,13 @@ import { ClassViewCardComponent } from './components/class-view-card/class-view-
     CalenderComponent,
     AdminAddClassComponent,
     AdminClassDbCallComponent,
-    AccountComponent,
     AdminAvaliableClassListComponent,
     AdminEditUsershowsComponent,
     CalenderDayComponent,
     TransactionHistoryComponent,
     GooglePayComponent,
     ClassViewCardComponent,
+    AccountDetailsComponent,
   ],
   
   imports: [
@@ -91,6 +92,7 @@ import { ClassViewCardComponent } from './components/class-view-card/class-view-
     MatCardModule,
     MatTableModule,
     MatExpansionModule,
+    MatTabsModule,
     GooglePayButtonModule,
     // IgxDropDownModule,
   ],

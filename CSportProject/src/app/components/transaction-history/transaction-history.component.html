@@ -1,12 +1,29 @@
-<h2>Class History</h2>
+<div class="Display">
+  <h2 *ngIf="newList.length > 0">Transaction History</h2>
+  <h2 *ngIf="newList.length <= 0">No Transaction History Found</h2>
 
-<table class="table" *ngIf="user.TransactionHistory.length > 0">
-  <tr>
-    <th>Class Name</th>
-    <th>Price</th>
-  </tr>
-  <tr *ngFor="let class of tempClasses">
-    <td>{{class.Name}}</td>
-    <td>{{class.Price}}</td>
-  </tr>
-</table>
+  <button (click)="showAllTransactions()">Show All</button>
+
+  <table mat-table [dataSource]="newList" class="mat-elevation-z8" *ngIf="newList.length > 0">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>Transaction ID</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.ID}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.Name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+      <mat-cell *matCellDef="let class">${{class.Price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let class">{{class.Status | uppercase}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+  </table>
+</div>
