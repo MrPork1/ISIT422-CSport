@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.mat-column-id {
+    border-right: 1px solid purple;
+}
+
+.mat-column-name {
+    padding-left: 16px;
+    font-size: 18px;
+}
+
+button {
+    width: fit-content;
+    margin-bottom: 10px;
+}

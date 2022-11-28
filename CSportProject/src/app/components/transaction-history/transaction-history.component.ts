@@ -6,7 +6,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import { Class } from 'src/app/Classes';
-import { getMatInputUnsupportedTypeError } from '@angular/material/input';
 import { first } from 'rxjs';
 
 
@@ -16,10 +15,17 @@ import { first } from 'rxjs';
   styleUrls: ['./transaction-history.component.css']
 })
 export class TransactionHistoryComponent implements OnInit {
-  
+
   tempTransactions: Transaction[] = [];
   tempClasses: Class[] = [];
+  newList: NewList[] = [];
+  singleShow!: NewList;
+  emptyList: NewList[] = [];
   user!: User;
+
+  htmlstring!: string;
+
+  columnsToDisplay = ['id', 'name', 'price', 'status'];
 
   constructor(
     public authService: AuthService,
@@ -34,31 +40,64 @@ export class TransactionHistoryComponent implements OnInit {
 
   getUser(user: User) {
     this.user = user;
-    console.log(user);
-    this.transactionService.getAllTransactions().pipe(first()).subscribe(data => this.getTransaction(data) );
+    this.transactionService.getAllTransactions().pipe(first()).subscribe(data => this.getTransaction(data));
   }
 
-  getTransaction(transactions: Transaction[]){
-    console.log(transactions);
+
+  getTransaction(transactions: Transaction[]) {
     this.tempTransactions = transactions.filter(element => this.user.TransactionHistory.includes(element._id!));
     this.getClasses()
   }
 
-  getClasses(){
+  getClasses() {
     this.classService.getAllClasses().subscribe(classList => this.displayClasses(classList))
   }
 
-  displayClasses(classList: Class[]){
-    console.log(classList)
-    console.log(this.user.TransactionHistory)
-    classList.forEach(classs => {
+  displayClasses(classList: Class[]) {
+    if (sessionStorage.getItem("transactionId")) {
+      var transactionCID = sessionStorage.getItem("transactionId")!;
+      var classs = classList.find(x => x._id === transactionCID)!;
       this.tempTransactions.forEach(transaction => {
-        if(transaction.CID === classs._id){
-        this.tempClasses.push(classs)
+        if (transaction.CID === transactionCID) {
+          const thing = {
+            Name: classs.Name,
+            Price: classs.Price,
+            Status: transaction.PStatus,
+            ID: transaction._id,
+            CID: classs.CID
+          } as NewList
+          this.newList.push(thing);
         }
-      })
-    });
-    console.log(this.tempClasses);
+      });
+    } else {
+      classList.forEach(classs => {
+        this.tempTransactions.forEach(transaction => {
+          if (transaction.CID === classs._id) {
+            this.tempClasses.push(classs);
+            const thing = {
+              Name: classs.Name,
+              Price: classs.Price,
+              Status: transaction.PStatus,
+              ID: transaction._id,
+              CID: classs.CID
+            } as NewList
+            this.newList.push(thing);
+          }
+        })
+      });
+    }
   }
 
+  showAllTransactions() {
+    sessionStorage.removeItem("transactionId");
+    this.getClasses();
+  }
+}
+
+interface NewList {
+  Name: string;
+  Price: number;
+  Status: string;
+  ID: string;
+  CID: string;
 }
