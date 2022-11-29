@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { User } from '../User';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -20,7 +21,7 @@ export class UserService {
   //where this.users is a local array
   //For an example, see admin-dashboard.component.ts line 38
 
-  private serverURL = 'http://localhost:3000';
+  private serverURL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Class } from '../Classes';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +21,7 @@ export class ClassesService {
   //where this.classes is a local array
   //For an example, see admin-dashboard.component.ts line 42
 
-  private serverURL = 'http://localhost:3000';
+  private serverURL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

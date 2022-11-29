@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from '../Transaction';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -12,7 +13,7 @@ const httpOptions = {
 })
 export class PaymentService {
 
-  private serverURL = 'http://localhost:3000';
+  private serverURL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -23,12 +24,11 @@ export class PaymentService {
   getAllTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.serverURL + "/transactioncollections")
   }
-  editTransaciton(onePayment: Transaction): Observable<Transaction> { 
+  editTransaciton(onePayment: Transaction): Observable<Transaction> {
     return this.http.put<Transaction>(this.serverURL + "/EditTransaction", onePayment, httpOptions);
   }
 
   deleteTransaction(_id?: string): Observable<Transaction> {
     return this.http.delete<Transaction>(this.serverURL + "/DeleteTransaction/" + _id, httpOptions);
   }
-
 }
