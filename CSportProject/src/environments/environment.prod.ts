@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: '', //michael: add the base url from node server azure here once node server is deployed to azure.
+  apiUrl: 'https://csportsnodeml.azurewebsites.net', 
   firebase: {
     apiKey: "AIzaSyBGZn_LiAXUEtliycKW3HR7fAfebHbR304",
     authDomain: "fir-c6384.firebaseapp.com",
