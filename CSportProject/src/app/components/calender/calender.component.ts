@@ -144,22 +144,27 @@ export class CalenderComponent implements OnInit {
 
       //1. class with matching ID
       var matchingClassID = this.classes.find(x => x._id === this.user.ClassIDList[i]);
-      //2. get date and make event for html
-      const dateHere = new Date(matchingClassID?.Date!);
-      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
-      if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsList?.push(matchingClassID!);
+      if (matchingClassID != undefined) {
+        //2. get date and make event for html
+        const dateHere = new Date(matchingClassID?.Date!);
+        const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
+        if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
+          this.daysInterface[dateHere.getUTCDate() - 1].classIDsList?.push(matchingClassID!);
+        }
       }
     }
 
     for (var i = 0; i < this.user.ClassHistory.length; i++) {
       //1. class with matching ID
       var matchingClassID = this.classes.find(x => x._id === this.user.ClassHistory[i]);
-      //2. get date and make event for html
-      const dateHere = new Date(matchingClassID?.Date!);
-      const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
-      if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
-        this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(matchingClassID!);
+      if (matchingClassID != undefined) {
+        //2. get date and make event for html
+        const dateHere = new Date(matchingClassID?.Date!);
+        const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
+        console.log(utcDateHere, "utcdate");
+        if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
+          this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(matchingClassID!);
+        }
       }
     }
 
