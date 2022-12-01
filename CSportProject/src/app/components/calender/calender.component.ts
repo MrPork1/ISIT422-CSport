@@ -161,7 +161,6 @@ export class CalenderComponent implements OnInit {
         //2. get date and make event for html
         const dateHere = new Date(matchingClassID?.Date!);
         const utcDateHere = new Date(dateHere.getUTCFullYear(), dateHere.getUTCMonth(), dateHere.getUTCDate(), 0, 0, 0);
-        console.log(utcDateHere, "utcdate");
         if (this.daysInterface[dateHere.getUTCDate() - 1].utcDate === utcDateHere.toUTCString()) {
           this.daysInterface[dateHere.getUTCDate() - 1].classIDsPast?.push(matchingClassID!);
         }
