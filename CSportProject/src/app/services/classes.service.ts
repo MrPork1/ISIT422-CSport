@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay, tap } from 'rxjs';
 import { Class } from '../Classes';
 import { environment } from 'src/environments/environment';
 
@@ -21,12 +21,18 @@ export class ClassesService {
   //where this.classes is a local array
   //For an example, see admin-dashboard.component.ts line 42
 
+  data!: Observable<Class[]> | null;
+
   private serverURL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getAllClasses(): Observable<Class[]> {
-    return this.http.get<Class[]>(this.serverURL + "/classcollections")
+    if (!this.data) {
+      console.log('%cCalled server for classes', 'background: #000000; color: #FFFFFF');
+      this.data = this.http.get<Class[]>(this.serverURL + "/classcollections").pipe(shareReplay(1));
+    }
+    return this.data; 
   }
 
   getClass(CID?: string): Observable<Class[]> {
@@ -43,5 +49,9 @@ export class ClassesService {
 
   deleteClass(_id?: string): Observable<Class> {
     return this.http.delete<Class>(this.serverURL + "/DeleteClass/" + _id, httpOptions);
+  }
+
+  public clearClassData() {
+    this.data = null;
   }
 }
