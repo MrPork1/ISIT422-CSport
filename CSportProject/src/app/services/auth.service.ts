@@ -3,8 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'; //Import fireauth
 import { Router } from '@angular/router'; //Import router
 import { Console } from 'console';
 import { BehaviorSubject, first } from 'rxjs';
+import { FirebaseErrors } from '../firebaseErrors';
 import { User } from '../User';
 import { UserService } from './user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,8 @@ export class AuthService {
   constructor(
     private aAuth: AngularFireAuth,
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private snackBar: MatSnackBar) { }
 
   signInUsingFakeInformation(user: User) {
     this.userData = user;
@@ -90,7 +93,8 @@ export class AuthService {
             this.router.navigate(['/signin']);
           })
           .catch(error => {
-            console.log('Something went wrong: ', error);
+            //console.log('Something went wrong: ', error);
+            this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close');
           });
       }
     });

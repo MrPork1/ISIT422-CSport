@@ -37,6 +37,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
@@ -93,6 +94,7 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     MatTableModule,
     MatExpansionModule,
     MatTabsModule,
+    MatSnackBarModule,
     GooglePayButtonModule,
     // IgxDropDownModule,
   ],
