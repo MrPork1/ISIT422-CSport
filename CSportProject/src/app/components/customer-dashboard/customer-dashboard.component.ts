@@ -59,10 +59,10 @@ export class CustomerDashboardComponent implements OnInit {
   checkClassList(classes: Class[]) {
     var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
 
-    var date = new Date();
+    var today = new Date();
     tempClasses.forEach(value => {
-      const newDate = new Date(value.Date);
-      if (newDate.toDateString() > date.toDateString()) {
+      const classDate = new Date(value.Date);
+      if (today.toDateString() > classDate.toDateString()) {
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {
           this.user.ClassIDList.splice(classIndex, 1);
