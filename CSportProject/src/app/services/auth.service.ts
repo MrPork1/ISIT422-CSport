@@ -6,7 +6,7 @@ import { BehaviorSubject, first } from 'rxjs';
 import { FirebaseErrors } from '../firebaseErrors';
 import { User } from '../User';
 import { UserService } from './user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class AuthService {
     private aAuth: AngularFireAuth,
     private router: Router,
     private userService: UserService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: SnackBarService) { }
 
   signInUsingFakeInformation(user: User) {
     this.userData = user;
@@ -94,7 +94,7 @@ export class AuthService {
           })
           .catch(error => {
             //console.log('Something went wrong: ', error);
-            this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close');
+            this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close', false, 0);
           });
       }
     });

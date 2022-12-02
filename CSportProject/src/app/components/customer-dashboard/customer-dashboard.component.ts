@@ -5,6 +5,7 @@ import { Class } from 'src/app/Classes';
 import { ClassViewComponent } from '../class-view/class-view.component';
 import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class CustomerDashboardComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private classService: ClassesService,
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -64,7 +66,8 @@ export class CustomerDashboardComponent implements OnInit {
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {
           this.user.ClassIDList.splice(classIndex, 1);
-          this.user.ClassHistory.push(value._id!); 
+          this.user.ClassHistory.push(value._id!);
+          this.snackBar.open("Thank you for taking " + value.Name + "!", 'Close', true, 5000);
         }
       }
     });
