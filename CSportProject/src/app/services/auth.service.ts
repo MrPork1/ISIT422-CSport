@@ -70,6 +70,9 @@ export class AuthService {
           }
         });
       })
+      .catch(error => {
+        this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close', false, 0);
+      })
   }
 
   autoLogin() {
