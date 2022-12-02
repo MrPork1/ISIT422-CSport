@@ -147,6 +147,7 @@ export class ClassViewComponent implements OnInit {
       Price: this.selectedClass!.Price,
       PStatus: "paid"
     } as Transaction
+
  //leads to enroll for class after the button is clicked in the html
  //satus changed to paid after the transaction is done
     return this.paymentService.addTransaction(newPayment).subscribe(data => this.enrollForClassHere(pCID, data));
