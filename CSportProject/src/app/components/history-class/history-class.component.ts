@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { CustomerDashboardComponent } from '../customer-dashboard/customer-dashboard.component';
 
 
 @Component({
@@ -31,10 +32,11 @@ export class HistoryClassComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private userService: UserService,
-    private classService: ClassesService
+    private classService: ClassesService,
+    private cd: CustomerDashboardComponent
   ) { }
 
-  columnsToDisplay = ['name', 'description', 'time', 'date', 'price'];
+  columnsToDisplay = ['name', 'description', 'time', 'date', 'price', 'actions'];
   // columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   // expandedElement!: Class;
 
@@ -51,5 +53,10 @@ export class HistoryClassComponent implements OnInit {
       this.tempClasses = this.classes.filter(element => this.user.ClassHistory.includes(element._id!));
       this.loading = false;
     });
+  }
+
+  viewTransaction(cid: string) {
+    sessionStorage.setItem("transactionId", cid);
+    this.cd.setView(3);
   }
 }

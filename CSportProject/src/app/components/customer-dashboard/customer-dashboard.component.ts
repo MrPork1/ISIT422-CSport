@@ -59,22 +59,25 @@ export class CustomerDashboardComponent implements OnInit {
   checkClassList(classes: Class[]) {
     var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
 
+    var index = 0;
+
     var today = new Date();
     tempClasses.forEach(value => {
       const classDate = new Date(value.Date);
       if (today > classDate) {
-        console.log(today.toDateString(), 'todays date in string form');
-        console.log(classDate.toDateString(), 'class date in string form');
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {
           this.user.ClassIDList.splice(classIndex, 1);
           this.user.ClassHistory.push(value._id!);
           this.snackBar.open("Thank you for taking " + value.Name + "!", 'Close', true, 5000);
+          index++;
         }
       }
     });
 
-    this.userService.clearUserData();
-    this.userService.editUser(this.user).subscribe();
+    if (index > 0) {
+      this.userService.clearUserData();
+      this.userService.editUser(this.user).subscribe();
+    }
   }
 }
