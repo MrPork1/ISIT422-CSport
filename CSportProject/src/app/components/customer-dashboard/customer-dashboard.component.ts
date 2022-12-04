@@ -62,7 +62,9 @@ export class CustomerDashboardComponent implements OnInit {
     var today = new Date();
     tempClasses.forEach(value => {
       const classDate = new Date(value.Date);
-      if (today.toDateString() > classDate.toDateString()) {
+      if (today > classDate) {
+        console.log(today.toDateString(), 'todays date in string form');
+        console.log(classDate.toDateString(), 'class date in string form');
         const classIndex = this.user.ClassIDList.indexOf(value._id!);
         if (classIndex !== -1) {
           this.user.ClassIDList.splice(classIndex, 1);
@@ -72,8 +74,7 @@ export class CustomerDashboardComponent implements OnInit {
       }
     });
 
-    this.userService.editUser(this.user).subscribe(x => {
-      this.authService.userData = x;
-    })
+    this.userService.clearUserData();
+    this.userService.editUser(this.user).subscribe();
   }
 }

@@ -64,7 +64,8 @@ export class TransactionHistoryComponent implements OnInit {
             Price: classs.Price,
             Status: transaction.PStatus,
             ID: transaction._id,
-            CID: classs.CID
+            CID: classs.CID,
+            createdAt: transaction.createdAt
           } as NewList
           this.newList.push(thing);
         }
