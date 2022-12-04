@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Class } from 'src/app/Classes';
 import { Day } from 'src/app/Day';
 import { AuthService } from 'src/app/services/auth.service';
@@ -44,6 +44,8 @@ export class CalenderComponent implements OnInit {
   user!: User;
   classes: Class[] = [];
 
+  sWidth: any;
+
   constructor(
     private userService: UserService,
     private classService: ClassesService,
@@ -62,6 +64,17 @@ export class CalenderComponent implements OnInit {
       this.monthIndex = this.currentMonth;
       this.populateCalender(this.yearIndex, this.monthIndex);
     });
+
+    this.sWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.sWidth = window.innerWidth;
+  }
+
+  mouseEvent(div: string) {
+    console.log("mouse enter", div);
   }
 
   populateCalender(currentYear: number, currentMonth: number): void {
