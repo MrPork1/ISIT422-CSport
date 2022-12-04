@@ -25,7 +25,7 @@ export class TransactionHistoryComponent implements OnInit {
 
   htmlstring!: string;
 
-  columnsToDisplay = ['id', 'name', 'price', 'status'];
+  columnsToDisplay = ['id', 'name', 'price', 'status', 'date'];
 
   constructor(
     public authService: AuthService,
@@ -79,7 +79,8 @@ export class TransactionHistoryComponent implements OnInit {
               Price: classs.Price,
               Status: transaction.PStatus,
               ID: transaction._id,
-              CID: classs.CID
+              CID: classs.CID,
+              createdAt: transaction.createdAt
             } as NewList
             this.newList.push(thing);
           }
@@ -100,4 +101,5 @@ interface NewList {
   Status: string;
   ID: string;
   CID: string;
+  createdAt: Date;
 }
