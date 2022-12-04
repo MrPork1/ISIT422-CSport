@@ -39,6 +39,7 @@ button {
     margin-right: 5px;
     background-color: purple;
     background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+    cursor: pointer;
 }
 
 .Display{
