@@ -5,6 +5,7 @@ import { Class } from 'src/app/Classes';
 import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class CustomerDashboardComponent implements OnInit {
     public authService: AuthService,
     private classService: ClassesService,
     private userService: UserService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +38,8 @@ export class CustomerDashboardComponent implements OnInit {
     } else {
       this.setView(0);
     }
+
+    this.router.navigate(['home'], {relativeTo: this.route});
 
     this.checkClassesForPastDate();
   }
