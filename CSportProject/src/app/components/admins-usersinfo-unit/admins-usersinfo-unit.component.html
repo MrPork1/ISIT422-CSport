@@ -15,11 +15,7 @@
             <input type="date" name="birthday" [(ngModel)]="birthday" id="input"/><br>
         
             <label for="n_admin_note">Admin Note: </label>
-            <textarea id="input" name="n_admin_note" rows="15" cols="100" [(ngModel)]="n_admin_note"></textarea><br><br>
-
-
-            <!-- <input type="text" name="n_admin_note" [(ngModel)]="n_admin_note" id="input"/><br> -->
-        
+            <textarea id="input" name="n_admin_note" rows="15" cols="100" [(ngModel)]="n_admin_note"></textarea><br><br>        
             <label for="user_role">User Role: </label>
             <select (change)="selectChangeHandler($event, user)">
                 <option>Check</option>
@@ -53,7 +49,6 @@
 
 
     <div class="flex-child-element-add-buttonAndTable">
-
         <table class="type11">
             <thead>
                 <tr>
@@ -69,7 +64,6 @@
                     <p *ngIf="user.Role === '0'">Customer</p>
                     <p *ngIf="user.Role === '1'" [ngStyle]="{'color': color}">Admin</p>
                 </div></td>
-                <!-- <div *ngIf="check_classList"> -->
                     <td>
                         <div class="userClassListDiv" *ngFor="let userclass_id of user.ClassIDList">
                             <app-admin-class-db-call 
@@ -81,9 +75,6 @@
                             </app-admin-class-db-call>
                         </div>
                     </td>
-                    
-                <!-- </div> -->
-                <!-- <td *ngIf="check_classList"> -->
                     <td>
                         {{user.AdminNotes}}
                     </td>
@@ -92,7 +83,6 @@
                         <button class="button" (click)="onShowClass()">Add Class</button><br>
                         <button class="button button2" (click)="onDelete_user(user)">Delete User</button>
                     </td>
-                <!-- </td> -->
             </tr>
             </tbody>
         </table>
