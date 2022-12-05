@@ -15,11 +15,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CustomerDashboardComponent implements OnInit {
 
-  views = [false, false, false, false, false, false, false];
+  // views = [false, false, false, false, false, false, false];
 
   user!: User;
   // fName1!: string;
   // lName1!: string;
+
+  reloadAsStart: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -32,26 +34,29 @@ export class CustomerDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    if (sessionStorage.getItem('viewIndex')) {
-      let viewNum = +sessionStorage.getItem('viewIndex')!;
-      this.setView(viewNum);
-    } else {
-      this.setView(0);
+    // if (sessionStorage.getItem('viewIndex')) {
+    //   let viewNum = +sessionStorage.getItem('viewIndex')!;
+    //   this.setView(viewNum);
+    // } else {
+    //   this.setView(0);
+    // }
+
+    if (!sessionStorage.getItem('refreshAtCurrent')) {
+      this.router.navigate(['home'], {relativeTo: this.route});
+      sessionStorage.setItem('refreshAtCurrent', "true");
     }
-
-    this.router.navigate(['home'], {relativeTo: this.route});
-
+    
     this.checkClassesForPastDate();
   }
 
-  setView(num: number): void {
-    for (let i = 0; i < this.views.length; i++) {
-      this.views[i] = false;
-    }
+  // setView(num: number): void {
+  //   for (let i = 0; i < this.views.length; i++) {
+  //     this.views[i] = false;
+  //   }
     
-    this.views[num] = true;
-    sessionStorage.setItem('viewIndex', num.toString());
-  }
+  //   this.views[num] = true;
+  //   sessionStorage.setItem('viewIndex', num.toString());
+  // }
 
   checkClassesForPastDate() {
     if (this.user.ClassIDList.length <= 0) {

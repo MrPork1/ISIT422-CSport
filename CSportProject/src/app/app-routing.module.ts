@@ -12,12 +12,19 @@ import { CalenderComponent } from './components/calender/calender.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
+import { AdminsComponent } from './components/admins/admins.component';
+import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-usersinfo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full'},
   { path: 'signin', title: 'Sign in', component: SigninComponent},
   { path: 'signup', title: 'Sign up', component: SignupComponent},
-  { path: 'a-dashboard', title: 'Admin dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {Role: '1'}},
+  { path: 'a-dashboard', title: 'Admin dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {Role: '1'}, children: [
+    { path: 'manage-classes', component: AdminsComponent},
+    { path: 'manage-users', component: AdminsUsersinfoComponent},
+    { path: 'account-details', component: AccountDetailsComponent},
+    { path: 'account-edit', component: EditProfileComponent},
+  ]},
   { path: 'c-dashboard', title: 'Dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard], data: {Role: '0'}, children: [
     { path: 'a-classes', component: ClassViewComponent},
     { path: 'e-classes', component: EnrolledClassesComponent},
