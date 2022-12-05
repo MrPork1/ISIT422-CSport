@@ -3,47 +3,22 @@
     <h1>Hello, <strong>{{(user.Fname) ? user.Fname : 'User'}}</strong></h1>
 
     <ul class="navbar">
-      <li (click)="setView(0)" [ngClass]="views[0] ? 'active' : ''">Home</li>
-      <li class="dropdown" [ngClass]="views[1] || views[2] || views[3] ? 'active' : ''">Account
+      <li routerLink="home" routerLinkActive="active">Home</li>
+      <li class="dropdown" routerLinkActive="active">Account
         <ul class="dropdown-content">
-          <li (click)="setView(1)" [ngClass]="views[1] ? 'active' : ''">Details</li>
-          <li (click)="setView(2)" [ngClass]="views[2] ? 'active' : ''">Edit Profile</li>
-          <li (click)="setView(3)" [ngClass]="views[3] ? 'active' : ''">Transaction History</li>
+          <li routerLink="account-details" routerLinkActive="active">Details</li>
+          <li routerLink="account-edit" routerLinkActive="active">Edit Profile</li>
+          <li routerLink="account-transaction-history" routerLinkActive="active">Transaction History</li>
         </ul>
       </li>
-      <li (click)="setView(4)" [ngClass]="views[4] ? 'active' : ''">Enrolled Classes</li>
-      <li (click)="setView(5)" [ngClass]="views[5] ? 'active' : ''">Available Classes</li>
-      <li (click)="setView(6)" [ngClass]="views[6] ? 'active' : ''">Past Classes</li>
+      <li routerLink="e-classes" routerLinkActive="active">Enrolled Classes</li>
+      <li routerLink="a-classes" routerLinkActive="active">Available Classes</li>
+      <li routerLink="p-classes" routerLinkActive="active">Past Classes</li>
       <li class="right" (click)="authService.logout()">Sign out</li>
     </ul>
 
   <hr>
 
-  <div *ngIf="views[0]">
-    <app-calender></app-calender>
-  </div>
+  <router-outlet></router-outlet>
 
-  <div *ngIf="views[1]" class="Display">
-    <app-account-details></app-account-details>
-  </div>
-
-  <div *ngIf="views[2]" class="Display">
-    <app-edit-profile></app-edit-profile>
-  </div>
-
-  <div *ngIf="views[3]" class="Display">
-    <app-transaction-history></app-transaction-history>
-  </div>
-
-  <div *ngIf="views[4]" class="Display">
-    <app-enrolled-classes></app-enrolled-classes>
-  </div>
-
-  <div *ngIf="views[5]" class="Display">
-    <app-class-view></app-class-view>
-  </div>
-
-  <div *ngIf="views[6]" class="Display">
-    <app-history-class></app-history-class>
-  </div>
 </div>

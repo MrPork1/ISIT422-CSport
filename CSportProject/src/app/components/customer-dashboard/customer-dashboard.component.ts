@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
 import { Class } from 'src/app/Classes';
-import { ClassViewComponent } from '../class-view/class-view.component';
 import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,39 +15,48 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
 })
 export class CustomerDashboardComponent implements OnInit {
 
-  views = [false, false, false, false, false, false, false];
+  // views = [false, false, false, false, false, false, false];
 
   user!: User;
   // fName1!: string;
   // lName1!: string;
 
+  reloadAsStart: boolean = false;
+
   constructor(
     public authService: AuthService,
     private classService: ClassesService,
     private userService: UserService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.user = this.authService.returnUserObject();
-    if (sessionStorage.getItem('viewIndex')) {
-      let viewNum = +sessionStorage.getItem('viewIndex')!;
-      this.setView(viewNum);
-    } else {
-      this.setView(0);
-    }
+    // if (sessionStorage.getItem('viewIndex')) {
+    //   let viewNum = +sessionStorage.getItem('viewIndex')!;
+    //   this.setView(viewNum);
+    // } else {
+    //   this.setView(0);
+    // }
 
+    if (!sessionStorage.getItem('refreshAtCurrent')) {
+      this.router.navigate(['home'], {relativeTo: this.route});
+      sessionStorage.setItem('refreshAtCurrent', "true");
+    }
+    
     this.checkClassesForPastDate();
   }
 
-  setView(num: number): void {
-    for (let i = 0; i < this.views.length; i++) {
-      this.views[i] = false;
-    }
+  // setView(num: number): void {
+  //   for (let i = 0; i < this.views.length; i++) {
+  //     this.views[i] = false;
+  //   }
     
-    this.views[num] = true;
-    sessionStorage.setItem('viewIndex', num.toString());
-  }
+  //   this.views[num] = true;
+  //   sessionStorage.setItem('viewIndex', num.toString());
+  // }
 
   checkClassesForPastDate() {
     if (this.user.ClassIDList.length <= 0) {

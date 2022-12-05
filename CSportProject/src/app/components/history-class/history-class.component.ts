@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { CustomerDashboardComponent } from '../customer-dashboard/customer-dashboard.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class HistoryClassComponent implements OnInit {
     public authService: AuthService,
     private userService: UserService,
     private classService: ClassesService,
-    private cd: CustomerDashboardComponent
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   columnsToDisplay = ['name', 'description', 'time', 'date', 'price', 'actions'];
@@ -57,6 +59,6 @@ export class HistoryClassComponent implements OnInit {
 
   viewTransaction(cid: string) {
     sessionStorage.setItem("transactionId", cid);
-    this.cd.setView(3);
+    this.router.navigate(['../account-transaction-history'], {relativeTo: this.route});
   }
 }

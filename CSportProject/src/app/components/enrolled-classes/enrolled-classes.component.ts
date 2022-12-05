@@ -9,6 +9,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { Transaction } from 'src/app/Transaction';
 import { TransactionHistoryComponent } from '../transaction-history/transaction-history.component';
 import { CustomerDashboardComponent } from '../customer-dashboard/customer-dashboard.component';
+import {Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class EnrolledClassesComponent implements OnInit {
     public userService: UserService,
     public classesService: ClassesService,
     public transactionService: PaymentService,
-    private cd: CustomerDashboardComponent
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 // Pipe sets up the code to unsubscirbe after it finishes it's task
 // first postions ourseleves to the first set of data
@@ -82,7 +84,9 @@ export class EnrolledClassesComponent implements OnInit {
 
   viewTransaction(cid: string) {
     sessionStorage.setItem("transactionId", cid);
-    this.cd.setView(3);
+    //this.cd.setView(3);
+    this.router.navigate(['../account-transaction-history'], {relativeTo: this.route});
+
   }
 
   private editClassSeatsHere(user: User, classID: string) {
