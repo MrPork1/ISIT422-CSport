@@ -47,6 +47,7 @@ import { TransactionHistoryComponent } from './components/transaction-history/tr
 import {GooglePayButtonModule} from '@google-pay/button-angular';
 import { ClassViewCardComponent } from './components/class-view-card/class-view-card.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     GooglePayComponent,
     ClassViewCardComponent,
     AccountDetailsComponent,
+    ErrorComponent,
   ],
   
   imports: [

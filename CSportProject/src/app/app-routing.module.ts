@@ -14,6 +14,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { AdminsUsersinfoComponent } from './components/admins-usersinfo/admins-usersinfo.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full'},
@@ -33,7 +34,8 @@ const routes: Routes = [
     { path: 'account-details', component: AccountDetailsComponent},
     { path: 'account-edit', component: EditProfileComponent},
     { path: 'account-transaction-history', component: TransactionHistoryComponent}
-  ]}
+  ]},
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({
