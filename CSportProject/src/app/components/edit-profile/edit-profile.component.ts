@@ -46,7 +46,11 @@ export class EditProfileComponent implements OnInit {
     newUser.Lname = this.lname;
     newUser.Birthday = this.bday;
 
-    this.userService.editUser(this.user).subscribe();
+    this.userService.editUser(this.user).subscribe(x => {
+      if (sessionStorage.getItem('userData')) {
+        sessionStorage.setItem('userData', JSON.stringify(this.user))
+      }
+    });
   }
 
   deleteUser() {
