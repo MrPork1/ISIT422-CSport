@@ -67,5 +67,6 @@ export class UserService {
 
   public clearUserData() {
     this.user$ = null;
+    this.users$ = null;
   }
 }

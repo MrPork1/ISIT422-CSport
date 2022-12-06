@@ -6,6 +6,8 @@ import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs';
+import { CalenderComponent } from '../calender/calender.component';
 
 
 @Component({
@@ -33,7 +35,7 @@ export class CustomerDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.authService.returnUserObject();
+    this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.checkClassesForPastDate(data[0]));
     // if (sessionStorage.getItem('viewIndex')) {
     //   let viewNum = +sessionStorage.getItem('viewIndex')!;
     //   this.setView(viewNum);
@@ -45,8 +47,6 @@ export class CustomerDashboardComponent implements OnInit {
       this.router.navigate(['home'], {relativeTo: this.route});
       sessionStorage.setItem('refreshAtCurrent', "true");
     }
-    
-    this.checkClassesForPastDate();
   }
 
   // setView(num: number): void {
@@ -58,7 +58,8 @@ export class CustomerDashboardComponent implements OnInit {
   //   sessionStorage.setItem('viewIndex', num.toString());
   // }
 
-  checkClassesForPastDate() {
+  checkClassesForPastDate(user: User) {
+    this.user = user;
     if (this.user.ClassIDList.length <= 0) {
       return;
     }
@@ -86,7 +87,11 @@ export class CustomerDashboardComponent implements OnInit {
 
     if (index > 0) {
       this.userService.clearUserData();
-      this.userService.editUser(this.user).subscribe();
+      this.userService.editUser(this.user).subscribe(x => 
+        {
+          this.userService.clearUserData();
+        });
+      console.log(this.user);
     }
   }
 }
