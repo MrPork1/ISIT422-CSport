@@ -48,6 +48,7 @@ import {GooglePayButtonModule} from '@google-pay/button-angular';
 import { ClassViewCardComponent } from './components/class-view-card/class-view-card.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { ErrorComponent } from './components/error/error.component';
     ClassViewCardComponent,
     AccountDetailsComponent,
     ErrorComponent,
+    ModalComponent
   ],
   
   imports: [

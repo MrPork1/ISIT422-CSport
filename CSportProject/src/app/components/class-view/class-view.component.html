@@ -8,18 +8,11 @@
     </div>
   </div>
 
-  <div *ngIf="showEnroll">
-    <h2>Enrolling in {{selectedClass!.Name}}</h2>
-    <h3>Price: {{selectedClass!.Price}}</h3>
-
-    <button (click)="Cancel()">Cancel Enrollment</button>
-    <!-- <button *ngIf="canEnrollForClass" (click)="enrollForClassHere(selectedClass!._id!)">Enroll For Class</button>  -->
-    <google-pay-button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)" environment="TEST"
-      buttonType="buy" buttonColor="black" [paymentRequest]="paymentRequest"
-      (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
-    <!-- <button *ngIf="canEnrollForClass" (click)="CompleteTransaction(selectedClass!._id!)">Complete Transaction</button>  -->
-    <!-- later scope, add a shopping cart and do not charge right away  -->
-    <div>
-
-    </div>
-  </div>
+<div *ngIf="showEnroll">
+  <app-modal 
+    [openModal]="true" 
+    [classData]="selectedClass" 
+    (returnClassDetails)="makeShowEnrollTrue()"
+    (purchaseClass)="CompleteTransaction($event)">
+  </app-modal>
+</div>
