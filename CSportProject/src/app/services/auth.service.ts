@@ -115,6 +115,7 @@ export class AuthService {
       this.isLogin = false;
       this.roleAs = '';
       sessionStorage.clear();
+      this.userService.clearUserData();
       this.router.navigate(['/']);
     });
   }
