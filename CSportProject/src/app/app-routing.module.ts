@@ -21,12 +21,14 @@ const routes: Routes = [
   { path: 'signin', title: 'Sign in', component: SigninComponent},
   { path: 'signup', title: 'Sign up', component: SignupComponent},
   { path: 'a-dashboard', title: 'Admin dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {Role: '1'}, children: [
+    { path: '', redirectTo: 'account-details', pathMatch: 'full'},
     { path: 'manage-classes', component: AdminsComponent},
     { path: 'manage-users', component: AdminsUsersinfoComponent},
     { path: 'account-details', component: AccountDetailsComponent},
     { path: 'account-edit', component: EditProfileComponent},
   ]},
   { path: 'c-dashboard', title: 'Dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard], data: {Role: '0'}, children: [
+    { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'a-classes', component: ClassViewComponent},
     { path: 'e-classes', component: EnrolledClassesComponent},
     { path: 'p-classes', component: HistoryClassComponent},
