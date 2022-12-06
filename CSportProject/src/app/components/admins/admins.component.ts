@@ -21,17 +21,18 @@ export class AdminsComponent implements OnInit {
   // Add Class
   addClass_DB(class2 : Class){
     this.classService.addClass(class2).subscribe((class2)=>(this.classes.push(class2)));
+    this.classService.clearClassData();
   }
 
   // Delete Class
   deleteClass_DB(class2 : Class){
     this.classService.deleteClass(class2._id).subscribe(() => (this.classes = this.classes.filter((t) => t._id !== class2._id)));
+    this.classService.clearClassData();
   }
 
   //Update Class
   onUpdateClass_DB(class2: Class){
     this.classService.editClass(class2).subscribe();
+    this.classService.clearClassData();
   }
-
-
 }
