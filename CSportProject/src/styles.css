@@ -33,6 +33,11 @@ body {
     background-image: linear-gradient(to bottom right, purple, rgb(184, 82, 184));
 }
 
+a {
+    display: block;
+    margin-top: 10px;
+}
+
 button {
     height: 30px;
     width: 40%;
