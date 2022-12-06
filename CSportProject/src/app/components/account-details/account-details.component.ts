@@ -21,7 +21,7 @@ export class AccountDetailsComponent implements OnInit {
   createdDate!: string;
   lastLoginAt!: string;
 
-  firebaseUserData!: any;
+  firebaseUserData: string[] = [];
 
   constructor(
     private userService: UserService,
@@ -41,15 +41,24 @@ export class AccountDetailsComponent implements OnInit {
     this.classCount = this.user.ClassIDList.length.toString();
     this.pastClassCount = this.user.ClassHistory.length.toString();
 
+    if (sessionStorage.getItem('firebaseData')) {
+      const userData = sessionStorage.getItem('firebaseData');
+      var temp = JSON.parse(userData!) as string;
+      this.createdDate = temp[0];
+      this.lastLoginAt = temp[1];
+    }
     var epochDate = new Date(0);
 
     var date1 = this.authService.firebaseUserData.createdAt;
     epochDate.setUTCMilliseconds(date1);
     this.createdDate = epochDate.toLocaleDateString();
+    this.firebaseUserData.push(this.createdDate);
 
     var date2 = this.authService.firebaseUserData.lastLoginAt;
     epochDate = new Date(0);
     epochDate.setUTCMilliseconds(date2);
     this.lastLoginAt = epochDate.toLocaleDateString() + " at " + epochDate.toLocaleTimeString();
+    this.firebaseUserData.push(this.lastLoginAt);
+    sessionStorage.setItem('firebaseData', JSON.stringify(this.firebaseUserData));
   }
 }
