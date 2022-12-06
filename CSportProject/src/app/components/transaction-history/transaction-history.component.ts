@@ -92,6 +92,7 @@ export class TransactionHistoryComponent implements OnInit {
 
   showAllTransactions() {
     sessionStorage.removeItem("transactionId");
+    this.newList = this.emptyList;
     this.getClasses();
   }
 }

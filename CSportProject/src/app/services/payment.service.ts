@@ -38,4 +38,8 @@ export class PaymentService {
   deleteTransaction(_id?: string): Observable<Transaction> {
     return this.http.delete<Transaction>(this.serverURL + "/DeleteTransaction/" + _id, httpOptions);
   }
+
+  public clearTransactionData() {
+    this.data$ = null;
+  }
 }
