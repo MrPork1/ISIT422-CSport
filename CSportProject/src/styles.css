@@ -33,7 +33,7 @@ body {
     background-image: linear-gradient(to bottom right, purple, rgb(184, 82, 184));
 }
 
-a {
+#matpage {
     display: block;
     margin-top: 10px;
 }
