@@ -40,6 +40,7 @@ export class TransactionHistoryComponent implements OnInit {
 
   getUser(user: User) {
     this.user = user;
+    this.transactionService.clearTransactionData();
     this.transactionService.getAllTransactions().pipe(first()).subscribe(data => this.getTransaction(data));
   }
 
