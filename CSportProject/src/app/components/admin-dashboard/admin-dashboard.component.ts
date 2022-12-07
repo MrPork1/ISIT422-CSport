@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Class } from 'src/app/Classes';
 import { AuthService } from 'src/app/services/auth.service'; 
 import { ClassesService } from 'src/app/services/classes.service';
@@ -21,7 +22,7 @@ import { User } from 'src/app/User';
 
 export class AdminDashboardComponent implements OnInit {
 
-  views = [false, false,false, false];
+  // views = [false, false,false, false];
 
   user ?: User;
   users: User[] = [];
@@ -31,25 +32,32 @@ export class AdminDashboardComponent implements OnInit {
   constructor(     
     public authService: AuthService,
     private userService: UserService,
-    private classesService: ClassesService) {}
+    private classesService: ClassesService,
+    private router: Router,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('viewIndex')) {
-      let viewNum = +sessionStorage.getItem('viewIndex')!;
-      this.setView(viewNum);
-    } else {
-      this.setView(0);
+    // if (sessionStorage.getItem('viewIndex')) {
+    //   let viewNum = +sessionStorage.getItem('viewIndex')!;
+    //   this.setView(viewNum);
+    // } else {
+    //   this.setView(0);
+    // }
+
+    if (!sessionStorage.getItem('refreshAtCurrent')) {
+      this.router.navigate(['account-details'], {relativeTo: this.route});
+      sessionStorage.setItem('refreshAtCurrent', "true");
     }
   }
 
-  setView(num: number): void {
-    for (let i = 0; i < this.views.length; i++) {
-      this.views[i] = false;
-    }
+  // setView(num: number): void {
+  //   for (let i = 0; i < this.views.length; i++) {
+  //     this.views[i] = false;
+  //   }
 
-    this.views[num] = true;
-    sessionStorage.setItem('viewIndex', num.toString());
-  }
+  //   this.views[num] = true;
+  //   sessionStorage.setItem('viewIndex', num.toString());
+  // }
 
   getUsers() {
       this.userService.getAllUsers().subscribe(users => this.users = users);

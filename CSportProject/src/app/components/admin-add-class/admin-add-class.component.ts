@@ -7,10 +7,13 @@ import { Class } from 'src/app/Classes';
 })
 export class AdminAddClassComponent implements OnInit {
 
+
+  // Data binding From here to admins. 
   @Output() 
   onAddClass : EventEmitter<Class> = new EventEmitter();
 
-
+  
+  //variables for adding Class.
   name !: string;
   desc !: string;
   start !: string;
@@ -19,20 +22,21 @@ export class AdminAddClassComponent implements OnInit {
   Tdate !: string;
   price !: number;
 
+  // variable for checking if you want to add or not.
   check_add !: boolean;
 
 
   constructor() { }
-
   ngOnInit(): void {
   }
-  
 
+  // Check if you want to add or not.
   checkAddClass(){
     this.check_add = !this.check_add;
     console.log(this.check_add);
   }
 
+  // This method will change value the class you want to fix and the index will display as emtpty again.
   onCreatClass(){
     if(!this.name || !this.desc || !this.start || !this.end){
       alert("Please check again.");
@@ -43,7 +47,6 @@ export class AdminAddClassComponent implements OnInit {
       this.startTimeChange(this.start);
       this.endTimeChange(this.end);
       const addClass = {
-        //CID : "Test1234", // This is for the Test. Need to delete After remove "Class.ts => CID"  
         Name : this.name,
         Descript : this.desc,
         STime : this.start,
@@ -65,7 +68,7 @@ export class AdminAddClassComponent implements OnInit {
   }
 
 
-  
+  // Time formating as  AM, Pm  
   startTimeChange(inputEle : String) {
     var timeSplit = inputEle.split(':'),
       hours,
@@ -112,5 +115,6 @@ export class AdminAddClassComponent implements OnInit {
     
     this.end = hours + ':' + minutes + ' ' + meridian;
   }
+
 
 }

@@ -1,0 +1,12 @@
+<div class="modal" [ngStyle]="{'display': (openModal) ? 'block' : 'none'}">
+    <div class="modal-content">
+        <span class="close" (click)="close()">&times;</span>
+        <div>
+            <h2>{{classData?.Name}}</h2>
+            <h3 style="color:white ;">Price: ${{classData?.Price}}</h3>
+            <google-pay-button environment="TEST" buttonType="buy" buttonColor="black" [paymentRequest]="paymentRequest"
+                (click)="SendDataToParentForTransactionProcessing()">
+            </google-pay-button>
+        </div>
+    </div>
+</div>

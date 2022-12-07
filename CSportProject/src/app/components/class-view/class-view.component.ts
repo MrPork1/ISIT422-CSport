@@ -24,7 +24,7 @@ export class ClassViewComponent implements OnInit {
   loading: boolean = true;
   canEnrollForClass: boolean = true;
   showEnroll: boolean = false;
-  paymentRequest!: google.payments.api.PaymentDataRequest;
+  
   router: any;
 
   // displayedColumns = ['name', 'description', 'time', 'date', 'seats'];
@@ -44,37 +44,6 @@ export class ClassViewComponent implements OnInit {
   
   ngOnInit(): void {
     this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.getUserHere(data));
-    this.paymentRequest ={
-      apiVersion: 2,
-      apiVersionMinor: 0,
-      allowedPaymentMethods: [
-        {
-          type: 'CARD',
-          parameters: {
-            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-            allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
-          },
-          tokenizationSpecification: {
-            type: 'PAYMENT_GATEWAY',
-            parameters: {
-              gateway: 'example',
-              gatewayMerchantId: 'exampleGatewayMerchantId'
-            }
-          }
-        }
-      ],
-      merchantInfo: {
-        merchantId: '12345678901234567890',
-        merchantName: 'Demo Merchant'
-      },
-      transactionInfo: {
-        totalPriceStatus: 'FINAL',
-        totalPriceLabel: 'Total',
-        totalPrice: '100.00',
-        currencyCode: 'USD',
-        countryCode: 'US'
-      }
-    }
   }
 
   private getUserHere(user: User[]) {
@@ -85,6 +54,10 @@ export class ClassViewComponent implements OnInit {
   showPayment(classId: string){
     this.selectedClass = this.tempClasses.find(x => x._id === classId);
     this.showEnroll = true;
+  }
+
+  makeShowEnrollTrue() {
+    this.showEnroll = false;
   }
 
   Cancel(){
@@ -137,9 +110,6 @@ export class ClassViewComponent implements OnInit {
     this.classesService.getAllClasses().pipe(first()).subscribe(data => this.getClassesThenShowThem(data));
   }
  
-  onLoadPaymentData (data:any){
-    // this.router.navigate(['/confirm']);
-  }
   CompleteTransaction(pCID: string){
     const newPayment = {
       CID: pCID,
@@ -147,6 +117,7 @@ export class ClassViewComponent implements OnInit {
       Price: this.selectedClass!.Price,
       PStatus: "paid"
     } as Transaction
+
  //leads to enroll for class after the button is clicked in the html
  //satus changed to paid after the transaction is done
     return this.paymentService.addTransaction(newPayment).subscribe(data => this.enrollForClassHere(pCID, data));

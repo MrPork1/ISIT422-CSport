@@ -9,29 +9,27 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./admin-class-db-call.component.css']
 })
 export class AdminClassDbCallComponent implements OnInit {
-  // @Output()
-  // class !: Class;
-
-  faTrashCan = faTrashCan; // 2. From angular-fontawesome
-
+  
+  //From angular-fontawesome(Icon Library)
+  faTrashCan = faTrashCan; 
+  //Data binding From admins-usersinfo-unit to here.
   @Input()
   class !: Class;
+  
+  //Data binding From admins-usersinfo-unit to here.
   @Input()
   user_Class_Id !: string;
-  testnum : number = 0
+  
+  // 1. Data binding From here to admins-usersinfo-unit. 
   @Output()
   sendClassInfo : EventEmitter<Class> =new EventEmitter();
 
-  classes : Class[] = [];
 
   constructor() { }
-
-
-
   ngOnInit(): void {
   }
 
-  
+  // 2. Emit Class which you want to delete to admins-usersinfo-unit for Data binding.
   onSendClassInfo(class1 : Class){
     this.sendClassInfo.emit(class1);
   }

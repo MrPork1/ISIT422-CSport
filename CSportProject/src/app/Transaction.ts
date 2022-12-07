@@ -3,5 +3,6 @@ _id ?: string,
 UID: string,
 CID: string,
 PStatus: string,
-Price: number
-} 
+Price: number,
+createdAt?: Date
+}

@@ -33,17 +33,23 @@ body {
     background-image: linear-gradient(to bottom right, purple, rgb(184, 82, 184));
 }
 
+#matpage {
+    display: block;
+    margin-top: 10px;
+}
+
 button {
     height: 30px;
     width: 40%;
     margin-right: 5px;
     background-color: purple;
     background-image: linear-gradient(to bottom left, purple, rgb(184, 82, 184));
+    cursor: pointer;
 }
 
 .Display{
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 h2 {

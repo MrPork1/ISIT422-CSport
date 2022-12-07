@@ -23,14 +23,13 @@
               (click)="authService.login(userName.value, userPassword.value)">Log in</button>
           </form>
 
-          <a routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one
+          <a id="matpage" routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one
               here</strong></a>
           <!--Delete before publish!-->
-          <h3>Sign In As Fake Admin</h3>
-          <div class="formGroup">
-            <!-- was input before-->
+          <!-- <h3>Sign In As Fake Admin</h3>
+           <div class="formGroup">
             <button mat-raised-button color="accent" (click)="signInAsAdmin()">Log in as Admin</button>
-          </div>
+          </div> -->
         </mat-card-content>
       </mat-card>
     </div>

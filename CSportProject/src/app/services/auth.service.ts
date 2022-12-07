@@ -3,8 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'; //Import fireauth
 import { Router } from '@angular/router'; //Import router
 import { Console } from 'console';
 import { BehaviorSubject, first } from 'rxjs';
+import { FirebaseErrors } from '../firebaseErrors';
 import { User } from '../User';
 import { UserService } from './user.service';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,8 @@ export class AuthService {
   constructor(
     private aAuth: AngularFireAuth,
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private snackBar: SnackBarService) { }
 
   signInUsingFakeInformation(user: User) {
     this.userData = user;
@@ -67,6 +70,9 @@ export class AuthService {
           }
         });
       })
+      .catch(error => {
+        this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close', false, 0);
+      })
   }
 
   autoLogin() {
@@ -90,7 +96,8 @@ export class AuthService {
             this.router.navigate(['/signin']);
           })
           .catch(error => {
-            console.log('Something went wrong: ', error);
+            //console.log('Something went wrong: ', error);
+            this.snackBar.open(FirebaseErrors.Parse(error['code']), 'Close', false, 0);
           });
       }
     });
@@ -108,6 +115,7 @@ export class AuthService {
       this.isLogin = false;
       this.roleAs = '';
       sessionStorage.clear();
+      this.userService.clearUserData();
       this.router.navigate(['/']);
     });
   }

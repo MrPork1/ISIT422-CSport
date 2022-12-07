@@ -16,12 +16,13 @@ export class AdminsUsersinfoComponent implements OnInit {
   check_addclass : boolean = true;
   check_editClass: boolean = true;
 
-  // users : User[] = USERS;
   users : User[] = [];
-  classes : Class[] =[]
+  classes : Class[] =[];
+
   constructor(private userService: UserService,
     private classService : ClassesService) { }
 
+  // Connecnt with Service to get Users and Class information.
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((users) => this.users = users);
     this.classService.getAllClasses().subscribe((classes)=>this.classes = classes)

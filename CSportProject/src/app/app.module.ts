@@ -37,6 +37,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminClassDbCallComponent } from './components/admin-class-db-call/admin-class-db-call.component';
 import { AdminAvaliableClassListComponent } from './components/admin-avaliable-class-list/admin-avaliable-class-list.component';
@@ -46,6 +47,8 @@ import { TransactionHistoryComponent } from './components/transaction-history/tr
 import {GooglePayButtonModule} from '@google-pay/button-angular';
 import { ClassViewCardComponent } from './components/class-view-card/class-view-card.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -73,6 +76,8 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     GooglePayComponent,
     ClassViewCardComponent,
     AccountDetailsComponent,
+    ErrorComponent,
+    ModalComponent
   ],
   
   imports: [
@@ -93,6 +98,7 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     MatTableModule,
     MatExpansionModule,
     MatTabsModule,
+    MatSnackBarModule,
     GooglePayButtonModule,
     // IgxDropDownModule,
   ],

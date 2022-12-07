@@ -12,8 +12,64 @@ button {
 
 .drop-button {
     background-image: none;
-    background-color: white;
-    border: 2px solid red;
-    color: red;
+    background-color: red;
+    border: 2px solid black;
+    color: white;
     width: fit-content;
+}
+
+@media screen and (max-width: 900px) {
+    .mat-column-name {
+        padding-left: 0px;
+    }
+
+    .mat-table .mat-header-cell {
+        border: 10px solid;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .mat-column-actions {
+        padding-right: 0px;
+    }
+
+    button {
+        width: fit-content;
+        margin-top: 5px;
+    }
+
+    .mat-table .mat-header-row {
+        background-color: #92B4F4;
+    }
+
+    .mat-table .mat-row {
+        border-bottom: 1px solid #ddd;
+        display: block;
+    }
+
+    .mat-table .mat-cell {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: end;
+        font-weight: bold;
+        margin-right: 1%;
+        margin-left: 1%;
+    }
+
+    .mat-table .mat-cell:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: normal;
+        font-size: 1em;
+        text-transform: capitalize;
+    }
+
+    .mat-table .mat-cell:last-child {
+        border-bottom: 2px solid #92B4F4;
+    }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, shareReplay, tap } from 'rxjs';
 import { User } from '../User';
 import { environment } from 'src/environments/environment';
 
@@ -21,16 +21,28 @@ export class UserService {
   //where this.users is a local array
   //For an example, see admin-dashboard.component.ts line 38
 
+  user$!: Observable<User[]> | null;
+
+  users$!: Observable<User[]> | null;
+
   private serverURL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.serverURL + "/usercollections")
+    if (!this.users$) {
+      console.log('%cCalled server for all users', 'background: #000000; color: #FFFFFF');
+      this.users$ = this.http.get<User[]>(this.serverURL + "/usercollections").pipe(tap(), shareReplay(1), tap());
+    }
+    return this.users$;
   }
 
   getUser(ID?: string): Observable<User[]> {
-    return this.http.get<User[]>(this.serverURL + "/GetOneUser/" + ID, httpOptions);
+    if (!this.user$) {
+      console.log('%cCalled server for one user', 'background: #000000; color: #FFFFFF');
+      this.user$ = this.http.get<User[]>(this.serverURL + "/GetOneUser/" + ID, httpOptions).pipe(tap(), shareReplay(1), tap());
+    }
+    return this.user$;
   }
 
   addUser(user: User): Observable<User> {
@@ -51,5 +63,10 @@ export class UserService {
 
   getMongoStatus(): Observable<string> {
     return this.http.get<string>(this.serverURL + "/ConnectionStatus", httpOptions);
+  }
+
+  public clearUserData() {
+    this.user$ = null;
+    this.users$ = null;
   }
 }
