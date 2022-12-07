@@ -35,7 +35,7 @@ export class CustomerDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.checkClassesForPastDate(data[0]));
+    this.userService.getUser(this.authService.userData.UID).pipe(first()).subscribe(data => this.user = data[0]);
     // if (sessionStorage.getItem('viewIndex')) {
     //   let viewNum = +sessionStorage.getItem('viewIndex')!;
     //   this.setView(viewNum);
@@ -58,40 +58,40 @@ export class CustomerDashboardComponent implements OnInit {
   //   sessionStorage.setItem('viewIndex', num.toString());
   // }
 
-  checkClassesForPastDate(user: User) {
-    this.user = user;
-    if (this.user.ClassIDList.length <= 0) {
-      return;
-    }
-    this.classService.getAllClasses().subscribe(x => this.checkClassList(x));
-  }
+  // checkClassesForPastDate(user: User) {
+  //   this.user = user;
+  //   if (this.user.ClassIDList.length <= 0) {
+  //     return;
+  //   }
+  //   this.classService.getAllClasses().subscribe(x => this.checkClassList(x));
+  // }
 
-  checkClassList(classes: Class[]) {
-    var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
+  // checkClassList(classes: Class[]) {
+  //   var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
 
-    var index = 0;
+  //   var index = 0;
 
-    var today = new Date();
-    tempClasses.forEach(value => {
-      const classDate = new Date(value.Date);
-      if (today > classDate) {
-        const classIndex = this.user.ClassIDList.indexOf(value._id!);
-        if (classIndex !== -1) {
-          this.user.ClassIDList.splice(classIndex, 1);
-          this.user.ClassHistory.push(value._id!);
-          this.snackBar.open("Thank you for taking " + value.Name + "!", 'Close', true, 5000);
-          index++;
-        }
-      }
-    });
+  //   var today = new Date();
+  //   tempClasses.forEach(value => {
+  //     const classDate = new Date(value.Date);
+  //     if (today > classDate) {
+  //       const classIndex = this.user.ClassIDList.indexOf(value._id!);
+  //       if (classIndex !== -1) {
+  //         this.user.ClassIDList.splice(classIndex, 1);
+  //         this.user.ClassHistory.push(value._id!);
+  //         this.snackBar.open("Thank you for taking " + value.Name + "!", 'Close', true, 5000);
+  //         index++;
+  //       }
+  //     }
+  //   });
 
-    if (index > 0) {
-      this.userService.clearUserData();
-      this.userService.editUser(this.user).subscribe(x => 
-        {
-          this.userService.clearUserData();
-        });
-      console.log(this.user);
-    }
-  }
+  //   if (index > 0) {
+  //     this.userService.clearUserData();
+  //     this.userService.editUser(this.user).subscribe(x => 
+  //       {
+  //         this.userService.clearUserData();
+  //       });
+  //     console.log(this.user);
+  //   }
+  // }
 }

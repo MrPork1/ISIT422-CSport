@@ -29,8 +29,10 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.authService.returnUserObject();
-    this.fillValues(this.user);
+    this.userService.getUser(this.authService.userData.UID).subscribe(x => {
+      this.user = x[0];
+      this.fillValues(this.user);
+    });
   }
 
   fillValues(user: User) {

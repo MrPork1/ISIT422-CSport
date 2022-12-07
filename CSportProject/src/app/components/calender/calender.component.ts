@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ClassesService } from 'src/app/services/classes.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/User';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 @Component({
   selector: 'app-calender',
@@ -46,21 +47,59 @@ export class CalenderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private classService: ClassesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: SnackBarService,
   ) { }
 
   ngOnInit(): void {
 
     this.userService.getUser(this.authService.userData.UID).subscribe(x => {
       this.user = x[0];
-      var date = new Date();
-      this.currentYear = date.getFullYear();
-      this.currentMonth = date.getMonth();
-
-      this.yearIndex = this.currentYear;
-      this.monthIndex = this.currentMonth;
-      this.populateCalender(this.yearIndex, this.monthIndex);
+      this.checkClassesForPastDate(this.user);
     });
+  }
+
+  checkClassesForPastDate(user: User) {
+    this.user = user;
+
+    this.classService.getAllClasses().subscribe(x => this.checkClassList(x));
+  }
+
+  checkClassList(classes: Class[]) {
+    var tempClasses = classes.filter(element => this.user.ClassIDList.includes(element._id!));
+
+    var index = 0;
+
+    var today = new Date();
+    tempClasses.forEach(value => {
+      const classDate = new Date(value.Date);
+      if (today > classDate) {
+        const classIndex = this.user.ClassIDList.indexOf(value._id!);
+        if (classIndex !== -1) {
+          this.user.ClassIDList.splice(classIndex, 1);
+          this.user.ClassHistory.push(value._id!);
+          this.snackBar.open("Thank you for taking " + value.Name + "!", 'Close', true, 5000);
+          index++;
+        }
+      }
+    });
+
+    if (index > 0) {
+      this.userService.clearUserData();
+      this.userService.editUser(this.user).subscribe(x => 
+        {
+          this.userService.clearUserData();
+        });
+      console.log(this.user);
+    }
+
+    var date = new Date();
+    this.currentYear = date.getFullYear();
+    this.currentMonth = date.getMonth();
+
+    this.yearIndex = this.currentYear;
+    this.monthIndex = this.currentMonth;
+    this.populateCalender(this.yearIndex, this.monthIndex);
   }
 
   populateCalender(currentYear: number, currentMonth: number): void {
