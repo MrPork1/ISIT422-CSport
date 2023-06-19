@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://csportnode.azurewebsites.net/', 
+  apiUrl: 'https://sportNode.azurewebsites.net/', 
   firebase: {
     apiKey: "AIzaSyBGZn_LiAXUEtliycKW3HR7fAfebHbR304",
     authDomain: "fir-c6384.firebaseapp.com",
