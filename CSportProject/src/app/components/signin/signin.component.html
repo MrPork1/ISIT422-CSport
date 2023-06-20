@@ -21,15 +21,13 @@
             </p>
             <button mat-raised-button class="btn btnPrimary"
               (click)="authService.login(userName.value, userPassword.value)">Log in</button>
+              <!-- <mat-spinner [diameter]="30"></mat-spinner> -->
           </form>
 
           <a id="matpage" routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one
               here</strong></a>
           <!--Delete before publish!-->
-          <!-- <h3>Sign In As Fake Admin</h3>
-           <div class="formGroup">
-            <button mat-raised-button color="accent" (click)="signInAsAdmin()">Log in as Admin</button>
-          </div> -->
+            <button mat-raised-button color="accent" style="width: auto;margin-top: 10px;" (click)="signInAsCustomer()">Log in as demo customer</button>
         </mat-card-content>
       </mat-card>
     </div>

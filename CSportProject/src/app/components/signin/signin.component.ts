@@ -3,7 +3,6 @@ import { User } from 'src/app/User';
 import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
-
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -39,19 +38,19 @@ export class SigninComponent implements OnInit {
    }
 
    signInAsCustomer() {
-     const newUser = {
-       UID: "213091239812093",
-       Fname: "ironman",
-       Lname: "jarvas",
-       ClassIDList: this.tempCurrentClasses,
-       ClassHistory: this.tempHistoryClasses,
-       Birthday: "10/30/1998",
-       Email: "fakecustomer@yahoo.com",
-       Role: "0",
-       AdminNotes: ""
-     } as User
+    //  const newUser = {
+    //    UID: "213091239812093",
+    //    Fname: "ironman",
+    //    Lname: "jarvas",
+    //    ClassIDList: this.tempCurrentClasses,
+    //    ClassHistory: this.tempHistoryClasses,
+    //    Birthday: "10/30/1998",
+    //    Email: "fakecustomer@yahoo.com",
+    //    Role: "0",
+    //    AdminNotes: ""
+    //  } as User
 
-     this.authService.signInUsingFakeInformation(newUser);
+     this.authService.login("test@gmail.com", "123456");
    }
 
    signInAsAdmin() {
