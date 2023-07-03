@@ -51,7 +51,7 @@ export class AuthService {
     this.snackBar.open("Turning on server... please wait", '', false, 5000);
     this.aAuth.signInWithEmailAndPassword(email, password)
       .then(value => {
-        this.snackBar.open("Logging in...", '', true, 5000);
+        this.snackBar.open("Logging in...", '', false, 5000);
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
