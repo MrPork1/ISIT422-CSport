@@ -18,4 +18,8 @@ export class SnackBarService {
       this.snackBar.open(message, action);
     }
   }
+
+  public dismiss() {
+    this.snackBar.dismiss();
+  }
 }

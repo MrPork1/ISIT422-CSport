@@ -48,12 +48,15 @@ export class AuthService {
   }
 
   login(email: string, password: string) { //Login with email and password.
+    this.snackBar.open("Turning on server... please wait", '', false, 5000);
     this.aAuth.signInWithEmailAndPassword(email, password)
       .then(value => {
+        this.snackBar.open("Logging in...", '', true, 5000);
         this.userService.getUser(value.user?.uid).subscribe(user => {
           this.newUserData = user;
           this.userData = user[0];
           this.firebaseUserData = value.user?.metadata;
+          this.snackBar.dismiss();
           if (this.userData.Role != "1" && this.userData.Role != "0") {
             console.error("Error logging in.");
             this.router.navigate(['/'])
